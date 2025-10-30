@@ -37,6 +37,30 @@ export default function ButtonPage() {
         <Button size="lg">Large</Button>
       </ComponentPreview>
 
+      {/* Radius */}
+      <ComponentPreview
+        title="圓角樣式"
+        description="支援不同的圓角樣式，從標準圓角到完全圓形"
+      >
+        <div className="flex flex-col gap-6 w-full">
+          <div className="flex flex-wrap gap-3">
+            <Button radius="default">Default</Button>
+            <Button radius="pill">Pill</Button>
+            <Button radius="circle" size="icon">
+              <Mail />
+            </Button>
+            <Button radius="none">None</Button>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <Button variant="outline" radius="pill">追蹤</Button>
+            <Button variant="accent" radius="pill">訂閱</Button>
+            <Button variant="outline" radius="circle" size="icon">
+              <Download />
+            </Button>
+          </div>
+        </div>
+      </ComponentPreview>
+
       {/* With Icons */}
       <ComponentPreview
         title="帶圖示"
@@ -95,6 +119,25 @@ export default function ButtonPage() {
         <Button className="w-full">Full Width</Button>
       </ComponentPreview>
 
+      {/* Pill Width Variations */}
+      <ComponentPreview
+        title="Pill 樣式 - 寬度變化"
+        description="Pill 按鈕的自適應內容與填滿容器範例"
+        className="flex-col items-stretch"
+      >
+        <div className="flex flex-wrap gap-3">
+          <Button radius="pill">追蹤</Button>
+          <Button variant="outline" radius="pill">取消追蹤</Button>
+          <Button variant="accent" radius="pill">立即訂閱我們的頻道</Button>
+        </div>
+        <Button radius="pill" className="w-full">填滿容器的 Pill 按鈕</Button>
+        <Button variant="outline" radius="pill" className="w-full">填滿容器的 Outline Pill</Button>
+        <div className="flex gap-3">
+          <Button radius="pill" className="flex-1">彈性寬度 1</Button>
+          <Button variant="accent" radius="pill" className="flex-1">彈性寬度 2</Button>
+        </div>
+      </ComponentPreview>
+
       {/* Combinations */}
       <ComponentPreview
         title="組合範例"
@@ -132,6 +175,16 @@ export default function ButtonPage() {
 <Button size="sm">Small</Button>
 <Button size="lg">Large</Button>
 
+// 不同圓角樣式
+<Button radius="default">標準圓角</Button>
+<Button radius="pill">兩邊圓角（膠囊形）</Button>
+<Button radius="circle" size="icon">圓形</Button>
+<Button radius="none">無圓角</Button>
+
+// 實際應用範例
+<Button variant="outline" radius="pill">追蹤</Button>
+<Button variant="accent" radius="pill">訂閱</Button>
+
 // 帶圖示
 <Button>
   <Mail />
@@ -143,6 +196,11 @@ export default function ButtonPage() {
 
 // 圖示按鈕
 <Button size="icon">
+  <Mail />
+</Button>
+
+// 圓形圖示按鈕
+<Button size="icon" radius="circle">
   <Mail />
 </Button>`}</code>
         </pre>

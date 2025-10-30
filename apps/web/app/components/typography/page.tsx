@@ -100,23 +100,6 @@ export default function TypographyDemo() {
           </div>
         </section>
 
-        {/* List */}
-        <section className="space-y-4">
-          <div>
-            <Typography variant="h2">List - 列表</Typography>
-            <Typography variant="muted">
-              無序列表樣式
-            </Typography>
-          </div>
-          <div className="p-6 border rounded-lg bg-muted/30">
-            <Typography variant="list">
-              <li>1st level of puns: 5 gold coins</li>
-              <li>2nd level of jokes: 10 gold coins</li>
-              <li>3rd level of one-liners : 20 gold coins</li>
-            </Typography>
-          </div>
-        </section>
-
         {/* Inline Code */}
         <section className="space-y-4">
           <div>
@@ -341,6 +324,174 @@ export default function TypographyDemo() {
 <Typography variant="lg" color="success">成功訊息</Typography>
 <Typography variant="lg" color="error">錯誤訊息</Typography>
 <Typography variant="lg" color="warning">警告訊息</Typography>`}</code>
+          </pre>
+        </section>
+
+        {/* Custom Styling */}
+        <section className="space-y-4">
+          <div>
+            <Typography variant="h2">客製化樣式</Typography>
+            <Typography variant="muted">
+              透過 className 可以完全自訂樣式，展示 Typography 的靈活性
+            </Typography>
+          </div>
+          <div className="p-4 border-l-4 border-primary bg-primary/5 rounded-r-lg mb-4">
+            <Typography variant="small" className="font-semibold mb-2">💡 樣式覆蓋機制</Typography>
+            <div className="space-y-1 text-sm text-muted-foreground">
+              <p>Typography 使用 <code className="px-1.5 py-0.5 bg-muted rounded text-xs font-mono">cn()</code> 函數處理 className，你傳入的 className 會被放在最後面，因此：</p>
+              <ul className="list-disc list-inside space-y-1 ml-2">
+                <li><strong className="text-foreground">可以完全覆蓋預設樣式</strong> - 不需要擔心 CSS 權重問題</li>
+                <li><strong className="text-foreground">同屬性後者優先</strong> - 如 <code className="px-1 py-0.5 bg-muted rounded text-xs font-mono">text-xl text-sm</code> 最終會是 <code className="px-1 py-0.5 bg-muted rounded text-xs font-mono">text-sm</code></li>
+                <li><strong className="text-foreground">不同屬性會合併</strong> - 預設的 font-weight 和你自訂的 text-color 可以共存</li>
+              </ul>
+            </div>
+          </div>
+          <div className="p-6 border rounded-lg bg-muted/30 space-y-6">
+            {/* 覆蓋預設樣式 */}
+            <div className="space-y-2">
+              <Typography variant="xs" className="text-muted-foreground">覆蓋預設樣式（證明 className 權重更高）</Typography>
+              <div className="space-y-3">
+                <div>
+                  <Typography variant="xs" className="text-muted-foreground mb-1">H3 預設是 text-2xl font-semibold</Typography>
+                  <Typography variant="h3">預設的 H3 標題</Typography>
+                </div>
+                <div>
+                  <Typography variant="xs" className="text-muted-foreground mb-1">用 className 覆蓋成 text-5xl font-light</Typography>
+                  <Typography variant="h3" className="text-5xl font-light">
+                    覆蓋後的 H3 標題
+                  </Typography>
+                </div>
+                <div>
+                  <Typography variant="xs" className="text-muted-foreground mb-1">Lead 預設是 text-xl text-accent</Typography>
+                  <Typography variant="lead">預設的 Lead 文字</Typography>
+                </div>
+                <div>
+                  <Typography variant="xs" className="text-muted-foreground mb-1">用 className 覆蓋成 text-sm text-destructive</Typography>
+                  <Typography variant="lead" className="text-sm text-destructive">
+                    覆蓋後的 Lead 文字（變小且變紅）
+                  </Typography>
+                </div>
+              </div>
+            </div>
+
+            {/* 自訂字體大小 */}
+            <div className="space-y-2">
+              <Typography variant="xs" className="text-muted-foreground">自訂字體大小</Typography>
+              <Typography variant="h3" className="text-5xl">
+                超大標題 (text-5xl)
+              </Typography>
+              <Typography variant="p" className="text-xs">
+                超小段落 (text-xs)
+              </Typography>
+            </div>
+
+            {/* 自訂字重 */}
+            <div className="space-y-2">
+              <Typography variant="xs" className="text-muted-foreground">自訂字重</Typography>
+              <Typography variant="lg" className="font-light">
+                輕字重 (font-light)
+              </Typography>
+              <Typography variant="lg" className="font-bold">
+                粗字重 (font-bold)
+              </Typography>
+              <Typography variant="lg" className="font-black">
+                特粗字重 (font-black)
+              </Typography>
+            </div>
+
+            {/* 自訂顏色 */}
+            <div className="space-y-2">
+              <Typography variant="xs" className="text-muted-foreground">自訂顏色（透過 className）</Typography>
+              <Typography variant="lg" className="text-blue-600 dark:text-blue-400">
+                藍色文字
+              </Typography>
+              <Typography variant="lg" className="text-purple-600 dark:text-purple-400">
+                紫色文字
+              </Typography>
+              <Typography variant="lg" className="bg-gradient-to-r from-pink-500 to-violet-500 bg-clip-text text-transparent font-bold">
+                漸層文字效果
+              </Typography>
+            </div>
+
+            {/* 自訂樣式組合 */}
+            <div className="space-y-2">
+              <Typography variant="xs" className="text-muted-foreground">樣式組合</Typography>
+              <Typography
+                variant="h2"
+                className="border-l-4 border-accent pl-4 italic text-accent"
+              >
+                帶左側邊框的斜體標題
+              </Typography>
+              <Typography
+                variant="p"
+                className="bg-accent/10 border border-accent/20 rounded-lg p-4"
+              >
+                帶背景色和邊框的段落文字
+              </Typography>
+            </div>
+
+            {/* 覆蓋預設顏色 */}
+            <div className="space-y-2">
+              <Typography variant="xs" className="text-muted-foreground">覆蓋 color prop</Typography>
+              <Typography variant="lead" color="primary">
+                Lead 使用 Primary 顏色
+              </Typography>
+              <Typography variant="lead" color="error">
+                Lead 使用 Error 顏色
+              </Typography>
+              <Typography variant="lead" className="text-pink-600 dark:text-pink-400">
+                Lead 使用 className 自訂顏色
+              </Typography>
+            </div>
+          </div>
+          <pre className="p-4 bg-muted rounded-md text-sm overflow-x-auto">
+            <code>{`// ✅ 覆蓋預設樣式 - className 權重更高
+<Typography variant="h3">
+  預設的 H3 (text-2xl font-semibold)
+</Typography>
+
+<Typography variant="h3" className="text-5xl font-light">
+  覆蓋後的 H3 (text-5xl font-light)
+</Typography>
+
+// ✅ 覆蓋預設顏色
+<Typography variant="lead">
+  預設的 Lead (text-xl text-accent)
+</Typography>
+
+<Typography variant="lead" className="text-sm text-destructive">
+  覆蓋後的 Lead (text-sm text-destructive)
+</Typography>
+
+// 自訂顏色
+<Typography variant="lg" className="text-blue-600 dark:text-blue-400">
+  藍色文字
+</Typography>
+
+// 漸層文字
+<Typography
+  variant="lg"
+  className="bg-gradient-to-r from-pink-500 to-violet-500
+             bg-clip-text text-transparent font-bold"
+>
+  漸層文字效果
+</Typography>
+
+// 樣式組合
+<Typography
+  variant="h2"
+  className="border-l-4 border-accent pl-4 italic text-accent"
+>
+  帶左側邊框的斜體標題
+</Typography>
+
+// color prop vs className
+<Typography variant="lead" color="primary">
+  使用 color prop
+</Typography>
+<Typography variant="lead" className="text-pink-600">
+  使用 className（可覆蓋 color prop）
+</Typography>`}</code>
           </pre>
         </section>
 

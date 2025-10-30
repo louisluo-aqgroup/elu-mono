@@ -14,7 +14,6 @@ const typographyVariants = cva("", {
       h4: "typography-h4",
       p: "typography-p",
       blockquote: "typography-blockquote",
-      list: "typography-list",
       inlineCode: "typography-inline-code",
       lead: "typography-lead",
       large: "typography-large",
@@ -39,6 +38,7 @@ const typographyVariants = cva("", {
   },
   defaultVariants: {
     variant: "p",
+    color: "primary",
   },
 })
 
@@ -52,7 +52,6 @@ const defaultElements: Record<
   h4: "h4",
   p: "p",
   blockquote: "blockquote",
-  list: "ul",
   inlineCode: "code",
   lead: "p",
   large: "div",
@@ -84,9 +83,18 @@ function Typography({
     ? Slot
     : (as ?? (variant ? defaultElements[variant] : "div"))
 
+  // Special color handling for certain variants
+  const finalColor = color ?? (
+    variant === "muted" ? "muted" :
+    variant === "p" ? "default" :
+    variant === "blockquote" ? "secondary" :
+    variant === "lead" ? "accent" :
+    undefined
+  )
+
   return (
     <Comp
-      className={cn(typographyVariants({ variant, color, className }))}
+      className={cn(typographyVariants({ variant, color: finalColor, className }))}
       {...props}
     />
   )
