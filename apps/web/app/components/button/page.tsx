@@ -19,8 +19,10 @@ export default function ButtonPage() {
       >
         <Button variant="default">Default</Button>
         <Button variant="secondary">Secondary</Button>
+        <Button variant="accent">Accent</Button>
         <Button variant="destructive">Destructive</Button>
         <Button variant="outline">Outline</Button>
+        <Button variant="accent-outline">Accent Outline</Button>
         <Button variant="ghost">Ghost</Button>
         <Button variant="link">Link</Button>
       </ComponentPreview>
@@ -121,8 +123,10 @@ export default function ButtonPage() {
 
 // 不同樣式
 <Button variant="secondary">Secondary</Button>
+<Button variant="accent">Accent</Button>
 <Button variant="destructive">Delete</Button>
 <Button variant="outline">Outline</Button>
+<Button variant="accent-outline">Accent Outline</Button>
 
 // 不同尺寸
 <Button size="sm">Small</Button>

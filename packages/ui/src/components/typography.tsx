@@ -20,6 +20,21 @@ const typographyVariants = cva("", {
       large: "typography-large",
       small: "typography-small",
       muted: "typography-muted",
+      xl: "typography-fluid-xl",
+      lg: "typography-fluid-lg",
+      md: "typography-fluid-md",
+      sm: "typography-fluid-sm",
+      xs: "typography-fluid-xs",
+    },
+    color: {
+      default: "",
+      primary: "text-primary",
+      secondary: "text-secondary-foreground",
+      accent: "text-accent",
+      muted: "text-muted-foreground",
+      success: "text-green-600 dark:text-green-500",
+      error: "text-destructive",
+      warning: "text-amber-600 dark:text-amber-500",
     },
   },
   defaultVariants: {
@@ -43,10 +58,15 @@ const defaultElements: Record<
   large: "div",
   small: "small",
   muted: "p",
+  xl: "div",
+  lg: "div",
+  md: "div",
+  sm: "span",
+  xs: "span",
 }
 
 interface TypographyProps
-  extends React.HTMLAttributes<HTMLElement>,
+  extends Omit<React.HTMLAttributes<HTMLElement>, "color">,
     VariantProps<typeof typographyVariants> {
   asChild?: boolean
   as?: keyof JSX.IntrinsicElements
@@ -55,6 +75,7 @@ interface TypographyProps
 function Typography({
   className,
   variant,
+  color,
   asChild = false,
   as,
   ...props
@@ -65,7 +86,7 @@ function Typography({
 
   return (
     <Comp
-      className={cn(typographyVariants({ variant, className }))}
+      className={cn(typographyVariants({ variant, color, className }))}
       {...props}
     />
   )

@@ -213,6 +213,137 @@ export default function TypographyDemo() {
           </div>
         </section>
 
+        {/* Fluid Typography */}
+        <section className="space-y-4">
+          <div>
+            <Typography variant="h2">流體字體大小</Typography>
+            <Typography variant="muted">
+              使用 clamp() 實現的流體字體大小，會根據視窗寬度自動調整。適合沒有格式要求的情況
+            </Typography>
+          </div>
+
+          {/* 說明區塊 */}
+          <div className="p-4 border-l-4 border-primary bg-primary/5 rounded-r-lg">
+            <Typography variant="small" className="font-semibold mb-2">字體放大範圍說明</Typography>
+            <div className="space-y-1.5 text-sm text-muted-foreground">
+              <div className="grid grid-cols-[60px_1fr] gap-2">
+                <span className="font-medium text-foreground">XL:</span>
+                <span>28px → 36px（放大 28.6%，增加 8px）</span>
+              </div>
+              <div className="grid grid-cols-[60px_1fr] gap-2">
+                <span className="font-medium text-foreground">LG:</span>
+                <span>20px → 24px（放大 20%，增加 4px）</span>
+              </div>
+              <div className="grid grid-cols-[60px_1fr] gap-2">
+                <span className="font-medium text-foreground">MD:</span>
+                <span>16px → 18px（放大 12.5%，增加 2px）</span>
+              </div>
+              <div className="grid grid-cols-[60px_1fr] gap-2">
+                <span className="font-medium text-foreground">SM:</span>
+                <span>14px → 16px（放大 14.3%，增加 2px）</span>
+              </div>
+              <div className="grid grid-cols-[60px_1fr] gap-2">
+                <span className="font-medium text-foreground">XS:</span>
+                <span>12px → 14px（放大 16.7%，增加 2px）</span>
+              </div>
+            </div>
+            <Typography variant="xs" className="mt-3 text-muted-foreground">
+              💡 提示：調整瀏覽器視窗大小以觀察字體的流體變化效果
+            </Typography>
+          </div>
+
+          <div className="p-6 border rounded-lg bg-muted/30 space-y-6">
+            <div className="space-y-2">
+              <Typography variant="xs" className="text-muted-foreground">XL (28px → 36px)</Typography>
+              <Typography variant="xl">Extra Large - 流體字體</Typography>
+            </div>
+            <div className="space-y-2">
+              <Typography variant="xs" className="text-muted-foreground">LG (20px → 24px)</Typography>
+              <Typography variant="lg">Large - 流體字體</Typography>
+            </div>
+            <div className="space-y-2">
+              <Typography variant="xs" className="text-muted-foreground">MD (16px → 18px)</Typography>
+              <Typography variant="md">Medium - 流體字體</Typography>
+            </div>
+            <div className="space-y-2">
+              <Typography variant="xs" className="text-muted-foreground">SM (14px → 16px)</Typography>
+              <Typography variant="sm">Small - 流體字體</Typography>
+            </div>
+            <div className="space-y-2">
+              <Typography variant="xs" className="text-muted-foreground">XS (12px → 14px)</Typography>
+              <Typography variant="xs">Extra Small - 流體字體</Typography>
+            </div>
+          </div>
+          <pre className="p-4 bg-muted rounded-md text-sm overflow-x-auto">
+            <code>{`<Typography variant="xl">Extra Large</Typography>
+<Typography variant="lg">Large</Typography>
+<Typography variant="md">Medium</Typography>
+<Typography variant="sm">Small</Typography>
+<Typography variant="xs">Extra Small</Typography>
+
+// 流體字體大小範圍：
+// xl: clamp(28px, 1.2vw + 18px, 36px)
+// lg: clamp(20px, 0.8vw + 14px, 24px)
+// md: clamp(16px, 0.5vw + 12px, 18px)
+// sm: clamp(14px, 0.4vw + 11px, 16px)
+// xs: clamp(12px, 0.3vw + 10px, 14px)`}</code>
+          </pre>
+        </section>
+
+        {/* Color Variants */}
+        <section className="space-y-4">
+          <div>
+            <Typography variant="h2">文字顏色</Typography>
+            <Typography variant="muted">
+              Typography 支援多種顏色選項，適用於不同的使用場景
+            </Typography>
+          </div>
+          <div className="p-6 border rounded-lg bg-muted/30 space-y-4">
+            <div className="space-y-2">
+              <Typography variant="xs" className="text-muted-foreground">Default</Typography>
+              <Typography variant="lg">這是預設顏色的文字</Typography>
+            </div>
+            <div className="space-y-2">
+              <Typography variant="xs" className="text-muted-foreground">Primary</Typography>
+              <Typography variant="lg" color="primary">這是 Primary 顏色的文字</Typography>
+            </div>
+            <div className="space-y-2">
+              <Typography variant="xs" className="text-muted-foreground">Secondary</Typography>
+              <Typography variant="lg" color="secondary">這是 Secondary 顏色的文字</Typography>
+            </div>
+            <div className="space-y-2">
+              <Typography variant="xs" className="text-muted-foreground">Accent</Typography>
+              <Typography variant="lg" color="accent">這是 Accent 顏色的文字</Typography>
+            </div>
+            <div className="space-y-2">
+              <Typography variant="xs" className="text-muted-foreground">Muted</Typography>
+              <Typography variant="lg" color="muted">這是 Muted 顏色的文字</Typography>
+            </div>
+            <div className="space-y-2">
+              <Typography variant="xs" className="text-muted-foreground">Success</Typography>
+              <Typography variant="lg" color="success">✓ 操作成功完成</Typography>
+            </div>
+            <div className="space-y-2">
+              <Typography variant="xs" className="text-muted-foreground">Error</Typography>
+              <Typography variant="lg" color="error">✗ 發生錯誤，請重試</Typography>
+            </div>
+            <div className="space-y-2">
+              <Typography variant="xs" className="text-muted-foreground">Warning</Typography>
+              <Typography variant="lg" color="warning">⚠ 請注意此警告訊息</Typography>
+            </div>
+          </div>
+          <pre className="p-4 bg-muted rounded-md text-sm overflow-x-auto">
+            <code>{`<Typography variant="lg">預設顏色</Typography>
+<Typography variant="lg" color="primary">Primary 顏色</Typography>
+<Typography variant="lg" color="secondary">Secondary 顏色</Typography>
+<Typography variant="lg" color="accent">Accent 顏色</Typography>
+<Typography variant="lg" color="muted">Muted 顏色</Typography>
+<Typography variant="lg" color="success">成功訊息</Typography>
+<Typography variant="lg" color="error">錯誤訊息</Typography>
+<Typography variant="lg" color="warning">警告訊息</Typography>`}</code>
+          </pre>
+        </section>
+
         {/* SEO Example */}
         <section className="space-y-4">
           <div>

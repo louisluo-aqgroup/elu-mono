@@ -20,27 +20,49 @@
   --secondary-foreground: oklch(0.252 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.6835 0.137 31.37);
-  --accent-foreground: oklch(0.252 0 0);
+  --accent: oklch(0.6884 0.1355 31.41);
+  --accent-foreground: oklch(0 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
+  /* 預設用於 資料圖表用，目前不需要 */
+  /* --chart-1: oklch(0.646 0.222 41.116); */
+  /* --chart-2: oklch(0.6 0.118 184.704); */
+  /* --chart-3: oklch(0.398 0.07 227.392); */
+  /* --chart-4: oklch(0.828 0.189 84.429); */
+  /* --chart-5: oklch(0.769 0.188 70.08); */
   --radius: 0.625rem;
+  --text-primary: var(--primary);
+  --text-secondary: var(--secondary-foreground);
+  --text-accent: var(--accent);
+  --border-primary: var(--primary);
+  --border-secondary: var(--secondary-foreground);
+  --border-accent: var(--accent);
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
   --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-secondary: var(--secondary);
+  --sidebar-secondary-foreground: var(--secondary-foreground);
   --sidebar-accent: oklch(0.97 0 0);
   --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-muted: var(--muted);
+  --sidebar-muted-foreground: var(--muted-foreground);
   --sidebar-border: oklch(0.922 0 0);
+  --sidebar-border-primary: var(--primary);
+  --sidebar-border-secondary: var(--secondary-foreground);
+  --sidebar-border-accent: var(--accent);
+  --sidebar-text-primary: var(--primary);
+  --sidebar-text-secondary: var(--secondary-foreground);
+  --sidebar-text-accent: var(--accent);
   --sidebar-ring: oklch(0.708 0 0);
+  --fs-xs: clamp(12px, 0.3vw + 10px, 14px);
+  --fs-sm: clamp(14px, 0.4vw + 11px, 16px);
+  --fs-md: clamp(16px, 0.5vw + 12px, 18px);
+  --fs-lg: clamp(20px, 0.8vw + 14px, 24px);
+  --fs-xl: clamp(28px, 1.2vw + 18px, 36px);
 }
 
 .dark {
@@ -63,18 +85,35 @@
   --border: oklch(0.269 0 0);
   --input: oklch(0.269 0 0);
   --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
+    /* 預設用於 資料圖表用，目前不需要 */
+  /* --chart-1: oklch(0.488 0.243 264.376); */
+  /* --chart-2: oklch(0.696 0.17 162.48); */
+  /* --chart-3: oklch(0.769 0.188 70.08); */
+  /* --chart-4: oklch(0.627 0.265 303.9); */
+  /* --chart-5: oklch(0.645 0.246 16.439); */
+  --text-primary: var(--primary);
+  --text-secondary: var(--secondary-foreground);
+  --text-accent: var(--accent);
+  --border-primary: var(--primary);
+  --border-secondary: var(--secondary-foreground);
+  --border-accent: var(--accent);
   --sidebar: oklch(0.205 0 0);
   --sidebar-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.488 0.243 264.376);
   --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-secondary: var(--secondary);
+  --sidebar-secondary-foreground: var(--secondary-foreground);
   --sidebar-accent: oklch(0.269 0 0);
   --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-muted: var(--muted);
+  --sidebar-muted-foreground: var(--muted-foreground);
   --sidebar-border: oklch(0.269 0 0);
+  --sidebar-border-primary: var(--primary);
+  --sidebar-border-secondary: var(--secondary-foreground);
+  --sidebar-border-accent: var(--accent);
+  --sidebar-text-primary: var(--primary);
+  --sidebar-text-secondary: var(--secondary-foreground);
+  --sidebar-text-accent: var(--accent);
   --sidebar-ring: oklch(0.439 0 0);
 }
 
@@ -107,13 +146,29 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-accent: var(--text-accent);
+  --color-border-primary: var(--border-primary);
+  --color-border-secondary: var(--border-secondary);
+  --color-border-accent: var(--border-accent);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
   --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-secondary: var(--sidebar-secondary);
+  --color-sidebar-secondary-foreground: var(--sidebar-secondary-foreground);
   --color-sidebar-accent: var(--sidebar-accent);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-muted: var(--sidebar-muted);
+  --color-sidebar-muted-foreground: var(--sidebar-muted-foreground);
   --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-border-primary: var(--sidebar-border-primary);
+  --color-sidebar-border-secondary: var(--sidebar-border-secondary);
+  --color-sidebar-border-accent: var(--sidebar-border-accent);
+  --color-sidebar-text-primary: var(--sidebar-text-primary);
+  --color-sidebar-text-secondary: var(--sidebar-text-secondary);
+  --color-sidebar-text-accent: var(--sidebar-text-accent);
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
@@ -127,7 +182,7 @@
 }
 
 @layer components {
-  /* Typography Styles */
+  /* Typography Styles - Fixed RWD (用於文字排版) */
   .typography-h1 {
     @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl;
   }
@@ -174,5 +229,29 @@
 
   .typography-muted {
     @apply text-sm text-muted-foreground;
+  }
+
+  /* Typography Styles - Fluid (流體字體大小) */
+  .typography-fluid-xl {
+    font-size: var(--fs-xl);
+    @apply font-extrabold tracking-tight;
+  }
+
+  .typography-fluid-lg {
+    font-size: var(--fs-lg);
+    @apply font-semibold tracking-tight;
+  }
+
+  .typography-fluid-md {
+    font-size: var(--fs-md);
+    @apply font-medium;
+  }
+
+  .typography-fluid-sm {
+    font-size: var(--fs-sm);
+  }
+
+  .typography-fluid-xs {
+    font-size: var(--fs-xs);
   }
 }
