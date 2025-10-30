@@ -69,6 +69,7 @@ interface TypographyProps
     VariantProps<typeof typographyVariants> {
   asChild?: boolean
   as?: keyof JSX.IntrinsicElements
+  foreground?: boolean
 }
 
 function Typography({
@@ -77,6 +78,7 @@ function Typography({
   color,
   asChild = false,
   as,
+  foreground = false,
   ...props
 }: TypographyProps) {
   const Comp = asChild
@@ -92,9 +94,17 @@ function Typography({
     undefined
   )
 
+  // Generate foreground color class if foreground prop is true
+  const foregroundClass = foreground && finalColor && finalColor !== "default"
+    ? `text-${finalColor}-foreground`
+    : undefined
+
   return (
     <Comp
-      className={cn(typographyVariants({ variant, color: finalColor, className }))}
+      className={cn(
+        typographyVariants({ variant, color: foreground ? undefined : finalColor, className }),
+        foregroundClass
+      )}
       {...props}
     />
   )

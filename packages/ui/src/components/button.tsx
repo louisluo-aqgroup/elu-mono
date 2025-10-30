@@ -45,23 +45,38 @@ const buttonVariants = cva(
   }
 )
 
+interface ButtonProps extends React.ComponentProps<"button">, VariantProps<typeof buttonVariants> {
+  asChild?: boolean
+  foreground?: boolean
+  color?: "primary" | "secondary" | "accent" | "destructive"
+}
+
 function Button({
   className,
   variant,
   size,
   radius,
   asChild = false,
+  foreground = false,
+  color = "primary",
   ...props
-}: React.ComponentProps<"button"> &
-  VariantProps<typeof buttonVariants> & {
-    asChild?: boolean
-  }) {
+}: ButtonProps) {
   const Comp = asChild ? Slot : "button"
+
+  // Generate foreground color classes if foreground prop is true
+  const foregroundClasses = foreground
+    ? cn(
+        `text-${color}-foreground/90`,
+        `hover:text-${color}-foreground`,
+        `disabled:text-${color}-foreground/50`,
+        variant === "ghost" && `hover:bg-${color}-foreground/20`
+      )
+    : undefined
 
   return (
     <Comp
       data-slot="button"
-      className={cn(buttonVariants({ variant, size, radius, className }))}
+      className={cn(buttonVariants({ variant, size, radius, className }), foregroundClasses)}
       {...props}
     />
   )
