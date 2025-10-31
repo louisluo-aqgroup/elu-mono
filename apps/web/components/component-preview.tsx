@@ -21,13 +21,15 @@ export function ComponentPreview({
           <p className="text-sm text-muted-foreground mt-1">{description}</p>
         )}
       </div>
-      <div
-        className={cn(
-          "flex items-center justify-center gap-4 p-8 border rounded-lg bg-background",
-          className
-        )}
-      >
-        {children}
+      <div className="overflow-x-auto">
+        <div
+          className={cn(
+            "flex min-w-max items-center justify-center gap-4 rounded-lg border bg-background px-8 py-6",
+            className
+          )}
+        >
+          {children}
+        </div>
       </div>
     </div>
   )
