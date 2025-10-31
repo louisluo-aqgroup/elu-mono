@@ -1,6 +1,5 @@
 'use client';
 
-import { Slot } from '@radix-ui/react-slot';
 import { Button } from '@eluelu/elu-ui/components/button';
 import { Input } from '@eluelu/elu-ui/components/input';
 import { Separator } from '@eluelu/elu-ui/components/separator';
@@ -20,6 +19,7 @@ import {
 } from '@eluelu/elu-ui/components/tooltip';
 import { useIsMobile } from '@eluelu/elu-ui/hooks/use-mobile';
 import { cn } from '@eluelu/elu-ui/lib/utils';
+import { Slot } from '@radix-ui/react-slot';
 import { type VariantProps, cva } from 'class-variance-authority';
 import { PanelLeftIcon } from 'lucide-react';
 import * as React from 'react';

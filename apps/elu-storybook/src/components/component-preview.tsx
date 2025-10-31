@@ -18,13 +18,13 @@ export function ComponentPreview({
       <div>
         <h3 className="text-lg font-semibold">{title}</h3>
         {description && (
-          <p className="text-sm text-muted-foreground mt-1">{description}</p>
+          <p className="text-muted-foreground mt-1 text-sm">{description}</p>
         )}
       </div>
       <div className="overflow-x-auto">
         <div
           className={cn(
-            'flex min-w-max items-center justify-center gap-4 rounded-lg border bg-background px-8 py-6',
+            'bg-background flex min-w-max items-center justify-center gap-4 rounded-lg border px-8 py-6',
             className
           )}
         >

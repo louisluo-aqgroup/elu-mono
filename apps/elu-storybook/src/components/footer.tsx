@@ -3,7 +3,6 @@ import { Typography } from '@eluelu/elu-ui/components/typography';
 import { Globe, Mail, Share2 } from 'lucide-react';
 
 import LogoSvg from '@/assets/logo/icon_logo.svg';
-import Image from 'next/image';
 
 const footerColumns = [
   {
@@ -28,25 +27,25 @@ const socialIcons = [
 
 export function Footer() {
   return (
-    <footer className="relative mt-16 bg-primary">
+    <footer className="bg-primary relative mt-16">
       <div className="mx-auto w-full max-w-6xl px-6 py-12 sm:px-12">
         <div className="grid gap-10 md:grid-cols-[auto,1fr,auto] md:items-start">
           <div className="space-y-3">
-            <LogoSvg className="h-6 w-auto fill-primary-foreground" />
-            <Typography variant="sm" color="primary" foreground>
+            <LogoSvg className="fill-primary-foreground h-6 w-auto" />
+            <Typography color="primary" foreground variant="sm">
               用設計與科技串聯每一次互動，打造兼具美感與實用的數位體驗。
             </Typography>
           </div>
 
           <div className="grid gap-8 sm:grid-cols-3">
             {footerColumns.map((column) => (
-              <div key={column.title} className="space-y-3">
+              <div className="space-y-3" key={column.title}>
                 <Typography
-                  variant="sm"
                   as="h4"
+                  className="font-semibold tracking-wide uppercase"
                   color="primary"
                   foreground
-                  className="font-semibold uppercase tracking-wide"
+                  variant="sm"
                 >
                   {column.title}
                 </Typography>
@@ -55,10 +54,10 @@ export function Footer() {
                     <li key={link}>
                       <Button
                         asChild
-                        variant="link"
+                        className="px-0 text-left"
                         color="primary"
                         foreground
-                        className="px-0 text-left"
+                        variant="link"
                       >
                         <a href="#">{link}</a>
                       </Button>
@@ -73,14 +72,14 @@ export function Footer() {
             <div className="flex gap-3">
               {socialIcons.map(({ label, icon: Icon, href }) => (
                 <Button
-                  key={label}
                   asChild
-                  size="icon"
-                  radius="circle"
                   color="primary"
                   foreground
+                  key={label}
+                  radius="circle"
+                  size="icon"
                 >
-                  <a href={href} aria-label={label}>
+                  <a aria-label={label} href={href}>
                     <Icon className="size-5" />
                   </a>
                 </Button>
@@ -90,10 +89,10 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-          <Typography variant="xs" color="primary" foreground>
+          <Typography color="primary" foreground variant="xs">
             © {new Date().getFullYear()} ELUELU. All rights reserved.
           </Typography>
-          <Typography variant="xs" color="primary" foreground>
+          <Typography color="primary" foreground variant="xs">
             此區為示意內容，實際連結與資訊可再調整。
           </Typography>
         </div>

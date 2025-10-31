@@ -1,85 +1,85 @@
 import { Button } from '@eluelu/elu-ui/components/button';
 import { Download, Loader2, Mail } from 'lucide-react';
 
-import { ComponentPreview } from '@/components/component-preview';
+import { ComponentPreview } from '@/src/components/component-preview';
 
 export default function ButtonPage() {
   return (
-    <div className="max-w-5xl mx-auto space-y-12">
+    <div className="mx-auto max-w-5xl space-y-12">
       <div>
-        <h1 className="text-3xl font-bold mb-2">Button</h1>
+        <h1 className="mb-2 text-3xl font-bold">Button</h1>
         <p className="text-muted-foreground">
           按鈕元件用於觸發動作或事件，支援多種樣式和尺寸變體。
         </p>
       </div>
       {/* Props Table */}
-      <div className="space-y-4 p-6 border rounded-lg bg-muted/30">
+      <div className="bg-muted/30 space-y-4 rounded-lg border p-6">
         <h3 className="text-lg font-semibold">Props</h3>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b">
-                <th className="text-left py-2 px-4 font-semibold">Prop</th>
-                <th className="text-left py-2 px-4 font-semibold">Type</th>
-                <th className="text-left py-2 px-4 font-semibold">Default</th>
-                <th className="text-left py-2 px-4 font-semibold">
+                <th className="px-4 py-2 text-left font-semibold">Prop</th>
+                <th className="px-4 py-2 text-left font-semibold">Type</th>
+                <th className="px-4 py-2 text-left font-semibold">Default</th>
+                <th className="px-4 py-2 text-left font-semibold">
                   Description
                 </th>
               </tr>
             </thead>
             <tbody className="divide-y">
               <tr>
-                <td className="py-2 px-4 font-mono">variant</td>
-                <td className="py-2 px-4 font-mono text-xs">
+                <td className="px-4 py-2 font-mono">variant</td>
+                <td className="px-4 py-2 font-mono text-xs">
                   "default" | "destructive" | "outline" | "secondary" | "accent"
                   | "accent-outline" | "ghost" | "link"
                 </td>
-                <td className="py-2 px-4 font-mono">"default"</td>
-                <td className="py-2 px-4">按鈕的樣式變體</td>
+                <td className="px-4 py-2 font-mono">"default"</td>
+                <td className="px-4 py-2">按鈕的樣式變體</td>
               </tr>
               <tr>
-                <td className="py-2 px-4 font-mono">size</td>
-                <td className="py-2 px-4 font-mono text-xs">
+                <td className="px-4 py-2 font-mono">size</td>
+                <td className="px-4 py-2 font-mono text-xs">
                   "default" | "sm" | "lg" | "icon"
                 </td>
-                <td className="py-2 px-4 font-mono">"default"</td>
-                <td className="py-2 px-4">按鈕的尺寸大小</td>
+                <td className="px-4 py-2 font-mono">"default"</td>
+                <td className="px-4 py-2">按鈕的尺寸大小</td>
               </tr>
               <tr>
-                <td className="py-2 px-4 font-mono">radius</td>
-                <td className="py-2 px-4 font-mono text-xs">
+                <td className="px-4 py-2 font-mono">radius</td>
+                <td className="px-4 py-2 font-mono text-xs">
                   "default" | "pill" | "circle" | "none"
                 </td>
-                <td className="py-2 px-4 font-mono">"default"</td>
-                <td className="py-2 px-4">按鈕的圓角樣式</td>
+                <td className="px-4 py-2 font-mono">"default"</td>
+                <td className="px-4 py-2">按鈕的圓角樣式</td>
               </tr>
               <tr>
-                <td className="py-2 px-4 font-mono">color</td>
-                <td className="py-2 px-4 font-mono text-xs">
+                <td className="px-4 py-2 font-mono">color</td>
+                <td className="px-4 py-2 font-mono text-xs">
                   "primary" | "secondary" | "accent" | "destructive"
                 </td>
-                <td className="py-2 px-4 font-mono">"primary"</td>
-                <td className="py-2 px-4">搭配 foreground 使用的顏色主題</td>
+                <td className="px-4 py-2 font-mono">"primary"</td>
+                <td className="px-4 py-2">搭配 foreground 使用的顏色主題</td>
               </tr>
               <tr>
-                <td className="py-2 px-4 font-mono">foreground</td>
-                <td className="py-2 px-4 font-mono text-xs">boolean</td>
-                <td className="py-2 px-4 font-mono">false</td>
-                <td className="py-2 px-4">啟用前景色樣式，適用於深色背景</td>
+                <td className="px-4 py-2 font-mono">foreground</td>
+                <td className="px-4 py-2 font-mono text-xs">boolean</td>
+                <td className="px-4 py-2 font-mono">false</td>
+                <td className="px-4 py-2">啟用前景色樣式，適用於深色背景</td>
               </tr>
               <tr>
-                <td className="py-2 px-4 font-mono">asChild</td>
-                <td className="py-2 px-4 font-mono text-xs">boolean</td>
-                <td className="py-2 px-4 font-mono">false</td>
-                <td className="py-2 px-4">
+                <td className="px-4 py-2 font-mono">asChild</td>
+                <td className="px-4 py-2 font-mono text-xs">boolean</td>
+                <td className="px-4 py-2 font-mono">false</td>
+                <td className="px-4 py-2">
                   將按鈕樣式套用到子元素（使用 Radix Slot）
                 </td>
               </tr>
               <tr>
-                <td className="py-2 px-4 font-mono">disabled</td>
-                <td className="py-2 px-4 font-mono text-xs">boolean</td>
-                <td className="py-2 px-4 font-mono">false</td>
-                <td className="py-2 px-4">禁用按鈕</td>
+                <td className="px-4 py-2 font-mono">disabled</td>
+                <td className="px-4 py-2 font-mono text-xs">boolean</td>
+                <td className="px-4 py-2 font-mono">false</td>
+                <td className="px-4 py-2">禁用按鈕</td>
               </tr>
             </tbody>
           </table>
@@ -87,9 +87,9 @@ export default function ButtonPage() {
       </div>
 
       {/* Code Example */}
-      <div className="space-y-4 mt-12 p-6 border rounded-lg bg-muted/30">
+      <div className="bg-muted/30 mt-12 space-y-4 rounded-lg border p-6">
         <h3 className="text-lg font-semibold">使用範例</h3>
-        <pre className="p-4 bg-black text-white rounded-md overflow-x-auto text-sm">
+        <pre className="overflow-x-auto rounded-md bg-black p-4 text-sm text-white">
           <code>{`import { Button } from "@eluelu/elu-ui/components/button"
 
 // 基本用法
@@ -149,8 +149,8 @@ export default function ButtonPage() {
       </div>
       {/* Variants */}
       <ComponentPreview
-        title="樣式變體"
         description="Button 元件提供多種樣式變體，適用於不同的使用場景"
+        title="樣式變體"
       >
         <Button variant="default">Default</Button>
         <Button variant="secondary">Secondary</Button>
@@ -163,7 +163,7 @@ export default function ButtonPage() {
       </ComponentPreview>
 
       {/* Sizes */}
-      <ComponentPreview title="尺寸" description="三種不同的尺寸大小供選擇">
+      <ComponentPreview description="三種不同的尺寸大小供選擇" title="尺寸">
         <Button size="sm">Small</Button>
         <Button size="default">Default</Button>
         <Button size="lg">Large</Button>
@@ -171,10 +171,10 @@ export default function ButtonPage() {
 
       {/* Radius */}
       <ComponentPreview
-        title="圓角樣式"
         description="支援不同的圓角樣式，從標準圓角到完全圓形"
+        title="圓角樣式"
       >
-        <div className="flex flex-col gap-6 w-full">
+        <div className="flex w-full flex-col gap-6">
           <div className="flex flex-wrap gap-3">
             <Button radius="default">Default</Button>
             <Button radius="pill">Pill</Button>
@@ -184,13 +184,13 @@ export default function ButtonPage() {
             <Button radius="none">None</Button>
           </div>
           <div className="flex flex-wrap gap-3">
-            <Button variant="outline" radius="pill">
+            <Button radius="pill" variant="outline">
               追蹤
             </Button>
-            <Button variant="accent" radius="pill">
+            <Button radius="pill" variant="accent">
               訂閱
             </Button>
-            <Button variant="outline" radius="circle" size="icon">
+            <Button radius="circle" size="icon" variant="outline">
               <Download />
             </Button>
           </div>
@@ -199,8 +199,8 @@ export default function ButtonPage() {
 
       {/* With Icons */}
       <ComponentPreview
-        title="帶圖示"
         description="按鈕可以包含圖示，增加視覺識別度"
+        title="帶圖示"
       >
         <Button>
           <Mail />
@@ -218,8 +218,8 @@ export default function ButtonPage() {
 
       {/* Icon Only */}
       <ComponentPreview
-        title="圖示按鈕"
         description="只包含圖示的按鈕，適合工具列或緊湊的介面"
+        title="圖示按鈕"
       >
         <Button size="icon" variant="outline">
           <Mail />
@@ -233,7 +233,7 @@ export default function ButtonPage() {
       </ComponentPreview>
 
       {/* States */}
-      <ComponentPreview title="狀態" description="按鈕的不同狀態展示">
+      <ComponentPreview description="按鈕的不同狀態展示" title="狀態">
         <Button>Normal</Button>
         <Button disabled>Disabled</Button>
         <Button>
@@ -244,9 +244,9 @@ export default function ButtonPage() {
 
       {/* Width Variations */}
       <ComponentPreview
-        title="寬度變化"
-        description="按鈕可以自適應內容或填滿容器"
         className="flex-col items-stretch"
+        description="按鈕可以自適應內容或填滿容器"
+        title="寬度變化"
       >
         <Button>Auto Width</Button>
         <Button className="w-full">Full Width</Button>
@@ -254,30 +254,30 @@ export default function ButtonPage() {
 
       {/* Pill Width Variations */}
       <ComponentPreview
-        title="Pill 樣式 - 寬度變化"
-        description="Pill 按鈕的自適應內容與填滿容器範例"
         className="flex-col items-stretch"
+        description="Pill 按鈕的自適應內容與填滿容器範例"
+        title="Pill 樣式 - 寬度變化"
       >
         <div className="flex flex-wrap gap-3">
           <Button radius="pill">追蹤</Button>
-          <Button variant="outline" radius="pill">
+          <Button radius="pill" variant="outline">
             取消追蹤
           </Button>
-          <Button variant="accent" radius="pill">
+          <Button radius="pill" variant="accent">
             立即訂閱我們的頻道
           </Button>
         </div>
-        <Button radius="pill" className="w-full">
+        <Button className="w-full" radius="pill">
           填滿容器的 Pill 按鈕
         </Button>
-        <Button variant="outline" radius="pill" className="w-full">
+        <Button className="w-full" radius="pill" variant="outline">
           填滿容器的 Outline Pill
         </Button>
         <div className="flex gap-3">
-          <Button radius="pill" className="flex-1">
+          <Button className="flex-1" radius="pill">
             彈性寬度 1
           </Button>
-          <Button variant="accent" radius="pill" className="flex-1">
+          <Button className="flex-1" radius="pill" variant="accent">
             彈性寬度 2
           </Button>
         </div>
@@ -285,9 +285,9 @@ export default function ButtonPage() {
 
       {/* Combinations */}
       <ComponentPreview
-        title="組合範例"
+        className="flex-col gap-2 md:flex-row"
         description="實際應用中的按鈕組合"
-        className="flex-col md:flex-row gap-2"
+        title="組合範例"
       >
         <div className="flex gap-2">
           <Button variant="outline">Cancel</Button>
@@ -302,59 +302,59 @@ export default function ButtonPage() {
 
       {/* Foreground */}
       <ComponentPreview
-        title="前景色樣式 (Foreground)"
         description="使用 foreground 和 color 屬性來適應深色背景，常用於 footer、header 等區域"
+        title="前景色樣式 (Foreground)"
       >
-        <div className="space-y-6 w-full">
+        <div className="w-full space-y-6">
           {/* Primary background example */}
-          <div className="p-6 bg-primary rounded-lg space-y-3">
-            <p className="text-primary-foreground text-sm font-medium mb-3">
+          <div className="bg-primary space-y-3 rounded-lg p-6">
+            <p className="text-primary-foreground mb-3 text-sm font-medium">
               Primary 背景範例
             </p>
             <div className="flex flex-wrap gap-3">
-              <Button variant="ghost" color="primary" foreground>
+              <Button color="primary" foreground variant="ghost">
                 Ghost
               </Button>
-              <Button variant="link" color="primary" foreground>
+              <Button color="primary" foreground variant="link">
                 Link
               </Button>
-              <Button size="icon" radius="circle" color="primary" foreground>
+              <Button color="primary" foreground radius="circle" size="icon">
                 <Mail />
               </Button>
             </div>
           </div>
 
           {/* Secondary background example */}
-          <div className="p-6 bg-secondary rounded-lg space-y-3">
-            <p className="text-secondary-foreground text-sm font-medium mb-3">
+          <div className="bg-secondary space-y-3 rounded-lg p-6">
+            <p className="text-secondary-foreground mb-3 text-sm font-medium">
               Secondary 背景範例
             </p>
             <div className="flex flex-wrap gap-3">
-              <Button variant="ghost" color="secondary" foreground>
+              <Button color="secondary" foreground variant="ghost">
                 Ghost
               </Button>
-              <Button variant="link" color="secondary" foreground>
+              <Button color="secondary" foreground variant="link">
                 Link
               </Button>
-              <Button size="icon" radius="circle" color="secondary" foreground>
+              <Button color="secondary" foreground radius="circle" size="icon">
                 <Download />
               </Button>
             </div>
           </div>
 
           {/* Accent background example */}
-          <div className="p-6 bg-accent rounded-lg space-y-3">
-            <p className="text-accent-foreground text-sm font-medium mb-3">
+          <div className="bg-accent space-y-3 rounded-lg p-6">
+            <p className="text-accent-foreground mb-3 text-sm font-medium">
               Accent 背景範例
             </p>
             <div className="flex flex-wrap gap-3">
-              <Button variant="ghost" color="accent" foreground>
+              <Button color="accent" foreground variant="ghost">
                 Ghost
               </Button>
-              <Button variant="link" color="accent" foreground>
+              <Button color="accent" foreground variant="link">
                 Link
               </Button>
-              <Button size="icon" radius="circle" color="accent" foreground>
+              <Button color="accent" foreground radius="circle" size="icon">
                 <Loader2 />
               </Button>
             </div>

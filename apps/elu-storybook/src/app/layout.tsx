@@ -1,8 +1,8 @@
 import '@eluelu/elu-ui/globals.css';
 import { Geist, Geist_Mono } from 'next/font/google';
 
-import { Footer } from '@/components/footer';
-import { Providers } from '@/components/providers';
+import { Footer } from '@/src/components/footer';
+import { Providers } from '@/src/components/providers';
 
 const fontSans = Geist({
   subsets: ['latin'],
@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased `}
+        className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased`}
       >
         <Providers>
           <div className="flex min-h-screen flex-col">

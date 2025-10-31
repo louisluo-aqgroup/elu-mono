@@ -35,11 +35,11 @@ export function LayoutSidebar() {
     <Sidebar>
       <SidebarHeader>
         <Link
+          className="hover:text-sidebar-primary flex items-center gap-2 px-2 py-1.5 transition-colors"
           href="/"
-          className="flex items-center gap-2 px-2 py-1.5 hover:text-sidebar-primary transition-colors"
         >
-          <Layers className="size-5 text-accent" />
-          <Typography variant="large" className="font-bold">
+          <Layers className="text-accent size-5" />
+          <Typography className="font-bold" variant="large">
             ELUELU Design Demo
           </Typography>
         </Link>

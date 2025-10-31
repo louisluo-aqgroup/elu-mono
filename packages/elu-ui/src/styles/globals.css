@@ -1,9 +1,9 @@
-@import "tailwindcss";
-@source "../../../apps/**/*.{ts,tsx}";
-@source "../../../components/**/*.{ts,tsx}";
-@source "../**/*.{ts,tsx}";
+@import 'tailwindcss';
+@source '../../../apps/**/*.{ts,tsx}';
+@source '../../../components/**/*.{ts,tsx}';
+@source '../**/*.{ts,tsx}';
 
-@import "tw-animate-css";
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -85,7 +85,7 @@
   --border: oklch(0.269 0 0);
   --input: oklch(0.269 0 0);
   --ring: oklch(0.556 0 0);
-    /* 預設用於 資料圖表用，目前不需要 */
+  /* 預設用於 資料圖表用，目前不需要 */
   /* --chart-1: oklch(0.488 0.243 264.376); */
   /* --chart-2: oklch(0.696 0.17 162.48); */
   /* --chart-3: oklch(0.769 0.188 70.08); */
@@ -208,11 +208,11 @@
   }
 
   .typography-inline-code {
-    @apply relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
+    @apply bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
   }
 
   .typography-lead {
-    @apply text-xl text-muted-foreground;
+    @apply text-muted-foreground text-xl;
   }
 
   .typography-large {
@@ -220,11 +220,11 @@
   }
 
   .typography-small {
-    @apply text-sm font-medium leading-none;
+    @apply text-sm leading-none font-medium;
   }
 
   .typography-muted {
-    @apply text-sm text-muted-foreground;
+    @apply text-muted-foreground text-sm;
   }
 
   /* Typography Styles - Fluid (流體字體大小) */

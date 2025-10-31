@@ -1,5 +1,5 @@
-import { Slot } from '@radix-ui/react-slot';
 import { cn } from '@eluelu/elu-ui/lib/utils';
+import { Slot } from '@radix-ui/react-slot';
 import { type VariantProps, cva } from 'class-variance-authority';
 import { JSX } from 'react';
 

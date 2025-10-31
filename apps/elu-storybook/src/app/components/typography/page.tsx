@@ -2,79 +2,79 @@ import { Typography } from '@eluelu/elu-ui/components/typography';
 
 export default function TypographyDemo() {
   return (
-    <div className="max-w-5xl mx-auto space-y-12">
+    <div className="mx-auto max-w-5xl space-y-12">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold mb-2">Typography</h1>
+        <h1 className="mb-2 text-3xl font-bold">Typography</h1>
         <p className="text-muted-foreground">
           優雅且一致的文字排版系統，支援多種變體和顏色配置。
         </p>
       </div>
 
       {/* Props Table */}
-      <div className="space-y-4 p-6 border rounded-lg bg-muted/30">
+      <div className="bg-muted/30 space-y-4 rounded-lg border p-6">
         <h3 className="text-lg font-semibold">Props</h3>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b">
-                <th className="text-left py-2 px-4 font-semibold">Prop</th>
-                <th className="text-left py-2 px-4 font-semibold">Type</th>
-                <th className="text-left py-2 px-4 font-semibold">Default</th>
-                <th className="text-left py-2 px-4 font-semibold">
+                <th className="px-4 py-2 text-left font-semibold">Prop</th>
+                <th className="px-4 py-2 text-left font-semibold">Type</th>
+                <th className="px-4 py-2 text-left font-semibold">Default</th>
+                <th className="px-4 py-2 text-left font-semibold">
                   Description
                 </th>
               </tr>
             </thead>
             <tbody className="divide-y">
               <tr>
-                <td className="py-2 px-4 font-mono">variant</td>
-                <td className="py-2 px-4 font-mono text-xs">
+                <td className="px-4 py-2 font-mono">variant</td>
+                <td className="px-4 py-2 font-mono text-xs">
                   "h1" | "h2" | "h3" | "h4" | "p" | "blockquote" | "inlineCode"
                   | "lead" | "large" | "small" | "muted" | "xl" | "lg" | "md" |
                   "sm" | "xs"
                 </td>
-                <td className="py-2 px-4 font-mono">"p"</td>
-                <td className="py-2 px-4">文字的樣式變體</td>
+                <td className="px-4 py-2 font-mono">"p"</td>
+                <td className="px-4 py-2">文字的樣式變體</td>
               </tr>
               <tr>
-                <td className="py-2 px-4 font-mono">color</td>
-                <td className="py-2 px-4 font-mono text-xs">
+                <td className="px-4 py-2 font-mono">color</td>
+                <td className="px-4 py-2 font-mono text-xs">
                   "default" | "primary" | "secondary" | "accent" | "muted" |
                   "success" | "error" | "warning"
                 </td>
-                <td className="py-2 px-4 font-mono">"primary"</td>
-                <td className="py-2 px-4">文字顏色主題</td>
+                <td className="px-4 py-2 font-mono">"primary"</td>
+                <td className="px-4 py-2">文字顏色主題</td>
               </tr>
               <tr>
-                <td className="py-2 px-4 font-mono">as</td>
-                <td className="py-2 px-4 font-mono text-xs">
+                <td className="px-4 py-2 font-mono">as</td>
+                <td className="px-4 py-2 font-mono text-xs">
                   keyof JSX.IntrinsicElements
                 </td>
-                <td className="py-2 px-4 font-mono">-</td>
-                <td className="py-2 px-4">
+                <td className="px-4 py-2 font-mono">-</td>
+                <td className="px-4 py-2">
                   自訂渲染的 HTML 元素，適用於 SEO 優化
                 </td>
               </tr>
               <tr>
-                <td className="py-2 px-4 font-mono">asChild</td>
-                <td className="py-2 px-4 font-mono text-xs">boolean</td>
-                <td className="py-2 px-4 font-mono">false</td>
-                <td className="py-2 px-4">
+                <td className="px-4 py-2 font-mono">asChild</td>
+                <td className="px-4 py-2 font-mono text-xs">boolean</td>
+                <td className="px-4 py-2 font-mono">false</td>
+                <td className="px-4 py-2">
                   將樣式套用到子元素（使用 Radix Slot）
                 </td>
               </tr>
               <tr>
-                <td className="py-2 px-4 font-mono">foreground</td>
-                <td className="py-2 px-4 font-mono text-xs">boolean</td>
-                <td className="py-2 px-4 font-mono">false</td>
-                <td className="py-2 px-4">啟用前景色樣式，適用於深色背景</td>
+                <td className="px-4 py-2 font-mono">foreground</td>
+                <td className="px-4 py-2 font-mono text-xs">boolean</td>
+                <td className="px-4 py-2 font-mono">false</td>
+                <td className="px-4 py-2">啟用前景色樣式，適用於深色背景</td>
               </tr>
               <tr>
-                <td className="py-2 px-4 font-mono">className</td>
-                <td className="py-2 px-4 font-mono text-xs">string</td>
-                <td className="py-2 px-4 font-mono">-</td>
-                <td className="py-2 px-4">
+                <td className="px-4 py-2 font-mono">className</td>
+                <td className="px-4 py-2 font-mono text-xs">string</td>
+                <td className="px-4 py-2 font-mono">-</td>
+                <td className="px-4 py-2">
                   自訂 CSS 類別（可完全覆蓋預設樣式）
                 </td>
               </tr>
@@ -84,9 +84,9 @@ export default function TypographyDemo() {
       </div>
 
       {/* Code Example */}
-      <div className="space-y-4 mt-12 p-6 border rounded-lg bg-muted/30">
+      <div className="bg-muted/30 mt-12 space-y-4 rounded-lg border p-6">
         <h3 className="text-lg font-semibold">使用範例</h3>
-        <pre className="p-4 bg-black text-white rounded-md overflow-x-auto text-sm">
+        <pre className="overflow-x-auto rounded-md bg-black p-4 text-sm text-white">
           <code>{`import { Typography } from "@eluelu/elu-ui/components/typography"
 
 // 基本用法
@@ -150,12 +150,12 @@ export default function TypographyDemo() {
               時，預設渲染為 div 標籤
             </Typography>
           </div>
-          <div className="p-6 border rounded-lg bg-muted/30">
+          <div className="bg-muted/30 rounded-lg border p-6">
             <Typography variant="h1">
               Taxing Laughter: The Joke Tax Chronicles
             </Typography>
           </div>
-          <pre className="p-4 bg-muted rounded-md text-sm overflow-x-auto">
+          <pre className="bg-muted overflow-x-auto rounded-md p-4 text-sm">
             <code>{`<Typography variant="h1">主標題</Typography>
 
 // SEO 需求：視覺是 h1，但語意是 h2
@@ -169,7 +169,7 @@ export default function TypographyDemo() {
             <Typography variant="h2">H2 - 次標題</Typography>
             <Typography variant="muted">帶有底部邊框的次標題樣式</Typography>
           </div>
-          <div className="p-6 border rounded-lg bg-muted/30">
+          <div className="bg-muted/30 rounded-lg border p-6">
             <Typography variant="h2">The People of the Kingdom</Typography>
           </div>
         </section>
@@ -179,7 +179,7 @@ export default function TypographyDemo() {
           <div>
             <Typography variant="h2">H3 - 三級標題</Typography>
           </div>
-          <div className="p-6 border rounded-lg bg-muted/30">
+          <div className="bg-muted/30 rounded-lg border p-6">
             <Typography variant="h3">The Joke Tax</Typography>
           </div>
         </section>
@@ -189,7 +189,7 @@ export default function TypographyDemo() {
           <div>
             <Typography variant="h2">H4 - 四級標題</Typography>
           </div>
-          <div className="p-6 border rounded-lg bg-muted/30">
+          <div className="bg-muted/30 rounded-lg border p-6">
             <Typography variant="h4">People stopped telling jokes</Typography>
           </div>
         </section>
@@ -200,7 +200,7 @@ export default function TypographyDemo() {
             <Typography variant="h2">P - 段落</Typography>
             <Typography variant="muted">標準段落文字，自動處理間距</Typography>
           </div>
-          <div className="p-6 border rounded-lg bg-muted/30">
+          <div className="bg-muted/30 rounded-lg border p-6">
             <Typography variant="p">
               The king, seeing how much happier his subjects were, realized the
               error of his ways and repealed the joke tax.
@@ -214,7 +214,7 @@ export default function TypographyDemo() {
             <Typography variant="h2">Blockquote - 引用</Typography>
             <Typography variant="muted">帶有左側邊框的引用區塊</Typography>
           </div>
-          <div className="p-6 border rounded-lg bg-muted/30">
+          <div className="bg-muted/30 rounded-lg border p-6">
             <Typography variant="blockquote">
               "After all," he said, "everyone enjoys a good joke, so it's only
               fair that they should pay for the privilege."
@@ -227,10 +227,10 @@ export default function TypographyDemo() {
           <div>
             <Typography variant="h2">Inline Code - 行內程式碼</Typography>
           </div>
-          <div className="p-6 border rounded-lg bg-muted/30">
+          <div className="bg-muted/30 rounded-lg border p-6">
             <Typography variant="p">
               Install the package with{' '}
-              <Typography variant="inlineCode" as="code">
+              <Typography as="code" variant="inlineCode">
                 npm install @eluelu/elu-ui
               </Typography>{' '}
               command.
@@ -246,7 +246,7 @@ export default function TypographyDemo() {
               較大且淡色的文字，適合作為引導說明
             </Typography>
           </div>
-          <div className="p-6 border rounded-lg bg-muted/30">
+          <div className="bg-muted/30 rounded-lg border p-6">
             <Typography variant="lead">
               A modal dialog that interrupts the user with important content and
               expects a response.
@@ -259,7 +259,7 @@ export default function TypographyDemo() {
           <div>
             <Typography variant="h2">Large - 大號文字</Typography>
           </div>
-          <div className="p-6 border rounded-lg bg-muted/30">
+          <div className="bg-muted/30 rounded-lg border p-6">
             <Typography variant="large">Are you absolutely sure?</Typography>
           </div>
         </section>
@@ -269,7 +269,7 @@ export default function TypographyDemo() {
           <div>
             <Typography variant="h2">Small - 小號文字</Typography>
           </div>
-          <div className="p-6 border rounded-lg bg-muted/30">
+          <div className="bg-muted/30 rounded-lg border p-6">
             <Typography variant="small">Email address</Typography>
           </div>
         </section>
@@ -282,7 +282,7 @@ export default function TypographyDemo() {
               使用 muted-foreground 顏色的次要文字
             </Typography>
           </div>
-          <div className="p-6 border rounded-lg bg-muted/30">
+          <div className="bg-muted/30 rounded-lg border p-6">
             <Typography variant="muted">Enter your email address.</Typography>
           </div>
         </section>
@@ -295,7 +295,7 @@ export default function TypographyDemo() {
               展示如何組合不同的 Typography 變體
             </Typography>
           </div>
-          <div className="p-6 border rounded-lg bg-muted/30 space-y-4">
+          <div className="bg-muted/30 space-y-4 rounded-lg border p-6">
             <Typography variant="h3">Introduction</Typography>
             <Typography variant="lead">
               This is a lead paragraph that introduces the content below.
@@ -323,70 +323,70 @@ export default function TypographyDemo() {
           </div>
 
           {/* 說明區塊 */}
-          <div className="p-4 border-l-4 border-primary bg-primary/5 rounded-r-lg">
-            <Typography variant="small" className="font-semibold mb-2">
+          <div className="border-primary bg-primary/5 rounded-r-lg border-l-4 p-4">
+            <Typography className="mb-2 font-semibold" variant="small">
               字體放大範圍說明
             </Typography>
-            <div className="space-y-1.5 text-sm text-muted-foreground">
+            <div className="text-muted-foreground space-y-1.5 text-sm">
               <div className="grid grid-cols-[60px_1fr] gap-2">
-                <span className="font-medium text-foreground">XL:</span>
+                <span className="text-foreground font-medium">XL:</span>
                 <span>28px → 36px（放大 28.6%，增加 8px）</span>
               </div>
               <div className="grid grid-cols-[60px_1fr] gap-2">
-                <span className="font-medium text-foreground">LG:</span>
+                <span className="text-foreground font-medium">LG:</span>
                 <span>20px → 24px（放大 20%，增加 4px）</span>
               </div>
               <div className="grid grid-cols-[60px_1fr] gap-2">
-                <span className="font-medium text-foreground">MD:</span>
+                <span className="text-foreground font-medium">MD:</span>
                 <span>16px → 18px（放大 12.5%，增加 2px）</span>
               </div>
               <div className="grid grid-cols-[60px_1fr] gap-2">
-                <span className="font-medium text-foreground">SM:</span>
+                <span className="text-foreground font-medium">SM:</span>
                 <span>14px → 16px（放大 14.3%，增加 2px）</span>
               </div>
               <div className="grid grid-cols-[60px_1fr] gap-2">
-                <span className="font-medium text-foreground">XS:</span>
+                <span className="text-foreground font-medium">XS:</span>
                 <span>12px → 14px（放大 16.7%，增加 2px）</span>
               </div>
             </div>
-            <Typography variant="xs" className="mt-3 text-muted-foreground">
+            <Typography className="text-muted-foreground mt-3" variant="xs">
               💡 提示：調整瀏覽器視窗大小以觀察字體的流體變化效果
             </Typography>
           </div>
 
-          <div className="p-6 border rounded-lg bg-muted/30 space-y-6">
+          <div className="bg-muted/30 space-y-6 rounded-lg border p-6">
             <div className="space-y-2">
-              <Typography variant="xs" className="text-muted-foreground">
+              <Typography className="text-muted-foreground" variant="xs">
                 XL (28px → 36px)
               </Typography>
               <Typography variant="xl">Extra Large - 流體字體</Typography>
             </div>
             <div className="space-y-2">
-              <Typography variant="xs" className="text-muted-foreground">
+              <Typography className="text-muted-foreground" variant="xs">
                 LG (20px → 24px)
               </Typography>
               <Typography variant="lg">Large - 流體字體</Typography>
             </div>
             <div className="space-y-2">
-              <Typography variant="xs" className="text-muted-foreground">
+              <Typography className="text-muted-foreground" variant="xs">
                 MD (16px → 18px)
               </Typography>
               <Typography variant="md">Medium - 流體字體</Typography>
             </div>
             <div className="space-y-2">
-              <Typography variant="xs" className="text-muted-foreground">
+              <Typography className="text-muted-foreground" variant="xs">
                 SM (14px → 16px)
               </Typography>
               <Typography variant="sm">Small - 流體字體</Typography>
             </div>
             <div className="space-y-2">
-              <Typography variant="xs" className="text-muted-foreground">
+              <Typography className="text-muted-foreground" variant="xs">
                 XS (12px → 14px)
               </Typography>
               <Typography variant="xs">Extra Small - 流體字體</Typography>
             </div>
           </div>
-          <pre className="p-4 bg-muted rounded-md text-sm overflow-x-auto">
+          <pre className="bg-muted overflow-x-auto rounded-md p-4 text-sm">
             <code>{`<Typography variant="xl">Extra Large</Typography>
 <Typography variant="lg">Large</Typography>
 <Typography variant="md">Medium</Typography>
@@ -410,71 +410,71 @@ export default function TypographyDemo() {
               Typography 支援多種顏色選項，適用於不同的使用場景
             </Typography>
           </div>
-          <div className="p-6 border rounded-lg bg-muted/30 space-y-4">
+          <div className="bg-muted/30 space-y-4 rounded-lg border p-6">
             <div className="space-y-2">
-              <Typography variant="xs" className="text-muted-foreground">
+              <Typography className="text-muted-foreground" variant="xs">
                 Default
               </Typography>
               <Typography variant="lg">這是預設顏色的文字</Typography>
             </div>
             <div className="space-y-2">
-              <Typography variant="xs" className="text-muted-foreground">
+              <Typography className="text-muted-foreground" variant="xs">
                 Primary
               </Typography>
-              <Typography variant="lg" color="primary">
+              <Typography color="primary" variant="lg">
                 這是 Primary 顏色的文字
               </Typography>
             </div>
             <div className="space-y-2">
-              <Typography variant="xs" className="text-muted-foreground">
+              <Typography className="text-muted-foreground" variant="xs">
                 Secondary
               </Typography>
-              <Typography variant="lg" color="secondary">
+              <Typography color="secondary" variant="lg">
                 這是 Secondary 顏色的文字
               </Typography>
             </div>
             <div className="space-y-2">
-              <Typography variant="xs" className="text-muted-foreground">
+              <Typography className="text-muted-foreground" variant="xs">
                 Accent
               </Typography>
-              <Typography variant="lg" color="accent">
+              <Typography color="accent" variant="lg">
                 這是 Accent 顏色的文字
               </Typography>
             </div>
             <div className="space-y-2">
-              <Typography variant="xs" className="text-muted-foreground">
+              <Typography className="text-muted-foreground" variant="xs">
                 Muted
               </Typography>
-              <Typography variant="lg" color="muted">
+              <Typography color="muted" variant="lg">
                 這是 Muted 顏色的文字
               </Typography>
             </div>
             <div className="space-y-2">
-              <Typography variant="xs" className="text-muted-foreground">
+              <Typography className="text-muted-foreground" variant="xs">
                 Success
               </Typography>
-              <Typography variant="lg" color="success">
+              <Typography color="success" variant="lg">
                 ✓ 操作成功完成
               </Typography>
             </div>
             <div className="space-y-2">
-              <Typography variant="xs" className="text-muted-foreground">
+              <Typography className="text-muted-foreground" variant="xs">
                 Error
               </Typography>
-              <Typography variant="lg" color="error">
+              <Typography color="error" variant="lg">
                 ✗ 發生錯誤，請重試
               </Typography>
             </div>
             <div className="space-y-2">
-              <Typography variant="xs" className="text-muted-foreground">
+              <Typography className="text-muted-foreground" variant="xs">
                 Warning
               </Typography>
-              <Typography variant="lg" color="warning">
+              <Typography color="warning" variant="lg">
                 ⚠ 請注意此警告訊息
               </Typography>
             </div>
           </div>
-          <pre className="p-4 bg-muted rounded-md text-sm overflow-x-auto">
+          <pre className="bg-muted overflow-x-auto rounded-md p-4 text-sm">
             <code>{`<Typography variant="lg">預設顏色</Typography>
 <Typography variant="lg" color="primary">Primary 顏色</Typography>
 <Typography variant="lg" color="secondary">Secondary 顏色</Typography>
@@ -494,19 +494,19 @@ export default function TypographyDemo() {
               透過 className 可以完全自訂樣式，展示 Typography 的靈活性
             </Typography>
           </div>
-          <div className="p-4 border-l-4 border-primary bg-primary/5 rounded-r-lg mb-4">
-            <Typography variant="small" className="font-semibold mb-2">
+          <div className="border-primary bg-primary/5 mb-4 rounded-r-lg border-l-4 p-4">
+            <Typography className="mb-2 font-semibold" variant="small">
               💡 樣式覆蓋機制
             </Typography>
-            <div className="space-y-1 text-sm text-muted-foreground">
+            <div className="text-muted-foreground space-y-1 text-sm">
               <p>
                 Typography 使用{' '}
-                <code className="px-1.5 py-0.5 bg-muted rounded text-xs font-mono">
+                <code className="bg-muted rounded px-1.5 py-0.5 font-mono text-xs">
                   cn()
                 </code>{' '}
                 函數處理 className，你傳入的 className 會被放在最後面，因此：
               </p>
-              <ul className="list-disc list-inside space-y-1 ml-2">
+              <ul className="ml-2 list-inside list-disc space-y-1">
                 <li>
                   <strong className="text-foreground">
                     可以完全覆蓋預設樣式
@@ -516,11 +516,11 @@ export default function TypographyDemo() {
                 <li>
                   <strong className="text-foreground">同屬性後者優先</strong> -
                   如{' '}
-                  <code className="px-1 py-0.5 bg-muted rounded text-xs font-mono">
+                  <code className="bg-muted rounded px-1 py-0.5 font-mono text-xs">
                     text-xl text-sm
                   </code>{' '}
                   最終會是{' '}
-                  <code className="px-1 py-0.5 bg-muted rounded text-xs font-mono">
+                  <code className="bg-muted rounded px-1 py-0.5 font-mono text-xs">
                     text-sm
                   </code>
                 </li>
@@ -531,17 +531,17 @@ export default function TypographyDemo() {
               </ul>
             </div>
           </div>
-          <div className="p-6 border rounded-lg bg-muted/30 space-y-6">
+          <div className="bg-muted/30 space-y-6 rounded-lg border p-6">
             {/* 覆蓋預設樣式 */}
             <div className="space-y-2">
-              <Typography variant="xs" className="text-muted-foreground">
+              <Typography className="text-muted-foreground" variant="xs">
                 覆蓋預設樣式（證明 className 權重更高）
               </Typography>
               <div className="space-y-3">
                 <div>
                   <Typography
-                    variant="xs"
                     className="text-muted-foreground mb-1"
+                    variant="xs"
                   >
                     H3 預設是 text-2xl font-semibold
                   </Typography>
@@ -549,19 +549,19 @@ export default function TypographyDemo() {
                 </div>
                 <div>
                   <Typography
-                    variant="xs"
                     className="text-muted-foreground mb-1"
+                    variant="xs"
                   >
                     用 className 覆蓋成 text-5xl font-light
                   </Typography>
-                  <Typography variant="h3" className="text-5xl font-light">
+                  <Typography className="text-5xl font-light" variant="h3">
                     覆蓋後的 H3 標題
                   </Typography>
                 </div>
                 <div>
                   <Typography
-                    variant="xs"
                     className="text-muted-foreground mb-1"
+                    variant="xs"
                   >
                     Lead 預設是 text-xl text-accent
                   </Typography>
@@ -569,14 +569,14 @@ export default function TypographyDemo() {
                 </div>
                 <div>
                   <Typography
-                    variant="xs"
                     className="text-muted-foreground mb-1"
+                    variant="xs"
                   >
                     用 className 覆蓋成 text-sm text-destructive
                   </Typography>
                   <Typography
+                    className="text-destructive text-sm"
                     variant="lead"
-                    className="text-sm text-destructive"
                   >
                     覆蓋後的 Lead 文字（變小且變紅）
                   </Typography>
@@ -586,53 +586,53 @@ export default function TypographyDemo() {
 
             {/* 自訂字體大小 */}
             <div className="space-y-2">
-              <Typography variant="xs" className="text-muted-foreground">
+              <Typography className="text-muted-foreground" variant="xs">
                 自訂字體大小
               </Typography>
-              <Typography variant="h3" className="text-5xl">
+              <Typography className="text-5xl" variant="h3">
                 超大標題 (text-5xl)
               </Typography>
-              <Typography variant="p" className="text-xs">
+              <Typography className="text-xs" variant="p">
                 超小段落 (text-xs)
               </Typography>
             </div>
 
             {/* 自訂字重 */}
             <div className="space-y-2">
-              <Typography variant="xs" className="text-muted-foreground">
+              <Typography className="text-muted-foreground" variant="xs">
                 自訂字重
               </Typography>
-              <Typography variant="lg" className="font-light">
+              <Typography className="font-light" variant="lg">
                 輕字重 (font-light)
               </Typography>
-              <Typography variant="lg" className="font-bold">
+              <Typography className="font-bold" variant="lg">
                 粗字重 (font-bold)
               </Typography>
-              <Typography variant="lg" className="font-black">
+              <Typography className="font-black" variant="lg">
                 特粗字重 (font-black)
               </Typography>
             </div>
 
             {/* 自訂顏色 */}
             <div className="space-y-2">
-              <Typography variant="xs" className="text-muted-foreground">
+              <Typography className="text-muted-foreground" variant="xs">
                 自訂顏色（透過 className）
               </Typography>
               <Typography
-                variant="lg"
                 className="text-blue-600 dark:text-blue-400"
+                variant="lg"
               >
                 藍色文字
               </Typography>
               <Typography
-                variant="lg"
                 className="text-purple-600 dark:text-purple-400"
+                variant="lg"
               >
                 紫色文字
               </Typography>
               <Typography
+                className="bg-gradient-to-r from-pink-500 to-violet-500 bg-clip-text font-bold text-transparent"
                 variant="lg"
-                className="bg-gradient-to-r from-pink-500 to-violet-500 bg-clip-text text-transparent font-bold"
               >
                 漸層文字效果
               </Typography>
@@ -640,18 +640,18 @@ export default function TypographyDemo() {
 
             {/* 自訂樣式組合 */}
             <div className="space-y-2">
-              <Typography variant="xs" className="text-muted-foreground">
+              <Typography className="text-muted-foreground" variant="xs">
                 樣式組合
               </Typography>
               <Typography
+                className="border-accent text-accent border-l-4 pl-4 italic"
                 variant="h2"
-                className="border-l-4 border-accent pl-4 italic text-accent"
               >
                 帶左側邊框的斜體標題
               </Typography>
               <Typography
+                className="bg-accent/10 border-accent/20 rounded-lg border p-4"
                 variant="p"
-                className="bg-accent/10 border border-accent/20 rounded-lg p-4"
               >
                 帶背景色和邊框的段落文字
               </Typography>
@@ -659,24 +659,24 @@ export default function TypographyDemo() {
 
             {/* 覆蓋預設顏色 */}
             <div className="space-y-2">
-              <Typography variant="xs" className="text-muted-foreground">
+              <Typography className="text-muted-foreground" variant="xs">
                 覆蓋 color prop
               </Typography>
-              <Typography variant="lead" color="primary">
+              <Typography color="primary" variant="lead">
                 Lead 使用 Primary 顏色
               </Typography>
-              <Typography variant="lead" color="error">
+              <Typography color="error" variant="lead">
                 Lead 使用 Error 顏色
               </Typography>
               <Typography
-                variant="lead"
                 className="text-pink-600 dark:text-pink-400"
+                variant="lead"
               >
                 Lead 使用 className 自訂顏色
               </Typography>
             </div>
           </div>
-          <pre className="p-4 bg-muted rounded-md text-sm overflow-x-auto">
+          <pre className="bg-muted overflow-x-auto rounded-md p-4 text-sm">
             <code>{`// ✅ 覆蓋預設樣式 - className 權重更高
 <Typography variant="h3">
   預設的 H3 (text-2xl font-semibold)
@@ -736,21 +736,21 @@ export default function TypographyDemo() {
               時預設為 div 標籤
             </Typography>
           </div>
-          <div className="p-6 border rounded-lg bg-muted/30 space-y-4">
+          <div className="bg-muted/30 space-y-4 rounded-lg border p-6">
             <Typography>
               這是預設的 Typography（div 標籤，無額外樣式）
             </Typography>
-            <Typography variant="h1" as="h2">
+            <Typography as="h2" variant="h1">
               這是 h2 標籤，但看起來像 h1
             </Typography>
-            <Typography variant="h3" as="div">
+            <Typography as="div" variant="h3">
               這是 div 標籤，但看起來像 h3
             </Typography>
-            <Typography variant="lead" as="span">
+            <Typography as="span" variant="lead">
               這是 span 標籤，但有 lead 的樣式
             </Typography>
           </div>
-          <pre className="p-4 bg-muted rounded-md text-sm overflow-x-auto">
+          <pre className="bg-muted overflow-x-auto rounded-md p-4 text-sm">
             <code>{`<Typography>
   這是預設的 Typography（div 標籤，無額外樣式）
 </Typography>

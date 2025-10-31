@@ -8,8 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "lint:fix": "next lint --fix",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md,json,css,scss}\"",
+    "format": "prettier --write ./src && eslint --fix ./src",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -22,12 +21,15 @@
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
+    "eslint": "^9.32.0",
     "@types/node": "^20.19.9",
     "@types/react": "^19.1.9",
     "@types/react-dom": "^19.1.7",
     "@eluelu/eslint-config": "workspace:^",
     "@eluelu/prettier-config": "workspace:*",
     "@eluelu/typescript-config": "workspace:*",
+    "prettier": "^3.6.2",
+    "prettier-plugin-tailwindcss": "^0.7.1",
     "typescript": "^5.9.2"
   }
 }

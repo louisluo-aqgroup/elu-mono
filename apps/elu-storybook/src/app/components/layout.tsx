@@ -4,7 +4,7 @@ import {
   SidebarTrigger,
 } from '@eluelu/elu-ui/components/sidebar';
 
-import { LayoutSidebar } from '@/components/sidebar';
+import { LayoutSidebar } from '@/src/components/sidebar';
 
 export default function ComponentsLayout({
   children,
@@ -17,7 +17,7 @@ export default function ComponentsLayout({
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
           <SidebarTrigger className="-ml-1" />
-          <div className="text-sm text-muted-foreground">元件展示</div>
+          <div className="text-muted-foreground text-sm">元件展示</div>
         </header>
         <main className="flex-1 p-8">{children}</main>
       </SidebarInset>
