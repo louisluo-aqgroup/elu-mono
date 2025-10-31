@@ -2,6 +2,7 @@ import '@eluelu/elu-ui/globals.css';
 import { Geist, Geist_Mono } from 'next/font/google';
 
 import { Footer } from '@/components/footer';
+import { Header } from '@/components/header';
 import { Providers } from '@/components/providers';
 
 const fontSans = Geist({
@@ -26,6 +27,7 @@ export default function RootLayout({
       >
         <Providers>
           <div className="flex min-h-screen flex-col">
+            <Header />
             <main className="flex-1">{children}</main>
             <Footer />
           </div>
