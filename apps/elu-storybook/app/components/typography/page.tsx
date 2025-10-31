@@ -1,4 +1,4 @@
-import { Typography } from '@workspace/elu-ui/components/typography';
+import { Typography } from '@eluelu/elu-ui/components/typography';
 
 export default function TypographyDemo() {
   return (
@@ -87,7 +87,7 @@ export default function TypographyDemo() {
       <div className="space-y-4 mt-12 p-6 border rounded-lg bg-muted/30">
         <h3 className="text-lg font-semibold">使用範例</h3>
         <pre className="p-4 bg-black text-white rounded-md overflow-x-auto text-sm">
-          <code>{`import { Typography } from "@workspace/elu-ui/components/typography"
+          <code>{`import { Typography } from "@eluelu/elu-ui/components/typography"
 
 // 基本用法
 <Typography variant="h1">主標題</Typography>
@@ -231,7 +231,7 @@ export default function TypographyDemo() {
             <Typography variant="p">
               Install the package with{' '}
               <Typography variant="inlineCode" as="code">
-                npm install @workspace/elu-ui
+                npm install @eluelu/elu-ui
               </Typography>{' '}
               command.
             </Typography>

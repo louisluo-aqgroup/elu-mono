@@ -1,4 +1,4 @@
-import { cn } from '@workspace/elu-ui/lib/utils';
+import { cn } from '@eluelu/elu-ui/lib/utils';
 
 interface ComponentPreviewProps {
   title: string;

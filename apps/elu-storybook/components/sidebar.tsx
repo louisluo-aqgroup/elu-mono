@@ -10,8 +10,8 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from '@workspace/elu-ui/components/sidebar';
-import { Typography } from '@workspace/elu-ui/components/typography';
+} from '@eluelu/elu-ui/components/sidebar';
+import { Typography } from '@eluelu/elu-ui/components/typography';
 import { Layers } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';

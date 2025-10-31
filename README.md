@@ -34,8 +34,8 @@ This will place the UI components in the `packages/elu-ui/src/components` direct
 
 ## Using Components
 
-Import components from the `@workspace/elu-ui` package:
+Import components from the `@eluelu/elu-ui` package:
 
 ```tsx
-import { Button } from '@workspace/elu-ui/components/button';
+import { Button } from '@eluelu/elu-ui/components/button';
 ```

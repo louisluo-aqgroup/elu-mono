@@ -1,4 +1,4 @@
-import { Button } from '@workspace/elu-ui/components/button';
+import { Button } from '@eluelu/elu-ui/components/button';
 import { Download, Loader2, Mail } from 'lucide-react';
 
 import { ComponentPreview } from '@/components/component-preview';
@@ -90,7 +90,7 @@ export default function ButtonPage() {
       <div className="space-y-4 mt-12 p-6 border rounded-lg bg-muted/30">
         <h3 className="text-lg font-semibold">使用範例</h3>
         <pre className="p-4 bg-black text-white rounded-md overflow-x-auto text-sm">
-          <code>{`import { Button } from "@workspace/elu-ui/components/button"
+          <code>{`import { Button } from "@eluelu/elu-ui/components/button"
 
 // 基本用法
 <Button>Click me</Button>

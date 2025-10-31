@@ -1,10 +1,10 @@
 {
-  "extends": "@workspace/typescript-config/nextjs.json",
+  "extends": "@eluelu/typescript-config/nextjs.json",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
-      "@workspace/elu-ui/*": ["../../packages/ui/src/*"]
+      "@eluelu/elu-ui/*": ["../../packages/elu-ui/src/*"]
     },
     "plugins": [
       {
@@ -13,6 +13,7 @@
     ]
   },
   "include": [
+    "svgr.d.ts",
     "next-env.d.ts",
     "next.config.ts",
     "**/*.ts",

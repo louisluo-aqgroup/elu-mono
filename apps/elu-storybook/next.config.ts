@@ -1,14 +1,16 @@
 import type { NextConfig } from 'next';
+import nextWebpack from './configs/webpack';
 
 const nextConfig: NextConfig = {
-  transpilePackages: ['@workspace/elu-ui'],
-  webpack: (config) => {
-    config.module.rules.push({
-      test: /\.svg$/i,
-      issuer: { and: [/\.[jt]sx?$/] },
-      use: ['@svgr/webpack'],
-    });
-    return config;
+  transpilePackages: ['@eluelu/elu-ui'],
+  webpack: nextWebpack,
+  turbopack: {
+    rules: {
+      '*.svg': {
+        loaders: ['@svgr/webpack'],
+        as: '*.js',
+      },
+    },
   },
 };
 

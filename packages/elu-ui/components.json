@@ -11,11 +11,11 @@
   },
   "iconLibrary": "lucide",
   "aliases": {
-    "components": "@workspace/ui/components",
-    "utils": "@workspace/ui/lib/utils",
-    "hooks": "@workspace/ui/hooks",
-    "lib": "@workspace/ui/lib",
-    "ui": "@workspace/ui/components"
+    "components": "@eluelu/elu-ui/components",
+    "utils": "@eluelu/elu-ui/lib/utils",
+    "hooks": "@eluelu/elu-ui/hooks",
+    "lib": "@eluelu/elu-ui/lib",
+    "ui": "@eluelu/elu-ui/components"
   },
   "registries": {
     "@acme": "https://acme.com/r/{name}.json"

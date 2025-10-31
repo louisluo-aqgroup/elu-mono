@@ -1,4 +1,4 @@
-import { cn } from '@workspace/ui/lib/utils';
+import { cn } from '@eluelu/elu-ui/lib/utils';
 import * as React from 'react';
 
 function Input({ className, type, ...props }: React.ComponentProps<'input'>) {

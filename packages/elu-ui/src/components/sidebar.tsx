@@ -1,25 +1,25 @@
 'use client';
 
 import { Slot } from '@radix-ui/react-slot';
-import { Button } from '@workspace/ui/components/button';
-import { Input } from '@workspace/ui/components/input';
-import { Separator } from '@workspace/ui/components/separator';
+import { Button } from '@eluelu/elu-ui/components/button';
+import { Input } from '@eluelu/elu-ui/components/input';
+import { Separator } from '@eluelu/elu-ui/components/separator';
 import {
   Sheet,
   SheetContent,
   SheetDescription,
   SheetHeader,
   SheetTitle,
-} from '@workspace/ui/components/sheet';
-import { Skeleton } from '@workspace/ui/components/skeleton';
+} from '@eluelu/elu-ui/components/sheet';
+import { Skeleton } from '@eluelu/elu-ui/components/skeleton';
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@workspace/ui/components/tooltip';
-import { useIsMobile } from '@workspace/ui/hooks/use-mobile';
-import { cn } from '@workspace/ui/lib/utils';
+} from '@eluelu/elu-ui/components/tooltip';
+import { useIsMobile } from '@eluelu/elu-ui/hooks/use-mobile';
+import { cn } from '@eluelu/elu-ui/lib/utils';
 import { type VariantProps, cva } from 'class-variance-authority';
 import { PanelLeftIcon } from 'lucide-react';
 import * as React from 'react';

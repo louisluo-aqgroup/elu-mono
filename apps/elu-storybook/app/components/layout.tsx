@@ -2,7 +2,7 @@ import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
-} from '@workspace/elu-ui/components/sidebar';
+} from '@eluelu/elu-ui/components/sidebar';
 
 import { LayoutSidebar } from '@/components/sidebar';
 

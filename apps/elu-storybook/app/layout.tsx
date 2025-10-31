@@ -1,4 +1,4 @@
-import '@workspace/elu-ui/globals.css';
+import '@eluelu/elu-ui/globals.css';
 import { Geist, Geist_Mono } from 'next/font/google';
 
 import { Footer } from '@/components/footer';

@@ -1,1 +1,1 @@
-export { default } from "@workspace/elu-ui/postcss.config";
+export { default } from "@eluelu/elu-ui/postcss.config";

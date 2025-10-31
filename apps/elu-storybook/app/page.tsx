@@ -1,4 +1,4 @@
-import { Button } from '@workspace/elu-ui/components/button';
+import { Button } from '@eluelu/elu-ui/components/button';
 import Link from 'next/link';
 
 const components = [

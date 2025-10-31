@@ -1,8 +1,9 @@
-import { Button } from '@workspace/elu-ui/components/button';
-import { Typography } from '@workspace/elu-ui/components/typography';
+import { Button } from '@eluelu/elu-ui/components/button';
+import { Typography } from '@eluelu/elu-ui/components/typography';
 import { Globe, Mail, Share2 } from 'lucide-react';
 
-import IconLogo from '@/assets/logo/icon_logo.svg';
+import LogoSvg from '@/assets/logo/icon_logo.svg';
+import Image from 'next/image';
 
 const footerColumns = [
   {
@@ -31,7 +32,7 @@ export function Footer() {
       <div className="mx-auto w-full max-w-6xl px-6 py-12 sm:px-12">
         <div className="grid gap-10 md:grid-cols-[auto,1fr,auto] md:items-start">
           <div className="space-y-3">
-            <IconLogo className="h-6 w-auto fill-primary-foreground" />
+            <LogoSvg className="h-6 w-auto fill-primary-foreground" />
             <Typography variant="sm" color="primary" foreground>
               用設計與科技串聯每一次互動，打造兼具美感與實用的數位體驗。
             </Typography>
