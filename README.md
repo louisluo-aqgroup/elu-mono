@@ -1,6 +1,6 @@
-# shadcn/ui monorepo template
+# ELU-Mono
 
-This template is for creating a monorepo with shadcn/ui.
+A modern monorepo for ELUELU design system and component library.
 
 ## Usage
 
@@ -8,24 +8,34 @@ This template is for creating a monorepo with shadcn/ui.
 pnpm dlx shadcn@latest init
 ```
 
-## Adding components
+## Project Structure
 
-To add components to your app, run the following command at the root of your `web` app:
-
-```bash
-pnpm dlx shadcn@latest add button -c apps/web
+```
+ELU-Mono/
+├── apps/
+│   └── elu-storybook/     # Component showcase and documentation
+├── packages/
+│   └── elu-ui/            # UI component library
+└── configs/
+    ├── eslint/            # Shared ESLint configuration
+    ├── prettier/          # Shared Prettier configuration
+    └── typescript/        # Shared TypeScript configuration
 ```
 
-This will place the ui components in the `packages/ui/src/components` directory.
+## Adding Components
 
-## Tailwind
+To add components to the UI library:
 
-Your `tailwind.config.ts` and `globals.css` are already set up to use the components from the `ui` package.
+```bash
+pnpm dlx shadcn@latest add button -c apps/elu-storybook
+```
 
-## Using components
+This will place the UI components in the `packages/elu-ui/src/components` directory.
 
-To use the components in your app, import them from the `ui` package.
+## Using Components
+
+Import components from the `@workspace/elu-ui` package:
 
 ```tsx
-import { Button } from "@workspace/ui/components/button"
+import { Button } from '@workspace/elu-ui/components/button';
 ```

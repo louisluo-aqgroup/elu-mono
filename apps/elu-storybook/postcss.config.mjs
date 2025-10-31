@@ -1,0 +1,1 @@
+export { default } from "@workspace/elu-ui/postcss.config";
