@@ -45,6 +45,25 @@ const buttonVariants = cva(
   }
 )
 
+const foregroundColorMap = {
+  primary: {
+    default: "!bg-transparent !text-primary-foreground/90 hover:!text-primary-foreground hover:!bg-primary-foreground/20 disabled:!text-primary-foreground/50 !shadow-none",
+    link: "!bg-transparent !text-primary-foreground/90 hover:!text-primary-foreground disabled:!text-primary-foreground/50 !shadow-none hover:!bg-transparent",
+  },
+  secondary: {
+    default: "!bg-transparent !text-secondary-foreground/90 hover:!text-secondary-foreground hover:!bg-secondary-foreground/20 disabled:!text-secondary-foreground/50 !shadow-none",
+    link: "!bg-transparent !text-secondary-foreground/90 hover:!text-secondary-foreground disabled:!text-secondary-foreground/50 !shadow-none hover:!bg-transparent",
+  },
+  accent: {
+    default: "!bg-transparent !text-accent-foreground/90 hover:!text-accent-foreground hover:!bg-accent-foreground/20 disabled:!text-accent-foreground/50 !shadow-none",
+    link: "!bg-transparent !text-accent-foreground/90 hover:!text-accent-foreground disabled:!text-accent-foreground/50 !shadow-none hover:!bg-transparent",
+  },
+  destructive: {
+    default: "!bg-transparent !text-destructive-foreground/90 hover:!text-destructive-foreground hover:!bg-destructive-foreground/20 disabled:!text-destructive-foreground/50 !shadow-none",
+    link: "!bg-transparent !text-destructive-foreground/90 hover:!text-destructive-foreground disabled:!text-destructive-foreground/50 !shadow-none hover:!bg-transparent",
+  },
+} as const
+
 interface ButtonProps extends React.ComponentProps<"button">, VariantProps<typeof buttonVariants> {
   asChild?: boolean
   foreground?: boolean
@@ -65,12 +84,7 @@ function Button({
 
   // Generate foreground color classes if foreground prop is true
   const foregroundClasses = foreground
-    ? cn(
-        `text-${color}-foreground/90`,
-        `hover:text-${color}-foreground`,
-        `disabled:text-${color}-foreground/50`,
-        variant === "ghost" && `hover:bg-${color}-foreground/20`
-      )
+    ? foregroundColorMap[color][variant === "link" ? "link" : "default"]
     : undefined
 
   return (

@@ -83,9 +83,9 @@ export function Footer() {
                 <Button
                   key={label}
                   asChild
-                  variant="ghost"
                   size="icon"
                   radius="circle"
+                  color="primary"
                   foreground
                 >
                   <a href={href} aria-label={label}>

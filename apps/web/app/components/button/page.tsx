@@ -155,6 +155,131 @@ export default function ButtonPage() {
         </div>
       </ComponentPreview>
 
+      {/* Foreground */}
+      <ComponentPreview
+        title="前景色樣式 (Foreground)"
+        description="使用 foreground 和 color 屬性來適應深色背景，常用於 footer、header 等區域"
+      >
+        <div className="space-y-6 w-full">
+          {/* Primary background example */}
+          <div className="p-6 bg-primary rounded-lg space-y-3">
+            <p className="text-primary-foreground text-sm font-medium mb-3">Primary 背景範例</p>
+            <div className="flex flex-wrap gap-3">
+              <Button variant="ghost" color="primary" foreground>
+                Ghost
+              </Button>
+              <Button variant="link" color="primary" foreground>
+                Link
+              </Button>
+              <Button size="icon" radius="circle" color="primary" foreground>
+                <Mail />
+              </Button>
+            </div>
+          </div>
+
+          {/* Secondary background example */}
+          <div className="p-6 bg-secondary rounded-lg space-y-3">
+            <p className="text-secondary-foreground text-sm font-medium mb-3">Secondary 背景範例</p>
+            <div className="flex flex-wrap gap-3">
+              <Button variant="ghost" color="secondary" foreground>
+                Ghost
+              </Button>
+              <Button variant="link" color="secondary" foreground>
+                Link
+              </Button>
+              <Button  size="icon" radius="circle" color="secondary" foreground>
+                <Download />
+              </Button>
+            </div>
+          </div>
+
+          {/* Accent background example */}
+          <div className="p-6 bg-accent rounded-lg space-y-3">
+            <p className="text-accent-foreground text-sm font-medium mb-3">Accent 背景範例</p>
+            <div className="flex flex-wrap gap-3">
+              <Button variant="ghost" color="accent" foreground>
+                Ghost
+              </Button>
+              <Button variant="link" color="accent" foreground>
+                Link
+              </Button>
+              <Button size="icon" radius="circle" color="accent" foreground>
+                <Loader2 />
+              </Button>
+            </div>
+          </div>
+        </div>
+      </ComponentPreview>
+
+      {/* Props Table */}
+      <div className="space-y-4 p-6 border rounded-lg bg-muted/30">
+        <h3 className="text-lg font-semibold">Props</h3>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b">
+                <th className="text-left py-2 px-4 font-semibold">Prop</th>
+                <th className="text-left py-2 px-4 font-semibold">Type</th>
+                <th className="text-left py-2 px-4 font-semibold">Default</th>
+                <th className="text-left py-2 px-4 font-semibold">Description</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y">
+              <tr>
+                <td className="py-2 px-4 font-mono">variant</td>
+                <td className="py-2 px-4 font-mono text-xs">
+                  "default" | "destructive" | "outline" | "secondary" | "accent" | "accent-outline" | "ghost" | "link"
+                </td>
+                <td className="py-2 px-4 font-mono">"default"</td>
+                <td className="py-2 px-4">按鈕的樣式變體</td>
+              </tr>
+              <tr>
+                <td className="py-2 px-4 font-mono">size</td>
+                <td className="py-2 px-4 font-mono text-xs">
+                  "default" | "sm" | "lg" | "icon"
+                </td>
+                <td className="py-2 px-4 font-mono">"default"</td>
+                <td className="py-2 px-4">按鈕的尺寸大小</td>
+              </tr>
+              <tr>
+                <td className="py-2 px-4 font-mono">radius</td>
+                <td className="py-2 px-4 font-mono text-xs">
+                  "default" | "pill" | "circle" | "none"
+                </td>
+                <td className="py-2 px-4 font-mono">"default"</td>
+                <td className="py-2 px-4">按鈕的圓角樣式</td>
+              </tr>
+              <tr>
+                <td className="py-2 px-4 font-mono">color</td>
+                <td className="py-2 px-4 font-mono text-xs">
+                  "primary" | "secondary" | "accent" | "destructive"
+                </td>
+                <td className="py-2 px-4 font-mono">"primary"</td>
+                <td className="py-2 px-4">搭配 foreground 使用的顏色主題</td>
+              </tr>
+              <tr>
+                <td className="py-2 px-4 font-mono">foreground</td>
+                <td className="py-2 px-4 font-mono text-xs">boolean</td>
+                <td className="py-2 px-4 font-mono">false</td>
+                <td className="py-2 px-4">啟用前景色樣式，適用於深色背景</td>
+              </tr>
+              <tr>
+                <td className="py-2 px-4 font-mono">asChild</td>
+                <td className="py-2 px-4 font-mono text-xs">boolean</td>
+                <td className="py-2 px-4 font-mono">false</td>
+                <td className="py-2 px-4">將按鈕樣式套用到子元素（使用 Radix Slot）</td>
+              </tr>
+              <tr>
+                <td className="py-2 px-4 font-mono">disabled</td>
+                <td className="py-2 px-4 font-mono text-xs">boolean</td>
+                <td className="py-2 px-4 font-mono">false</td>
+                <td className="py-2 px-4">禁用按鈕</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
       {/* Code Example */}
       <div className="space-y-4 mt-12 p-6 border rounded-lg bg-muted/30">
         <h3 className="text-lg font-semibold">使用範例</h3>
@@ -201,6 +326,17 @@ export default function ButtonPage() {
 
 // 圓形圖示按鈕
 <Button size="icon" radius="circle">
+  <Mail />
+</Button>
+
+// 前景色樣式 - 適用於深色背景（如 footer、header）
+<Button variant="ghost" color="primary" foreground>
+  Ghost on Primary
+</Button>
+<Button variant="link" color="secondary" foreground>
+  Link on Secondary
+</Button>
+<Button size="icon" radius="circle" color="accent" foreground>
   <Mail />
 </Button>`}</code>
         </pre>
