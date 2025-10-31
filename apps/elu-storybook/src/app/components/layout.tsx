@@ -1,26 +1,73 @@
-import {
-  SidebarInset,
-  SidebarProvider,
-  SidebarTrigger,
-} from '@eluelu/elu-ui/components/sidebar';
+'use client';
 
-import { LayoutSidebar } from '@/components/sidebar';
+import { ScrollArea } from '@eluelu/elu-ui/components/scroll-area';
+import { Typography } from '@eluelu/elu-ui/components/typography';
+import { cn } from '@eluelu/elu-ui/lib/utils';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
+const components = [
+  {
+    name: 'Button',
+    href: '/components/button',
+  },
+  {
+    name: 'Scroll Area',
+    href: '/components/scroll-area',
+  },
+  {
+    name: 'Typography',
+    href: '/components/typography',
+  },
+  // 未來可以在這裡添加更多元件
+];
 
 export default function ComponentsLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
+
   return (
-    <SidebarProvider>
-      <LayoutSidebar />
-      <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
-          <SidebarTrigger className="-ml-1" />
-          <div className="text-muted-foreground text-sm">元件展示</div>
-        </header>
-        <main className="flex-1 p-8">{children}</main>
-      </SidebarInset>
-    </SidebarProvider>
+    <div className="flex min-h-[calc(100vh-4rem)]">
+      {/* Left Navigation */}
+      <aside className="border-border sticky top-0 h-[calc(100vh-4rem)] w-64 shrink-0 border-r">
+        <div className="flex h-full flex-col">
+          <div className="border-border flex h-12 items-center border-b px-6">
+            <Typography className="font-semibold" variant="sm">
+              元件目錄
+            </Typography>
+          </div>
+          <ScrollArea className="flex-1">
+            <nav className="p-4">
+              <ul className="space-y-1">
+                {components.map((component) => {
+                  const isActive = pathname === component.href;
+                  return (
+                    <li key={component.href}>
+                      <Link
+                        className={cn(
+                          'block rounded-md px-3 py-2 text-sm transition-colors',
+                          isActive
+                            ? 'bg-accent text-accent-foreground font-medium'
+                            : 'text-muted-foreground hover:bg-accent/50 hover:text-foreground'
+                        )}
+                        href={component.href}
+                      >
+                        {component.name}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </nav>
+          </ScrollArea>
+        </div>
+      </aside>
+
+      {/* Main Content */}
+      <main className="flex-1 p-8">{children}</main>
+    </div>
   );
 }

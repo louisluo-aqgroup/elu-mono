@@ -8,6 +8,11 @@ const components = [
     description: '按鈕元件的各種樣式和用法展示',
   },
   {
+    name: 'Scroll Area',
+    href: '/components/scroll-area',
+    description: '可滾動區域元件，提供自訂樣式的滾動條',
+  },
+  {
     name: 'Typography',
     href: '/components/typography',
     description: '優雅且一致的文字排版系統展示',
