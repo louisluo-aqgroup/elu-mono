@@ -4,7 +4,9 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "lint": "eslint . --max-warnings 0"
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --max-warnings 0 --fix",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md,json,css,scss}\""
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",

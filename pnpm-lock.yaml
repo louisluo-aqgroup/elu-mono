@@ -11,6 +11,9 @@ importers:
       '@eluelu/eslint-config':
         specifier: workspace:*
         version: link:configs/eslint
+      '@eluelu/prettier-config':
+        specifier: workspace:*
+        version: link:configs/prettier
       '@eluelu/typescript-config':
         specifier: workspace:*
         version: link:configs/typescript
