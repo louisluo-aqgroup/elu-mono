@@ -5,15 +5,17 @@ export default function TypographyDemo() {
     <div className="mx-auto max-w-5xl space-y-12">
       {/* Header */}
       <div>
-        <h1 className="mb-2 text-3xl font-bold">Typography</h1>
-        <p className="text-muted-foreground">
+        <Typography className="mb-2" variant="h1">
+          Typography
+        </Typography>
+        <Typography color="muted" variant="p">
           優雅且一致的文字排版系統，支援多種變體和顏色配置。
-        </p>
+        </Typography>
       </div>
 
       {/* Props Table */}
       <div className="bg-muted/30 space-y-4 rounded-lg border p-6">
-        <h3 className="text-lg font-semibold">Props</h3>
+        <Typography variant="h3">Props</Typography>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
@@ -85,7 +87,7 @@ export default function TypographyDemo() {
 
       {/* Code Example */}
       <div className="bg-muted/30 mt-12 space-y-4 rounded-lg border p-6">
-        <h3 className="text-lg font-semibold">使用範例</h3>
+        <Typography variant="h3">使用範例</Typography>
         <pre className="overflow-x-auto rounded-md bg-black p-4 text-sm text-white">
           <code>{`import { Typography } from "@eluelu/elu-ui/components/typography"
 
@@ -327,29 +329,49 @@ export default function TypographyDemo() {
             <Typography className="mb-2 font-semibold" variant="small">
               字體放大範圍說明
             </Typography>
-            <div className="text-muted-foreground space-y-1.5 text-sm">
+            <div className="space-y-1.5">
               <div className="grid grid-cols-[60px_1fr] gap-2">
-                <span className="text-foreground font-medium">XL:</span>
-                <span>28px → 36px（放大 28.6%，增加 8px）</span>
+                <Typography className="font-medium" variant="sm">
+                  XL:
+                </Typography>
+                <Typography color="muted" variant="sm">
+                  28px → 36px（放大 28.6%，增加 8px）
+                </Typography>
               </div>
               <div className="grid grid-cols-[60px_1fr] gap-2">
-                <span className="text-foreground font-medium">LG:</span>
-                <span>20px → 24px（放大 20%，增加 4px）</span>
+                <Typography className="font-medium" variant="sm">
+                  LG:
+                </Typography>
+                <Typography color="muted" variant="sm">
+                  20px → 24px（放大 20%，增加 4px）
+                </Typography>
               </div>
               <div className="grid grid-cols-[60px_1fr] gap-2">
-                <span className="text-foreground font-medium">MD:</span>
-                <span>16px → 18px（放大 12.5%，增加 2px）</span>
+                <Typography className="font-medium" variant="sm">
+                  MD:
+                </Typography>
+                <Typography color="muted" variant="sm">
+                  16px → 18px（放大 12.5%，增加 2px）
+                </Typography>
               </div>
               <div className="grid grid-cols-[60px_1fr] gap-2">
-                <span className="text-foreground font-medium">SM:</span>
-                <span>14px → 16px（放大 14.3%，增加 2px）</span>
+                <Typography className="font-medium" variant="sm">
+                  SM:
+                </Typography>
+                <Typography color="muted" variant="sm">
+                  14px → 16px（放大 14.3%，增加 2px）
+                </Typography>
               </div>
               <div className="grid grid-cols-[60px_1fr] gap-2">
-                <span className="text-foreground font-medium">XS:</span>
-                <span>12px → 14px（放大 16.7%，增加 2px）</span>
+                <Typography className="font-medium" variant="sm">
+                  XS:
+                </Typography>
+                <Typography color="muted" variant="sm">
+                  12px → 14px（放大 16.7%，增加 2px）
+                </Typography>
               </div>
             </div>
-            <Typography className="text-muted-foreground mt-3" variant="xs">
+            <Typography className="mt-3" color="muted" variant="xs">
               💡 提示：調整瀏覽器視窗大小以觀察字體的流體變化效果
             </Typography>
           </div>
@@ -498,35 +520,41 @@ export default function TypographyDemo() {
             <Typography className="mb-2 font-semibold" variant="small">
               💡 樣式覆蓋機制
             </Typography>
-            <div className="text-muted-foreground space-y-1 text-sm">
-              <p>
+            <div className="space-y-1">
+              <Typography color="muted" variant="sm">
                 Typography 使用{' '}
                 <code className="bg-muted rounded px-1.5 py-0.5 font-mono text-xs">
                   cn()
                 </code>{' '}
                 函數處理 className，你傳入的 className 會被放在最後面，因此：
-              </p>
+              </Typography>
               <ul className="ml-2 list-inside list-disc space-y-1">
                 <li>
-                  <strong className="text-foreground">
-                    可以完全覆蓋預設樣式
-                  </strong>{' '}
-                  - 不需要擔心 CSS 權重問題
+                  <Typography color="muted" variant="sm">
+                    <strong className="text-foreground">
+                      可以完全覆蓋預設樣式
+                    </strong>{' '}
+                    - 不需要擔心 CSS 權重問題
+                  </Typography>
                 </li>
                 <li>
-                  <strong className="text-foreground">同屬性後者優先</strong> -
-                  如{' '}
-                  <code className="bg-muted rounded px-1 py-0.5 font-mono text-xs">
-                    text-xl text-sm
-                  </code>{' '}
-                  最終會是{' '}
-                  <code className="bg-muted rounded px-1 py-0.5 font-mono text-xs">
-                    text-sm
-                  </code>
+                  <Typography color="muted" variant="sm">
+                    <strong className="text-foreground">同屬性後者優先</strong> -
+                    如{' '}
+                    <code className="bg-muted rounded px-1 py-0.5 font-mono text-xs">
+                      text-xl text-sm
+                    </code>{' '}
+                    最終會是{' '}
+                    <code className="bg-muted rounded px-1 py-0.5 font-mono text-xs">
+                      text-sm
+                    </code>
+                  </Typography>
                 </li>
                 <li>
-                  <strong className="text-foreground">不同屬性會合併</strong> -
-                  預設的 font-weight 和你自訂的 text-color 可以共存
+                  <Typography color="muted" variant="sm">
+                    <strong className="text-foreground">不同屬性會合併</strong> -
+                    預設的 font-weight 和你自訂的 text-color 可以共存
+                  </Typography>
                 </li>
               </ul>
             </div>

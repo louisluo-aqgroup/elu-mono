@@ -1,3 +1,4 @@
+import { Typography } from '@eluelu/elu-ui/components/typography';
 import { cn } from '@eluelu/elu-ui/lib/utils';
 
 interface ComponentPreviewProps {
@@ -16,9 +17,11 @@ export function ComponentPreview({
   return (
     <div className="space-y-4">
       <div>
-        <h3 className="text-lg font-semibold">{title}</h3>
+        <Typography variant="h3">{title}</Typography>
         {description && (
-          <p className="text-muted-foreground mt-1 text-sm">{description}</p>
+          <Typography className="mt-1" color="muted" variant="sm">
+            {description}
+          </Typography>
         )}
       </div>
       <div className="overflow-x-auto">

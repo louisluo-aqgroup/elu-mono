@@ -1,5 +1,6 @@
 'use client';
 
+import { Button } from '@eluelu/elu-ui/components/button';
 import { ScrollArea } from '@eluelu/elu-ui/components/scroll-area';
 import { Typography } from '@eluelu/elu-ui/components/typography';
 import { cn } from '@eluelu/elu-ui/lib/utils';
@@ -32,7 +33,7 @@ export default function ComponentsLayout({
   return (
     <div className="flex min-h-[calc(100vh-4rem)]">
       {/* Left Navigation */}
-      <aside className="border-border sticky top-0 h-[calc(100vh-4rem)] w-64 shrink-0 border-r">
+      <aside className="border-border sticky top-16 h-[calc(100vh-4rem)] w-64 shrink-0 border-r">
         <div className="flex h-full flex-col">
           <div className="border-border flex h-12 items-center border-b px-6">
             <Typography className="font-semibold" variant="sm">
@@ -46,17 +47,19 @@ export default function ComponentsLayout({
                   const isActive = pathname === component.href;
                   return (
                     <li key={component.href}>
-                      <Link
+                      <Button
+                        asChild
                         className={cn(
-                          'block rounded-md px-3 py-2 text-sm transition-colors',
-                          isActive
-                            ? 'bg-accent text-accent-foreground font-medium'
-                            : 'text-muted-foreground hover:bg-accent/50 hover:text-foreground'
+                          'w-full justify-start',
+                          isActive && 'font-medium'
                         )}
-                        href={component.href}
+                        size="sm"
+                        variant={isActive ? 'accent' : 'ghost'}
                       >
-                        {component.name}
-                      </Link>
+                        <Link href={component.href}>
+                          <Typography variant="sm">{component.name}</Typography>
+                        </Link>
+                      </Button>
                     </li>
                   );
                 })}
@@ -65,7 +68,6 @@ export default function ComponentsLayout({
           </ScrollArea>
         </div>
       </aside>
-
       {/* Main Content */}
       <main className="flex-1 p-8">{children}</main>
     </div>

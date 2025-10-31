@@ -6,7 +6,7 @@ import LogoSvg from '@/assets/logo/icon_logo.svg';
 
 export function Header() {
   return (
-    <header className="flex h-16 items-center justify-between border-b bg-background px-6">
+    <header className="fixed left-0 right-0 top-0 z-50 flex h-16 items-center justify-between border-b bg-background px-6">
       {/* Logo */}
       <div className="flex items-center">
         <LogoSvg className="fill-primary h-6 w-auto" />

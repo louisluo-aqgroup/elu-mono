@@ -1,4 +1,5 @@
 import { Button } from '@eluelu/elu-ui/components/button';
+import { Typography } from '@eluelu/elu-ui/components/typography';
 import { Download, Loader2, Mail } from 'lucide-react';
 
 import { ComponentPreview } from '@/components/component-preview';
@@ -7,14 +8,16 @@ export default function ButtonPage() {
   return (
     <div className="mx-auto max-w-5xl space-y-12">
       <div>
-        <h1 className="mb-2 text-3xl font-bold">Button</h1>
-        <p className="text-muted-foreground">
+        <Typography className="mb-2" variant="h1">
+          Button
+        </Typography>
+        <Typography color="muted" variant="p">
           按鈕元件用於觸發動作或事件，支援多種樣式和尺寸變體。
-        </p>
+        </Typography>
       </div>
       {/* Props Table */}
       <div className="bg-muted/30 space-y-4 rounded-lg border p-6">
-        <h3 className="text-lg font-semibold">Props</h3>
+        <Typography variant="h3">Props</Typography>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
@@ -88,7 +91,7 @@ export default function ButtonPage() {
 
       {/* Code Example */}
       <div className="bg-muted/30 mt-12 space-y-4 rounded-lg border p-6">
-        <h3 className="text-lg font-semibold">使用範例</h3>
+        <Typography variant="h3">使用範例</Typography>
         <pre className="overflow-x-auto rounded-md bg-black p-4 text-sm text-white">
           <code>{`import { Button } from "@eluelu/elu-ui/components/button"
 
@@ -308,9 +311,14 @@ export default function ButtonPage() {
         <div className="w-full space-y-6">
           {/* Primary background example */}
           <div className="bg-primary space-y-3 rounded-lg p-6">
-            <p className="text-primary-foreground mb-3 text-sm font-medium">
+            <Typography
+              className="mb-3 font-medium"
+              color="primary"
+              foreground
+              variant="sm"
+            >
               Primary 背景範例
-            </p>
+            </Typography>
             <div className="flex flex-wrap gap-3">
               <Button color="primary" foreground variant="ghost">
                 Ghost
@@ -326,9 +334,14 @@ export default function ButtonPage() {
 
           {/* Secondary background example */}
           <div className="bg-secondary space-y-3 rounded-lg p-6">
-            <p className="text-secondary-foreground mb-3 text-sm font-medium">
+            <Typography
+              className="mb-3 font-medium"
+              color="secondary"
+              foreground
+              variant="sm"
+            >
               Secondary 背景範例
-            </p>
+            </Typography>
             <div className="flex flex-wrap gap-3">
               <Button color="secondary" foreground variant="ghost">
                 Ghost
@@ -344,9 +357,14 @@ export default function ButtonPage() {
 
           {/* Accent background example */}
           <div className="bg-accent space-y-3 rounded-lg p-6">
-            <p className="text-accent-foreground mb-3 text-sm font-medium">
+            <Typography
+              className="mb-3 font-medium"
+              color="accent"
+              foreground
+              variant="sm"
+            >
               Accent 背景範例
-            </p>
+            </Typography>
             <div className="flex flex-wrap gap-3">
               <Button color="accent" foreground variant="ghost">
                 Ghost
