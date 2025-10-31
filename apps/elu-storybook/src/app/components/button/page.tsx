@@ -1,7 +1,7 @@
 import { Button } from '@eluelu/elu-ui/components/button';
 import { Download, Loader2, Mail } from 'lucide-react';
 
-import { ComponentPreview } from '@/src/components/component-preview';
+import { ComponentPreview } from '@/components/component-preview';
 
 export default function ButtonPage() {
   return (

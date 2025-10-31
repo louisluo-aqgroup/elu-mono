@@ -4,7 +4,7 @@ import {
   SidebarTrigger,
 } from '@eluelu/elu-ui/components/sidebar';
 
-import { LayoutSidebar } from '@/src/components/sidebar';
+import { LayoutSidebar } from '@/components/sidebar';
 
 export default function ComponentsLayout({
   children,

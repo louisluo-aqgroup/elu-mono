@@ -3,7 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"],
+      "@/*": ["./src/*"],
       "@eluelu/elu-ui/*": ["../../packages/elu-ui/src/*"]
     },
     "plugins": [
