@@ -26,7 +26,7 @@ export default function RootLayout({
         className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased`}
       >
         <Providers>
-          <div className="flex min-h-screen flex-col pt-16">
+          <div className="flex min-h-screen flex-col pt-28">
             <Header />
             <main className="flex-1">{children}</main>
             <Footer />

@@ -31,9 +31,9 @@ export default function ComponentsLayout({
   const pathname = usePathname();
 
   return (
-    <div className="flex min-h-[calc(100vh-4rem)]">
+    <div className="flex min-h-[calc(100vh-7rem)]">
       {/* Left Navigation */}
-      <aside className="border-border sticky top-16 h-[calc(100vh-4rem)] w-64 shrink-0 border-r">
+      <aside className="border-border sticky top-28 h-[calc(100vh-7rem)] w-64 shrink-0 border-r">
         <div className="flex h-full flex-col">
           <div className="border-border flex h-12 items-center border-b px-6">
             <Typography className="font-semibold" variant="sm">
