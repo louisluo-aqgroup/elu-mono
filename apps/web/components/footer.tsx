@@ -41,7 +41,6 @@ export function Footer() {
               variant="sm"
               color="primary"
               foreground
-              className="md:max-w-xs opacity-80"
             >
               用設計與科技串聯每一次互動，打造兼具美感與實用的數位體驗。
             </Typography>
@@ -55,7 +54,7 @@ export function Footer() {
                   as="h4"
                   color="primary"
                   foreground
-                  className="font-semibold uppercase tracking-wide opacity-80"
+                  className="font-semibold uppercase tracking-wide"
                 >
                   {column.title}
                 </Typography>
@@ -65,9 +64,9 @@ export function Footer() {
                       <Button
                         asChild
                         variant="link"
-                        radius="none"
+                        color="primary"
                         foreground
-                        className="h-auto justify-start px-0 text-left"
+                        className="px-0 text-left"
                       >
                         <a href="#">{link}</a>
                       </Button>
@@ -91,7 +90,6 @@ export function Footer() {
                 >
                   <a href={href} aria-label={label}>
                     <Icon className="size-5" />
-                    <span className="sr-only">{label}</span>
                   </a>
                 </Button>
               ))}
@@ -104,7 +102,6 @@ export function Footer() {
             variant="xs"
             color="primary"
             foreground
-            className="opacity-70"
           >
             © {new Date().getFullYear()} ELUELU. All rights reserved.
           </Typography>
@@ -112,7 +109,7 @@ export function Footer() {
             variant="xs"
             color="primary"
             foreground
-            className="opacity-70"
+
           >
             此區為示意內容，實際連結與資訊可再調整。
           </Typography>
