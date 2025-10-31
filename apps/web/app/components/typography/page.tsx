@@ -2,15 +2,138 @@ import { Typography } from "@workspace/ui/components/typography"
 
 export default function TypographyDemo() {
   return (
-    <div className="container mx-auto px-4 py-16 max-w-4xl">
-      <div className="space-y-12">
-        {/* Header */}
-        <div>
-          <Typography variant="h1">Typography</Typography>
-          <Typography variant="muted" className="mt-2">
-            優雅且一致的文字排版系統
-          </Typography>
+    <div className="max-w-5xl mx-auto space-y-12">
+      {/* Header */}
+      <div>
+        <h1 className="text-3xl font-bold mb-2">Typography</h1>
+        <p className="text-muted-foreground">
+          優雅且一致的文字排版系統，支援多種變體和顏色配置。
+        </p>
+      </div>
+
+      {/* Props Table */}
+      <div className="space-y-4 p-6 border rounded-lg bg-muted/30">
+        <h3 className="text-lg font-semibold">Props</h3>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b">
+                <th className="text-left py-2 px-4 font-semibold">Prop</th>
+                <th className="text-left py-2 px-4 font-semibold">Type</th>
+                <th className="text-left py-2 px-4 font-semibold">Default</th>
+                <th className="text-left py-2 px-4 font-semibold">
+                  Description
+                </th>
+              </tr>
+            </thead>
+            <tbody className="divide-y">
+              <tr>
+                <td className="py-2 px-4 font-mono">variant</td>
+                <td className="py-2 px-4 font-mono text-xs">
+                  "h1" | "h2" | "h3" | "h4" | "p" | "blockquote" | "inlineCode" | "lead" | "large" | "small" | "muted" | "xl" | "lg" | "md" | "sm" | "xs"
+                </td>
+                <td className="py-2 px-4 font-mono">"p"</td>
+                <td className="py-2 px-4">文字的樣式變體</td>
+              </tr>
+              <tr>
+                <td className="py-2 px-4 font-mono">color</td>
+                <td className="py-2 px-4 font-mono text-xs">
+                  "default" | "primary" | "secondary" | "accent" | "muted" | "success" | "error" | "warning"
+                </td>
+                <td className="py-2 px-4 font-mono">"primary"</td>
+                <td className="py-2 px-4">文字顏色主題</td>
+              </tr>
+              <tr>
+                <td className="py-2 px-4 font-mono">as</td>
+                <td className="py-2 px-4 font-mono text-xs">keyof JSX.IntrinsicElements</td>
+                <td className="py-2 px-4 font-mono">-</td>
+                <td className="py-2 px-4">
+                  自訂渲染的 HTML 元素，適用於 SEO 優化
+                </td>
+              </tr>
+              <tr>
+                <td className="py-2 px-4 font-mono">asChild</td>
+                <td className="py-2 px-4 font-mono text-xs">boolean</td>
+                <td className="py-2 px-4 font-mono">false</td>
+                <td className="py-2 px-4">
+                  將樣式套用到子元素（使用 Radix Slot）
+                </td>
+              </tr>
+              <tr>
+                <td className="py-2 px-4 font-mono">foreground</td>
+                <td className="py-2 px-4 font-mono text-xs">boolean</td>
+                <td className="py-2 px-4 font-mono">false</td>
+                <td className="py-2 px-4">啟用前景色樣式，適用於深色背景</td>
+              </tr>
+              <tr>
+                <td className="py-2 px-4 font-mono">className</td>
+                <td className="py-2 px-4 font-mono text-xs">string</td>
+                <td className="py-2 px-4 font-mono">-</td>
+                <td className="py-2 px-4">自訂 CSS 類別（可完全覆蓋預設樣式）</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+      </div>
+
+      {/* Code Example */}
+      <div className="space-y-4 mt-12 p-6 border rounded-lg bg-muted/30">
+        <h3 className="text-lg font-semibold">使用範例</h3>
+        <pre className="p-4 bg-black text-white rounded-md overflow-x-auto text-sm">
+          <code>{`import { Typography } from "@workspace/ui/components/typography"
+
+// 基本用法
+<Typography variant="h1">主標題</Typography>
+<Typography variant="p">這是一段文字</Typography>
+
+// 標題系列
+<Typography variant="h1">H1 標題</Typography>
+<Typography variant="h2">H2 標題</Typography>
+<Typography variant="h3">H3 標題</Typography>
+<Typography variant="h4">H4 標題</Typography>
+
+// 內容樣式
+<Typography variant="p">段落文字</Typography>
+<Typography variant="lead">引導文字（較大且淡色）</Typography>
+<Typography variant="blockquote">引用區塊</Typography>
+<Typography variant="inlineCode" as="code">行內程式碼</Typography>
+
+// 尺寸變體
+<Typography variant="large">大號文字</Typography>
+<Typography variant="small">小號文字</Typography>
+<Typography variant="muted">次要文字</Typography>
+
+// 流體字體大小（會根據視窗寬度自動調整）
+<Typography variant="xl">Extra Large (28px → 36px)</Typography>
+<Typography variant="lg">Large (20px → 24px)</Typography>
+<Typography variant="md">Medium (16px → 18px)</Typography>
+<Typography variant="sm">Small (14px → 16px)</Typography>
+<Typography variant="xs">Extra Small (12px → 14px)</Typography>
+
+// 顏色變化
+<Typography variant="lg" color="primary">Primary 顏色</Typography>
+<Typography variant="lg" color="secondary">Secondary 顏色</Typography>
+<Typography variant="lg" color="accent">Accent 顏色</Typography>
+<Typography variant="lg" color="success">成功訊息</Typography>
+<Typography variant="lg" color="error">錯誤訊息</Typography>
+<Typography variant="lg" color="warning">警告訊息</Typography>
+
+// SEO 彈性 - 視覺樣式 vs HTML 語意
+<Typography variant="h1" as="h2">
+  看起來像 h1，但語意是 h2
+</Typography>
+
+// 自訂樣式（className 會覆蓋預設樣式）
+<Typography variant="h3" className="text-5xl font-light">
+  覆蓋預設樣式
+</Typography>
+<Typography variant="lg" className="text-blue-600">
+  自訂顏色
+</Typography>`}</code>
+        </pre>
+      </div>
+
+      <div className="space-y-12">
 
         {/* H1 */}
         <section className="space-y-4">
