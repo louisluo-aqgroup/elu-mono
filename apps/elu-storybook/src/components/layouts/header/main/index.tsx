@@ -1,7 +1,6 @@
 'use client';
 
 import { Button } from '@eluelu/elu-ui/components/button';
-import { Input } from '@eluelu/elu-ui/components/input';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -13,12 +12,15 @@ import {
 } from '@eluelu/elu-ui/components/navigation-menu';
 import { Typography } from '@eluelu/elu-ui/components/typography';
 import { cn } from '@eluelu/elu-ui/lib/classes';
-import { Bell, Grid3x3, Search, User } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import type { ComponentPropsWithoutRef } from 'react';
 
 import LogoSvg from '@/assets/logo/icon_logo.svg';
+
+import { DesktopMenu } from '../desktop/menu';
+import { MobileMenu } from '../mobile/menu';
+import { SearchInput } from './search-input';
 
 const navigationItems = [
   {
@@ -96,35 +98,28 @@ export const Header: RC = () => {
   return (
     <div className="bg-background fixed top-0 right-0 left-0 z-50">
       {/* Top Header */}
-      <header className="flex h-16 items-center justify-between border-b px-6">
+      <header className="flex h-16 items-center justify-between gap-4 border-b px-6">
         {/* Logo */}
         <div className="flex items-center">
           <LogoSvg className="fill-primary h-6 w-auto" />
         </div>
 
-        {/* Search Bar */}
-        <div className="relative mx-auto w-full max-w-xl">
-          <Search className="text-muted-foreground absolute top-1/2 left-3 size-4 -translate-y-1/2" />
-          <Input className="w-full pl-9" placeholder="搜尋..." radius="pill" />
-        </div>
+        {/* Right Side Container */}
+        <div className="flex flex-1 items-center justify-end gap-2">
+          {/* Search Bar - hidden on mobile */}
+          <div className="hidden md:block md:max-w-md md:flex-1">
+            <SearchInput />
+          </div>
 
-        {/* Right Icons */}
-        <div className="flex items-center gap-2">
-          {/* Notification Bell with Badge */}
-          <Button className="relative" size="icon" variant="ghost">
-            <Bell className="size-5" />
-            <span className="absolute top-2 right-2 size-2 rounded-full bg-red-500" />
-          </Button>
+          {/* Desktop Menu - hidden on mobile */}
+          <div className="hidden items-center gap-2 md:flex">
+            <DesktopMenu />
+          </div>
 
-          {/* Grid Menu */}
-          <Button size="icon" variant="ghost">
-            <Grid3x3 className="size-5" />
-          </Button>
-
-          {/* User Profile */}
-          <Button size="icon" variant="ghost">
-            <User className="size-5" />
-          </Button>
+          {/* Mobile Menu - hidden on desktop */}
+          <div className="md:hidden">
+            <MobileMenu />
+          </div>
         </div>
       </header>
 
