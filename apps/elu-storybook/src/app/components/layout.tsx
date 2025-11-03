@@ -10,6 +10,10 @@ import type { ReactNode } from 'react';
 
 const components = [
   {
+    name: 'Accordion',
+    href: '/components/accordion',
+  },
+  {
     name: 'Button',
     href: '/components/button',
   },

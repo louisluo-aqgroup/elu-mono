@@ -1,25 +1,13 @@
 'use client';
 
-import { Button } from '@eluelu/elu-ui/components/button';
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuIndicator,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from '@eluelu/elu-ui/components/navigation-menu';
-import { Typography } from '@eluelu/elu-ui/components/typography';
-import { cn } from '@eluelu/elu-ui/lib/classes';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import type { ComponentPropsWithoutRef } from 'react';
 
 import LogoSvg from '@/assets/logo/icon_logo.svg';
 
-import { DesktopMenu } from '../desktop/menu';
-import { MobileMenu } from '../mobile/menu';
+import { DesktopMenu } from '../menu/desktop';
+import { MobileMenu } from '../menu/mobile';
+import { DesktopNavigation } from '../navigations/desktop';
+import { MobileNavigation } from '../navigations/mobile';
 import { SearchInput } from './search-input';
 
 const navigationItems = [
@@ -99,6 +87,15 @@ export const Header: RC = () => {
     <div className="bg-background fixed top-0 right-0 left-0 z-50">
       {/* Top Header */}
       <header className="flex h-16 items-center justify-between gap-4 border-b px-6">
+        {/* Mobile Navigation Trigger */}
+        <div className="md:hidden">
+          <MobileNavigation
+            currentPath={currentPath}
+            items={navigationItems}
+            pathMatches={pathMatches}
+          />
+        </div>
+
         {/* Logo */}
         <div className="flex items-center">
           <LogoSvg className="fill-primary h-6 w-auto" />
@@ -116,151 +113,20 @@ export const Header: RC = () => {
             <DesktopMenu />
           </div>
 
-          {/* Mobile Menu - hidden on desktop */}
+          {/* Mobile Menu Icon - hidden on desktop */}
           <div className="md:hidden">
             <MobileMenu />
           </div>
         </div>
       </header>
 
-      {/* Navigation Menu */}
-      <nav className="relative border-b py-2">
-        <div className="container mx-auto px-6">
-          <NavigationMenu>
-            <NavigationMenuList>
-              {navigationItems.map((item) => {
-                const subItems = item.items ?? [];
-                const isItemActive =
-                  pathMatches(currentPath, item.href) ||
-                  subItems.some((subItem) =>
-                    pathMatches(currentPath, subItem.href)
-                  );
-
-                if (subItems.length > 0) {
-                  return (
-                    <NavigationMenuItem key={item.title}>
-                      <Button asChild variant="ghost">
-                        <NavigationMenuTrigger active={isItemActive}>
-                          <Typography
-                            className={cn(
-                              'transition-colors',
-                              isItemActive && 'text-primary font-semibold'
-                            )}
-                            variant="sm"
-                          >
-                            {item.title}
-                          </Typography>
-                        </NavigationMenuTrigger>
-                      </Button>
-                      <NavigationMenuContent>
-                        <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                          {subItems.map((subItem) => (
-                            <ListItem
-                              active={pathMatches(currentPath, subItem.href)}
-                              href={subItem.href}
-                              key={subItem.title}
-                              title={subItem.title}
-                            >
-                              {subItem.description}
-                            </ListItem>
-                          ))}
-                        </ul>
-                      </NavigationMenuContent>
-                    </NavigationMenuItem>
-                  );
-                }
-
-                return (
-                  <NavigationMenuItem key={item.title}>
-                    <NavigationMenuLink active={isItemActive} asChild>
-                      <Button
-                        asChild
-                        className={cn(
-                          'transition-colors',
-                          isItemActive && 'text-primary'
-                        )}
-                        data-active={isItemActive ? 'true' : undefined}
-                        variant="ghost"
-                      >
-                        <Link
-                          aria-current={isItemActive ? 'page' : undefined}
-                          href={item.href}
-                        >
-                          <Typography
-                            className={cn(
-                              'transition-colors',
-                              isItemActive && 'text-primary font-semibold'
-                            )}
-                            variant="sm"
-                          >
-                            {item.title}
-                          </Typography>
-                        </Link>
-                      </Button>
-                    </NavigationMenuLink>
-                  </NavigationMenuItem>
-                );
-              })}
-              <NavigationMenuIndicator />
-            </NavigationMenuList>
-          </NavigationMenu>
-        </div>
-      </nav>
+      {/* Desktop Navigation Menu - hidden on mobile */}
+      <DesktopNavigation
+        currentPath={currentPath}
+        items={navigationItems}
+        pathMatches={pathMatches}
+      />
     </div>
-  );
-};
-
-type ListItemProps = {
-  href: string;
-  title: string;
-  active?: boolean;
-} & Omit<ComponentPropsWithoutRef<'li'>, 'children'>;
-
-const ListItem: RCC<ListItemProps> = ({
-  title,
-  children,
-  href,
-  className,
-  active = false,
-  ...props
-}) => {
-  return (
-    <li className={className} {...props}>
-      <NavigationMenuLink active={active} asChild underlineVariant="muted">
-        <Button
-          asChild
-          className={cn(
-            'h-auto flex-col items-start p-3 transition-colors',
-            active && 'text-primary'
-          )}
-          data-active={active ? 'true' : undefined}
-          variant="ghost"
-        >
-          <Link
-            aria-current={active ? 'page' : undefined}
-            className="w-full"
-            href={href}
-          >
-            <Typography
-              className={cn(
-                'leading-none font-medium transition-colors',
-                active && 'text-primary'
-              )}
-              variant="sm"
-            >
-              {title}
-            </Typography>
-            <Typography
-              className="line-clamp-2 leading-snug"
-              color="muted"
-              variant="xs"
-            >
-              {children}
-            </Typography>
-          </Link>
-        </Button>
-      </NavigationMenuLink>
-    </li>
   );
 };
 
