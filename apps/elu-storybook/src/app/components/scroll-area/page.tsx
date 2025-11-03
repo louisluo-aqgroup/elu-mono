@@ -82,7 +82,7 @@ export default function ScrollAreaPage() {
         title="基本範例"
       >
         <ScrollArea className="h-72 w-48 rounded-md border p-4">
-          <Typography className="mb-4 font-medium leading-none" variant="sm">
+          <Typography className="mb-4 leading-none font-medium" variant="sm">
             標籤
           </Typography>
           {Array.from({ length: 50 }).map((_, i) => (
@@ -168,16 +168,13 @@ export default function ScrollAreaPage() {
       </ComponentPreview>
 
       {/* Horizontal Scroll */}
-      <ComponentPreview
-        description="水平滾動區域範例"
-        title="水平滾動"
-      >
-        <ScrollArea className="w-96 whitespace-nowrap rounded-md border">
+      <ComponentPreview description="水平滾動區域範例" title="水平滾動">
+        <ScrollArea className="w-96 rounded-md border whitespace-nowrap">
           <div className="flex w-max space-x-4 p-4">
             {Array.from({ length: 20 }).map((_, i) => (
               <div
-                key={i}
                 className="bg-accent text-accent-foreground h-32 w-32 shrink-0 rounded-md p-4"
+                key={i}
               >
                 <Typography className="font-medium" variant="sm">
                   項目 {i + 1}
@@ -219,10 +216,7 @@ export default function ScrollAreaPage() {
       </ComponentPreview>
 
       {/* Styled Content */}
-      <ComponentPreview
-        description="帶有樣式內容的滾動區域"
-        title="樣式化內容"
-      >
+      <ComponentPreview description="帶有樣式內容的滾動區域" title="樣式化內容">
         <ScrollArea className="h-96 w-full max-w-md rounded-md border">
           <div className="p-4">
             <Typography className="mb-4 font-semibold" variant="md">
@@ -231,8 +225,8 @@ export default function ScrollAreaPage() {
             <div className="space-y-3">
               {Array.from({ length: 15 }).map((_, i) => (
                 <div
-                  key={i}
                   className="hover:bg-accent/50 rounded-lg border p-3 transition-colors"
+                  key={i}
                 >
                   <div className="mb-1 flex items-center justify-between">
                     <Typography className="font-medium" variant="sm">

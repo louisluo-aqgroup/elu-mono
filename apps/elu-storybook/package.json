@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "lint:fix": "eslint --fix ./src",
     "format": "prettier --write ./src && eslint --fix ./src",
     "typecheck": "tsc --noEmit"
   },

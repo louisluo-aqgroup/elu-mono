@@ -539,8 +539,8 @@ export default function TypographyDemo() {
                 </li>
                 <li>
                   <Typography color="muted" variant="sm">
-                    <strong className="text-foreground">同屬性後者優先</strong> -
-                    如{' '}
+                    <strong className="text-foreground">同屬性後者優先</strong>{' '}
+                    - 如{' '}
                     <code className="bg-muted rounded px-1 py-0.5 font-mono text-xs">
                       text-xl text-sm
                     </code>{' '}
@@ -552,8 +552,8 @@ export default function TypographyDemo() {
                 </li>
                 <li>
                   <Typography color="muted" variant="sm">
-                    <strong className="text-foreground">不同屬性會合併</strong> -
-                    預設的 font-weight 和你自訂的 text-color 可以共存
+                    <strong className="text-foreground">不同屬性會合併</strong>{' '}
+                    - 預設的 font-weight 和你自訂的 text-color 可以共存
                   </Typography>
                 </li>
               </ul>

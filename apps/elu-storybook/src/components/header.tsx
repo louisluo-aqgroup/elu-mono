@@ -93,7 +93,7 @@ export function Header() {
   const currentPath = normalizePath(pathname);
 
   return (
-    <div className="fixed left-0 right-0 top-0 z-50 bg-background">
+    <div className="bg-background fixed top-0 right-0 left-0 z-50">
       {/* Top Header */}
       <header className="flex h-16 items-center justify-between border-b px-6">
         {/* Logo */}
@@ -103,8 +103,8 @@ export function Header() {
 
         {/* Search Bar */}
         <div className="relative mx-auto w-full max-w-xl">
-          <Search className="text-muted-foreground absolute left-3 top-1/2 size-4 -translate-y-1/2" />
-          <Input type="search" placeholder="搜尋..." className="w-full pl-9" />
+          <Search className="text-muted-foreground absolute top-1/2 left-3 size-4 -translate-y-1/2" />
+          <Input className="w-full pl-9" placeholder="搜尋..." type="search" />
         </div>
 
         {/* Right Icons */}
@@ -112,7 +112,7 @@ export function Header() {
           {/* Notification Bell with Badge */}
           <Button className="relative" size="icon" variant="ghost">
             <Bell className="size-5" />
-            <span className="absolute right-2 top-2 size-2 rounded-full bg-red-500" />
+            <span className="absolute top-2 right-2 size-2 rounded-full bg-red-500" />
           </Button>
 
           {/* Grid Menu */}
@@ -160,9 +160,9 @@ export function Header() {
                         <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                           {subItems.map((subItem) => (
                             <ListItem
-                              key={subItem.title}
                               active={pathMatches(currentPath, subItem.href)}
                               href={subItem.href}
+                              key={subItem.title}
                               title={subItem.title}
                             >
                               {subItem.description}
@@ -176,7 +176,7 @@ export function Header() {
 
                 return (
                   <NavigationMenuItem key={item.title}>
-                    <NavigationMenuLink asChild active={isItemActive}>
+                    <NavigationMenuLink active={isItemActive} asChild>
                       <Button
                         asChild
                         className={cn(
@@ -231,11 +231,7 @@ function ListItem({
 }: ListItemProps) {
   return (
     <li className={className} {...props}>
-      <NavigationMenuLink
-        asChild
-        active={active}
-        underlineVariant="muted"
-      >
+      <NavigationMenuLink active={active} asChild underlineVariant="muted">
         <Button
           asChild
           className={cn(
@@ -252,7 +248,7 @@ function ListItem({
           >
             <Typography
               className={cn(
-                'font-medium leading-none transition-colors',
+                'leading-none font-medium transition-colors',
                 active && 'text-primary'
               )}
               variant="sm"
