@@ -14,6 +14,10 @@ const components = [
     href: '/components/button',
   },
   {
+    name: 'Input',
+    href: '/components/input',
+  },
+  {
     name: 'Scroll Area',
     href: '/components/scroll-area',
   },
@@ -55,10 +59,11 @@ const ComponentsLayout: RCC<ComponentsLayoutProps> = ({ children }) => {
                           isActive && 'font-medium'
                         )}
                         size="sm"
-                        variant={isActive ? 'accent' : 'ghost'}
+                        variant={isActive ? 'default' : 'ghost'}
+                      
                       >
                         <Link href={component.href}>
-                          <Typography variant="sm">{component.name}</Typography>
+                          {component.name}
                         </Link>
                       </Button>
                     </li>

@@ -8,6 +8,11 @@ const components = [
     description: '按鈕元件的各種樣式和用法展示',
   },
   {
+    name: 'Input',
+    href: '/components/input',
+    description: '輸入框元件，支援多種圓角樣式和輸入類型',
+  },
+  {
     name: 'Scroll Area',
     href: '/components/scroll-area',
     description: '可滾動區域元件，提供自訂樣式的滾動條',

@@ -4,7 +4,7 @@ import { cva } from 'class-variance-authority';
 import { ChevronDown } from 'lucide-react';
 import type {
   ComponentPropsWithoutRef,
-  ElementRef,
+  ComponentRef,
   ForwardRefExoticComponent,
   PropsWithChildren,
   PropsWithoutRef,
@@ -73,7 +73,7 @@ const getNavigationMenuUnderline = (
 
 const NavigationMenuBase = (
   { className, children, ...props }: PropsWithChildren<NavigationMenuProps>,
-  ref: React.ForwardedRef<ElementRef<typeof NavigationMenuPrimitive.Root>>
+  ref: React.ForwardedRef<ComponentRef<typeof NavigationMenuPrimitive.Root>>
 ) => (
   <NavigationMenuPrimitive.Root
     ref={ref}
@@ -90,7 +90,7 @@ const NavigationMenuBase = (
 
 const NavigationMenuListBase = (
   { className, ...props }: PropsWithChildren<NavigationMenuListProps>,
-  ref: React.ForwardedRef<ElementRef<typeof NavigationMenuPrimitive.List>>
+  ref: React.ForwardedRef<ComponentRef<typeof NavigationMenuPrimitive.List>>
 ) => (
   <NavigationMenuPrimitive.List
     ref={ref}
@@ -111,7 +111,7 @@ const NavigationMenuTriggerBase = (
     children,
     ...props
   }: PropsWithChildren<NavigationMenuTriggerProps>,
-  ref: React.ForwardedRef<ElementRef<typeof NavigationMenuPrimitive.Trigger>>
+  ref: React.ForwardedRef<ComponentRef<typeof NavigationMenuPrimitive.Trigger>>
 ) => (
   <NavigationMenuPrimitive.Trigger
     ref={ref}
@@ -133,7 +133,7 @@ const NavigationMenuTriggerBase = (
 
 const NavigationMenuContentBase = (
   { className, ...props }: PropsWithChildren<NavigationMenuContentProps>,
-  ref: React.ForwardedRef<ElementRef<typeof NavigationMenuPrimitive.Content>>
+  ref: React.ForwardedRef<ComponentRef<typeof NavigationMenuPrimitive.Content>>
 ) => (
   <NavigationMenuPrimitive.Content
     ref={ref}
@@ -153,7 +153,7 @@ const NavigationMenuLinkBase = (
     active = false,
     ...props
   }: PropsWithChildren<NavigationMenuLinkProps>,
-  ref: React.ForwardedRef<ElementRef<typeof NavigationMenuPrimitive.Link>>
+  ref: React.ForwardedRef<ComponentRef<typeof NavigationMenuPrimitive.Link>>
 ) => (
   <NavigationMenuPrimitive.Link
     ref={ref}
@@ -168,7 +168,9 @@ const NavigationMenuLinkBase = (
 
 const NavigationMenuViewportBase = (
   { className, ...props }: PropsWithChildren<NavigationMenuViewportProps>,
-  ref: React.ForwardedRef<ElementRef<typeof NavigationMenuPrimitive.Viewport>>
+  ref: React.ForwardedRef<
+    ComponentRef<typeof NavigationMenuPrimitive.Viewport>
+  >
 ) => (
   <div className={cn('absolute top-full left-0 flex justify-center')}>
     <NavigationMenuPrimitive.Viewport
@@ -184,7 +186,9 @@ const NavigationMenuViewportBase = (
 
 const NavigationMenuIndicatorBase = (
   { className, ...props }: NavigationMenuIndicatorProps,
-  ref: React.ForwardedRef<ElementRef<typeof NavigationMenuPrimitive.Indicator>>
+  ref: React.ForwardedRef<
+    ComponentRef<typeof NavigationMenuPrimitive.Indicator>
+  >
 ) => (
   <NavigationMenuPrimitive.Indicator
     ref={ref}
@@ -199,7 +203,7 @@ const NavigationMenu = React.forwardRef(
   NavigationMenuBase
 ) as ForwardableComponent<
   NavigationMenuProps,
-  ElementRef<typeof NavigationMenuPrimitive.Root>
+  ComponentRef<typeof NavigationMenuPrimitive.Root>
 >;
 NavigationMenu.displayName = NavigationMenuPrimitive.Root.displayName;
 
@@ -207,7 +211,7 @@ const NavigationMenuList = React.forwardRef(
   NavigationMenuListBase
 ) as ForwardableComponent<
   NavigationMenuListProps,
-  ElementRef<typeof NavigationMenuPrimitive.List>
+  ComponentRef<typeof NavigationMenuPrimitive.List>
 >;
 NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName;
 
@@ -215,7 +219,7 @@ const NavigationMenuTrigger = React.forwardRef(
   NavigationMenuTriggerBase
 ) as ForwardableComponent<
   NavigationMenuTriggerProps,
-  ElementRef<typeof NavigationMenuPrimitive.Trigger>
+  ComponentRef<typeof NavigationMenuPrimitive.Trigger>
 >;
 NavigationMenuTrigger.displayName = NavigationMenuPrimitive.Trigger.displayName;
 
@@ -223,7 +227,7 @@ const NavigationMenuContent = React.forwardRef(
   NavigationMenuContentBase
 ) as ForwardableComponent<
   NavigationMenuContentProps,
-  ElementRef<typeof NavigationMenuPrimitive.Content>
+  ComponentRef<typeof NavigationMenuPrimitive.Content>
 >;
 NavigationMenuContent.displayName = NavigationMenuPrimitive.Content.displayName;
 
@@ -231,7 +235,7 @@ const NavigationMenuLink = React.forwardRef(
   NavigationMenuLinkBase
 ) as ForwardableComponent<
   NavigationMenuLinkProps,
-  ElementRef<typeof NavigationMenuPrimitive.Link>
+  ComponentRef<typeof NavigationMenuPrimitive.Link>
 >;
 NavigationMenuLink.displayName = NavigationMenuPrimitive.Link.displayName;
 
@@ -239,7 +243,7 @@ const NavigationMenuViewport = React.forwardRef(
   NavigationMenuViewportBase
 ) as ForwardableComponent<
   NavigationMenuViewportProps,
-  ElementRef<typeof NavigationMenuPrimitive.Viewport>
+  ComponentRef<typeof NavigationMenuPrimitive.Viewport>
 >;
 NavigationMenuViewport.displayName =
   NavigationMenuPrimitive.Viewport.displayName;
@@ -248,7 +252,7 @@ const NavigationMenuIndicator = React.forwardRef(
   NavigationMenuIndicatorBase
 ) as ForwardableRC<
   NavigationMenuIndicatorProps,
-  ElementRef<typeof NavigationMenuPrimitive.Indicator>
+  ComponentRef<typeof NavigationMenuPrimitive.Indicator>
 >;
 NavigationMenuIndicator.displayName =
   NavigationMenuPrimitive.Indicator.displayName;
