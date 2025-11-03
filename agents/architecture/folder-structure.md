@@ -159,6 +159,45 @@ layouts/
 3. **Import 路徑統一** - 所有 import 都是 `from '@/layouts/xxx'`
 4. **團隊協作友善** - 新成員容易理解結構規則
 
+### ⚙️ Main Entry Path Rule
+
+**目的：**  
+保持 import 路徑簡潔、一致，並在「已有其他分類資料夾（如 `desktop/`, `mobile/`）但仍有無法立即分類的共用元件」時，使用 `main/` 作為暫存整理節點。若僅有單一主元件且尚未拆分，可直接維持 `index.tsx`。
+
+#### 📁 結構範例
+
+```
+components/
+  header/
+    desktop/
+      menu.tsx
+    mobile/
+      menu.tsx
+    main/
+      index.tsx        # 主輸出元件
+      search-input.tsx # 尚未歸入特定分類的子元件
+    index.ts           # 若未滿足建立 main 的條件，可直接導出本層內容
+  button/
+    main/
+      index.tsx        # button 尚未拆出更多分類，但為保持一致使用 main
+```
+
+#### ⚙️ tsconfig.json
+
+```json
+{
+  "compilerOptions": {
+    "paths": {
+      "@/components/*": [
+        "src/components/*/main/index.tsx",
+        "src/components/*/index.ts",
+        "src/components/*"
+      ]
+    }
+  }
+}
+```
+
 ## 總結
 
 > **核心思想:** 當同層級的任何元件需要 folder 結構時,整個層級都應該統一使用 folder 結構。
