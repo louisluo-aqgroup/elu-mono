@@ -1,5 +1,5 @@
 import { cn } from '@eluelu/elu-ui/lib/classes';
-import { fontSizes, toFluid } from '@eluelu/elu-ui/lib/sizing';
+import { fontSizes } from '@eluelu/elu-ui/lib/sizing';
 import { Slot } from '@radix-ui/react-slot';
 import { type VariantProps, cva } from 'class-variance-authority';
 import type { HTMLAttributes, JSX } from 'react';
@@ -9,7 +9,7 @@ const typographyVariants = cva('', {
     variant: {
       h1: [
         'scroll-m-20',
-        toFluid('font-size', fontSizes.h1),
+        fontSizes.h1,
         'font-extrabold',
         'tracking-tight',
       ],
@@ -17,20 +17,20 @@ const typographyVariants = cva('', {
         'scroll-m-20',
         'border-b',
         'pb-2',
-        toFluid('font-size', fontSizes.h2),
+        fontSizes.h2,
         'font-semibold',
         'tracking-tight',
         'first:mt-0',
       ],
       h3: [
         'scroll-m-20',
-        toFluid('font-size', fontSizes.h3),
+        fontSizes.h3,
         'font-semibold',
         'tracking-tight',
       ],
       h4: [
         'scroll-m-20',
-        toFluid('font-size', fontSizes.h4),
+        fontSizes.h4,
         'font-semibold',
         'tracking-tight',
       ],
@@ -43,33 +43,33 @@ const typographyVariants = cva('', {
         'px-[0.3rem]',
         'py-[0.2rem]',
         'font-mono',
-        toFluid('font-size', fontSizes['small-muted']),
+        fontSizes['small-muted'],
         'font-semibold',
       ],
-      lead: ['text-muted-foreground', toFluid('font-size', fontSizes.lead)],
-      large: [toFluid('font-size', fontSizes.large), 'font-semibold'],
+      lead: ['text-muted-foreground', fontSizes.lead],
+      large: [fontSizes.large, 'font-semibold'],
       small: [
-        toFluid('font-size', fontSizes['small-muted']),
+        fontSizes['small-muted'],
         'leading-none',
         'font-medium',
       ],
       muted: [
         'text-muted-foreground',
-        toFluid('font-size', fontSizes['small-muted']),
+        fontSizes['small-muted'],
       ],
       xl: [
-        toFluid('font-size', fontSizes.xl),
+        fontSizes.xl,
         'font-extrabold',
         'tracking-tight',
       ],
       lg: [
-        toFluid('font-size', fontSizes.lg),
+        fontSizes.lg,
         'font-semibold',
         'tracking-tight',
       ],
-      md: [toFluid('font-size', fontSizes.md), 'font-medium'],
-      sm: [toFluid('font-size', fontSizes.sm)],
-      xs: [toFluid('font-size', fontSizes.xs)],
+      md: [fontSizes.md, 'font-medium'],
+      sm: [fontSizes.sm],
+      xs: [fontSizes.xs],
     },
     color: {
       default: '',

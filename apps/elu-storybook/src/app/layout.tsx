@@ -5,6 +5,7 @@ import type { ReactNode } from 'react';
 import { Footer } from '@/components/layouts/footer';
 import { Header } from '@/components/layouts/header';
 import { ThemeProvider } from '@/components/themes/provider';
+import '@/styles/globals.css'
 
 const fontSans = Geist({
   subsets: ['latin'],

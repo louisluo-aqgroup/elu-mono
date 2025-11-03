@@ -3,7 +3,6 @@ import {
   fontSizes,
   heights,
   spacing,
-  toFluid,
 } from '@eluelu/elu-ui/lib/sizing';
 import { type VariantProps, cva } from 'class-variance-authority';
 import type { ComponentPropsWithoutRef } from 'react';
@@ -20,9 +19,9 @@ const inputVariants = cva(
     'outline-none',
     'transition-[color,box-shadow]',
     // Fluid sizing
-    toFluid('height', heights.base),
-    toFluid('font-size', fontSizes.base),
-    toFluid('padding-inline', spacing.sm),
+    heights.base,
+    fontSizes.base,
+    spacing.sm,
     // Colors
     'border-primary',
     'dark:bg-input/30',
@@ -41,8 +40,8 @@ const inputVariants = cva(
     'file:bg-transparent',
     'file:font-medium',
     'file:text-foreground',
-    toFluid('file:height', heights['file-input']),
-    toFluid('file:font-size', fontSizes['button-sm']),
+    `file:${heights['file-input']}`,
+    `file:${fontSizes['button-sm']}`,
     // Focus state
     'focus-visible:border-primary',
     'focus-visible:ring-primary/50',
