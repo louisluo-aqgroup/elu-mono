@@ -51,6 +51,9 @@ importers:
       '@eluelu/prettier-config':
         specifier: workspace:*
         version: link:../../configs/prettier
+      '@eluelu/types':
+        specifier: workspace:*
+        version: link:../../packages/types
       '@eluelu/typescript-config':
         specifier: workspace:*
         version: link:../../configs/typescript
@@ -186,11 +189,14 @@ importers:
         version: 3.25.76
     devDependencies:
       '@eluelu/eslint-config':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../../configs/eslint
       '@eluelu/prettier-config':
         specifier: workspace:*
         version: link:../../configs/prettier
+      '@eluelu/types':
+        specifier: workspace:*
+        version: link:../types
       '@eluelu/typescript-config':
         specifier: workspace:*
         version: link:../../configs/typescript
@@ -227,6 +233,18 @@ importers:
       typescript:
         specifier: ^5.9.2
         version: 5.9.2
+
+  packages/types:
+    devDependencies:
+      '@eluelu/typescript-config':
+        specifier: workspace:*
+        version: link:../../configs/typescript
+      '@types/react':
+        specifier: ^19.1.9
+        version: 19.2.2
+      typescript:
+        specifier: ^5.9.2
+        version: 5.9.3
 
 packages:
 
