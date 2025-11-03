@@ -18,7 +18,7 @@ import {
   TooltipTrigger,
 } from '@eluelu/elu-ui/components/tooltip';
 import { useIsMobile } from '@eluelu/elu-ui/hooks/use-mobile';
-import { cn } from '@eluelu/elu-ui/lib/utils';
+import { cn } from '@eluelu/elu-ui/lib/classes';
 import { Slot } from '@radix-ui/react-slot';
 import { type VariantProps, cva } from 'class-variance-authority';
 import { PanelLeftIcon } from 'lucide-react';

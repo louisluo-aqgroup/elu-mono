@@ -1,6 +1,6 @@
 'use client';
 
-import { cn } from '@eluelu/elu-ui/lib/utils';
+import { cn } from '@eluelu/elu-ui/lib/classes';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 import type { ComponentPropsWithoutRef } from 'react';
 

@@ -58,11 +58,6 @@
   --sidebar-text-secondary: var(--secondary-foreground);
   --sidebar-text-accent: var(--accent);
   --sidebar-ring: oklch(0.708 0 0);
-  --fs-xs: clamp(12px, 0.3vw + 10px, 14px);
-  --fs-sm: clamp(14px, 0.4vw + 11px, 16px);
-  --fs-md: clamp(16px, 0.5vw + 12px, 18px);
-  --fs-lg: clamp(20px, 0.8vw + 14px, 24px);
-  --fs-xl: clamp(28px, 1.2vw + 18px, 36px);
 }
 
 .dark {
@@ -182,72 +177,5 @@
 }
 
 @layer components {
-  /* Typography Styles - Fixed RWD (用於文字排版) */
-  .typography-h1 {
-    @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl;
-  }
-
-  .typography-h2 {
-    @apply scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0;
-  }
-
-  .typography-h3 {
-    @apply scroll-m-20 text-2xl font-semibold tracking-tight;
-  }
-
-  .typography-h4 {
-    @apply scroll-m-20 text-xl font-semibold tracking-tight;
-  }
-
-  .typography-p {
-    @apply leading-7 [&:not(:first-child)]:mt-6;
-  }
-
-  .typography-blockquote {
-    @apply mt-6 border-l-2 pl-6 italic;
-  }
-
-  .typography-inline-code {
-    @apply bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
-  }
-
-  .typography-lead {
-    @apply text-muted-foreground text-xl;
-  }
-
-  .typography-large {
-    @apply text-lg font-semibold;
-  }
-
-  .typography-small {
-    @apply text-sm leading-none font-medium;
-  }
-
-  .typography-muted {
-    @apply text-muted-foreground text-sm;
-  }
-
-  /* Typography Styles - Fluid (流體字體大小) */
-  .typography-fluid-xl {
-    font-size: var(--fs-xl);
-    @apply font-extrabold tracking-tight;
-  }
-
-  .typography-fluid-lg {
-    font-size: var(--fs-lg);
-    @apply font-semibold tracking-tight;
-  }
-
-  .typography-fluid-md {
-    font-size: var(--fs-md);
-    @apply font-medium;
-  }
-
-  .typography-fluid-sm {
-    font-size: var(--fs-sm);
-  }
-
-  .typography-fluid-xs {
-    font-size: var(--fs-xs);
-  }
+  /* Add custom component styles here if needed */
 }

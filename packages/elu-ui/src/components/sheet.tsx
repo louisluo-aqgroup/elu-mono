@@ -1,6 +1,6 @@
 'use client';
 
-import { cn } from '@eluelu/elu-ui/lib/utils';
+import { cn } from '@eluelu/elu-ui/lib/classes';
 import * as SheetPrimitive from '@radix-ui/react-dialog';
 import { XIcon } from 'lucide-react';
 import type { ComponentPropsWithoutRef } from 'react';

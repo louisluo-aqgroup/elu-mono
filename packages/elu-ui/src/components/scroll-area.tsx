@@ -1,4 +1,4 @@
-import { cn } from '@eluelu/elu-ui/lib/utils';
+import { cn } from '@eluelu/elu-ui/lib/classes';
 import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
 import type {
   ComponentPropsWithoutRef,

@@ -1,4 +1,4 @@
-import { cn } from '@eluelu/elu-ui/lib/utils';
+import { cn } from '@eluelu/elu-ui/lib/classes';
 import type { ComponentPropsWithoutRef } from 'react';
 
 type SkeletonProps = Omit<ComponentPropsWithoutRef<'div'>, 'children'>;

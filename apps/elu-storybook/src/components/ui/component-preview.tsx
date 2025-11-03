@@ -1,5 +1,5 @@
 import { Typography } from '@eluelu/elu-ui/components/typography';
-import { cn } from '@eluelu/elu-ui/lib/utils';
+import { cn } from '@eluelu/elu-ui/lib/classes';
 
 type ComponentPreviewProps = {
   title: string;

@@ -3,7 +3,7 @@
 import { Button } from '@eluelu/elu-ui/components/button';
 import { ScrollArea } from '@eluelu/elu-ui/components/scroll-area';
 import { Typography } from '@eluelu/elu-ui/components/typography';
-import { cn } from '@eluelu/elu-ui/lib/utils';
+import { cn } from '@eluelu/elu-ui/lib/classes';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import type { ReactNode } from 'react';

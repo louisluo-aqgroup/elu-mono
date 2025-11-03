@@ -12,7 +12,7 @@ import {
   NavigationMenuTrigger,
 } from '@eluelu/elu-ui/components/navigation-menu';
 import { Typography } from '@eluelu/elu-ui/components/typography';
-import { cn } from '@eluelu/elu-ui/lib/utils';
+import { cn } from '@eluelu/elu-ui/lib/classes';
 import { Bell, Grid3x3, Search, User } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
