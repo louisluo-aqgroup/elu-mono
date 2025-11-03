@@ -5,7 +5,7 @@ import {
   spacing,
   toFluid,
 } from '@eluelu/elu-ui/lib/sizing';
-import { cva, type VariantProps } from 'class-variance-authority';
+import { type VariantProps, cva } from 'class-variance-authority';
 import type { ComponentPropsWithoutRef } from 'react';
 
 const inputVariants = cva(

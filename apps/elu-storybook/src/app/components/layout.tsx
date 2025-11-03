@@ -60,11 +60,8 @@ const ComponentsLayout: RCC<ComponentsLayoutProps> = ({ children }) => {
                         )}
                         size="sm"
                         variant={isActive ? 'default' : 'ghost'}
-                      
                       >
-                        <Link href={component.href}>
-                          {component.name}
-                        </Link>
+                        <Link href={component.href}>{component.name}</Link>
                       </Button>
                     </li>
                   );

@@ -98,20 +98,14 @@ const InputPage: RC = () => (
 </div>`}</code>
       </pre>
     </div>
-    <ComponentPreview
-      description="Input 元件提供三種圓角樣式"
-      title="圓角樣式"
-    >
+    <ComponentPreview description="Input 元件提供三種圓角樣式" title="圓角樣式">
       <div className="flex w-full max-w-md flex-col gap-4">
         <Input placeholder="Default - 標準圓角" radius="default" />
         <Input placeholder="Pill - 膠囊形圓角" radius="pill" />
         <Input placeholder="None - 無圓角" radius="none" />
       </div>
     </ComponentPreview>
-    <ComponentPreview
-      description="支援多種不同的輸入類型"
-      title="輸入類型"
-    >
+    <ComponentPreview description="支援多種不同的輸入類型" title="輸入類型">
       <div className="flex w-full max-w-md flex-col gap-4">
         <Input placeholder="文字輸入" type="text" />
         <Input placeholder="電子郵件" type="email" />
@@ -150,11 +144,11 @@ const InputPage: RC = () => (
     >
       <div className="flex w-full max-w-md flex-col gap-4">
         <div className="relative">
-          <Search className="text-muted-foreground absolute left-3 top-1/2 size-4 -translate-y-1/2" />
+          <Search className="text-muted-foreground absolute top-1/2 left-3 size-4 -translate-y-1/2" />
           <Input className="pl-9" placeholder="搜尋..." radius="pill" />
         </div>
         <div className="relative">
-          <Mail className="text-muted-foreground absolute left-3 top-1/2 size-4 -translate-y-1/2" />
+          <Mail className="text-muted-foreground absolute top-1/2 left-3 size-4 -translate-y-1/2" />
           <Input
             className="pl-9"
             placeholder="輸入電子郵件..."

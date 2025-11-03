@@ -46,10 +46,7 @@ const typographyVariants = cva('', {
         toFluid('font-size', fontSizes['small-muted']),
         'font-semibold',
       ],
-      lead: [
-        'text-muted-foreground',
-        toFluid('font-size', fontSizes.lead),
-      ],
+      lead: ['text-muted-foreground', toFluid('font-size', fontSizes.lead)],
       large: [toFluid('font-size', fontSizes.large), 'font-semibold'],
       small: [
         toFluid('font-size', fontSizes['small-muted']),

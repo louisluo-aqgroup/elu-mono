@@ -168,9 +168,7 @@ const NavigationMenuLinkBase = (
 
 const NavigationMenuViewportBase = (
   { className, ...props }: PropsWithChildren<NavigationMenuViewportProps>,
-  ref: React.ForwardedRef<
-    ComponentRef<typeof NavigationMenuPrimitive.Viewport>
-  >
+  ref: React.ForwardedRef<ComponentRef<typeof NavigationMenuPrimitive.Viewport>>
 ) => (
   <div className={cn('absolute top-full left-0 flex justify-center')}>
     <NavigationMenuPrimitive.Viewport
