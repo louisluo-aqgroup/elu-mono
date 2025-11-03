@@ -1,0 +1,17 @@
+{
+  "name": "@eluelu/types",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "main": "./src/index.d.ts",
+  "types": "./src/index.d.ts",
+  "exports": {
+    ".": "./src/index.d.ts",
+    "./react": "./src/globals/react.d.ts"
+  },
+  "devDependencies": {
+    "@eluelu/typescript-config": "workspace:*",
+    "@types/react": "^19.1.9",
+    "typescript": "^5.9.2"
+  }
+}
