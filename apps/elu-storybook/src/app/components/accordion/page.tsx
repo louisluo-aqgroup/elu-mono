@@ -232,8 +232,8 @@ const AccordionPage: RC = () => (
             <AccordionTrigger>支援哪些付款方式？</AccordionTrigger>
             <AccordionContent>
               我們支援以下付款方式：信用卡（Visa、Mastercard、JCB）、ATM
-              轉帳、超商代碼繳費、電子支付（LINE Pay、Apple
-              Pay、Google Pay）。所有交易都採用 SSL 加密，確保您的付款安全。
+              轉帳、超商代碼繳費、電子支付（LINE Pay、Apple Pay、Google
+              Pay）。所有交易都採用 SSL 加密，確保您的付款安全。
             </AccordionContent>
           </AccordionItem>
         </Accordion>

@@ -117,7 +117,7 @@ const NavigationMenuTriggerBase = (
     ref={ref}
     data-active={active ? 'true' : undefined}
     className={cn(
-      'group inline-flex items-center justify-center',
+      'group inline-flex items-center justify-center px-3 py-2',
       underline && getNavigationMenuUnderline(underlineVariant),
       className
     )}
@@ -159,6 +159,7 @@ const NavigationMenuLinkBase = (
     ref={ref}
     data-active={active ? 'true' : undefined}
     className={cn(
+      'inline-flex items-center justify-center px-3 py-2',
       underline && getNavigationMenuUnderline(underlineVariant),
       className
     )}

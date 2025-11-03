@@ -7,12 +7,7 @@ import type { HTMLAttributes, JSX } from 'react';
 const typographyVariants = cva('', {
   variants: {
     variant: {
-      h1: [
-        'scroll-m-20',
-        fontSizes.h1,
-        'font-extrabold',
-        'tracking-tight',
-      ],
+      h1: ['scroll-m-20', fontSizes.h1, 'font-extrabold', 'tracking-tight'],
       h2: [
         'scroll-m-20',
         'border-b',
@@ -22,18 +17,8 @@ const typographyVariants = cva('', {
         'tracking-tight',
         'first:mt-0',
       ],
-      h3: [
-        'scroll-m-20',
-        fontSizes.h3,
-        'font-semibold',
-        'tracking-tight',
-      ],
-      h4: [
-        'scroll-m-20',
-        fontSizes.h4,
-        'font-semibold',
-        'tracking-tight',
-      ],
+      h3: ['scroll-m-20', fontSizes.h3, 'font-semibold', 'tracking-tight'],
+      h4: ['scroll-m-20', fontSizes.h4, 'font-semibold', 'tracking-tight'],
       p: ['leading-7', '[&:not(:first-child)]:mt-6'],
       blockquote: ['mt-6', 'border-l-2', 'pl-6', 'italic'],
       inlineCode: [
@@ -48,25 +33,10 @@ const typographyVariants = cva('', {
       ],
       lead: ['text-muted-foreground', fontSizes.lead],
       large: [fontSizes.large, 'font-semibold'],
-      small: [
-        fontSizes['small-muted'],
-        'leading-none',
-        'font-medium',
-      ],
-      muted: [
-        'text-muted-foreground',
-        fontSizes['small-muted'],
-      ],
-      xl: [
-        fontSizes.xl,
-        'font-extrabold',
-        'tracking-tight',
-      ],
-      lg: [
-        fontSizes.lg,
-        'font-semibold',
-        'tracking-tight',
-      ],
+      small: [fontSizes['small-muted'], 'leading-none', 'font-medium'],
+      muted: ['text-muted-foreground', fontSizes['small-muted']],
+      xl: [fontSizes.xl, 'font-extrabold', 'tracking-tight'],
+      lg: [fontSizes.lg, 'font-semibold', 'tracking-tight'],
       md: [fontSizes.md, 'font-medium'],
       sm: [fontSizes.sm],
       xs: [fontSizes.xs],

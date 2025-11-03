@@ -18,27 +18,39 @@ import { Typography } from '@eluelu/elu-ui/components/typography';
 import { cn } from '@eluelu/elu-ui/lib/classes';
 import { Menu } from 'lucide-react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { match } from 'path-to-regexp';
 import { useState } from 'react';
 
 import type { NavigationItem } from './types';
 
 type MobileNavigationProps = {
   items: NavigationItem[];
-  currentPath: string;
-  pathMatches: (currentPath: string, target?: string) => boolean;
 };
 
-export const MobileNavigation: RCC<MobileNavigationProps> = ({
-  items,
-  currentPath,
-  pathMatches,
-}) => {
+/**
+ * Check if the current pathname matches a target path pattern
+ * Uses path-to-regexp for pattern matching
+ */
+const checkPathMatch = (pathname: string, target?: string): boolean => {
+  if (!target) return false;
+
+  try {
+    const matcher = match(target, { decode: decodeURIComponent });
+    return !!matcher(pathname);
+  } catch {
+    return pathname === target || pathname.startsWith(`${target}/`);
+  }
+};
+
+export const MobileNavigation: RCC<MobileNavigationProps> = ({ items }) => {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <Sheet onOpenChange={setOpen} open={open}>
       <SheetTrigger asChild>
-        <Button className="md:hidden" size="icon" variant="ghost">
+        <Button size="icon" variant="ghost">
           <Menu className="size-5" />
           <span className="sr-only">開啟選單</span>
         </Button>
@@ -52,9 +64,9 @@ export const MobileNavigation: RCC<MobileNavigationProps> = ({
             {items.map((item, index) => {
               const subItems = item.items ?? [];
               const isItemActive =
-                pathMatches(currentPath, item.href) ||
+                checkPathMatch(pathname, item.href) ||
                 subItems.some((subItem) =>
-                  pathMatches(currentPath, subItem.href)
+                  checkPathMatch(pathname, subItem.href)
                 );
 
               // If item has subitems, render as accordion
@@ -80,15 +92,15 @@ export const MobileNavigation: RCC<MobileNavigationProps> = ({
                     <AccordionContent>
                       <ul className="space-y-2 pl-4">
                         {subItems.map((subItem) => {
-                          const isSubItemActive = pathMatches(
-                            currentPath,
+                          const isSubItemActive = checkPathMatch(
+                            pathname,
                             subItem.href
                           );
                           return (
                             <li key={subItem.title}>
                               <Link
                                 className={cn(
-                                  'block rounded-md px-3 py-2 transition-colors hover:bg-accent',
+                                  'hover:bg-accent block rounded-md px-3 py-2 transition-colors',
                                   isSubItemActive && 'bg-accent'
                                 )}
                                 href={subItem.href}
@@ -125,13 +137,10 @@ export const MobileNavigation: RCC<MobileNavigationProps> = ({
 
               // Single item without subitems
               return (
-                <div
-                  className="border-b"
-                  key={item.title}
-                >
+                <div className="border-b" key={item.title}>
                   <Link
                     className={cn(
-                      'block py-3 transition-colors hover:text-primary',
+                      'hover:text-primary block py-3 transition-colors',
                       isItemActive && 'text-primary font-semibold'
                     )}
                     href={item.href}

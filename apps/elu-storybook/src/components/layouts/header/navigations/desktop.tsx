@@ -12,96 +12,103 @@ import {
 import { Typography } from '@eluelu/elu-ui/components/typography';
 import { cn } from '@eluelu/elu-ui/lib/classes';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { match } from 'path-to-regexp';
 import type { ComponentPropsWithoutRef } from 'react';
 
 import type { NavigationItem } from './types';
 
 type DesktopNavigationProps = {
   items: NavigationItem[];
-  currentPath: string;
-  pathMatches: (currentPath: string, target?: string) => boolean;
 };
 
-export const DesktopNavigation: RCC<DesktopNavigationProps> = ({
-  items,
-  currentPath,
-  pathMatches,
-}) => {
+/**
+ * Check if the current pathname matches a target path pattern
+ * Uses path-to-regexp for pattern matching
+ */
+const checkPathMatch = (pathname: string, target?: string): boolean => {
+  if (!target) return false;
+
+  try {
+    const matcher = match(target, { decode: decodeURIComponent });
+    return !!matcher(pathname);
+  } catch {
+    return pathname === target || pathname.startsWith(`${target}/`);
+  }
+};
+
+export const DesktopNavigation: RCC<DesktopNavigationProps> = ({ items }) => {
+  const pathname = usePathname();
+
   return (
-    <nav className="relative border-b py-2 hidden md:block">
-      <div className="container mx-auto px-6">
-        <NavigationMenu>
-          <NavigationMenuList>
-            {items.map((item) => {
-              const subItems = item.items ?? [];
-              const isItemActive =
-                pathMatches(currentPath, item.href) ||
-                subItems.some((subItem) =>
-                  pathMatches(currentPath, subItem.href)
-                );
+    <NavigationMenu>
+      <NavigationMenuList>
+        {items.map((item) => {
+          const subItems = item.items ?? [];
+          const isItemActive =
+            checkPathMatch(pathname, item.href) ||
+            subItems.some((subItem) => checkPathMatch(pathname, subItem.href));
 
-              if (subItems.length > 0) {
-                return (
-                  <NavigationMenuItem key={item.title}>
-                    <NavigationMenuTrigger active={isItemActive}>
-                      <Typography
-                        className={cn(
-                          'transition-colors',
-                          isItemActive && 'text-primary font-semibold'
-                        )}
-                        variant="sm"
+          if (subItems.length > 0) {
+            return (
+              <NavigationMenuItem key={item.title}>
+                <NavigationMenuTrigger active={isItemActive}>
+                  <Typography
+                    className={cn(
+                      'transition-colors',
+                      isItemActive && 'text-primary font-semibold'
+                    )}
+                    variant="sm"
+                  >
+                    {item.title}
+                  </Typography>
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                    {subItems.map((subItem) => (
+                      <ListItem
+                        active={checkPathMatch(pathname, subItem.href)}
+                        href={subItem.href}
+                        key={subItem.title}
+                        title={subItem.title}
                       >
-                        {item.title}
-                      </Typography>
-                    </NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                      <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                        {subItems.map((subItem) => (
-                          <ListItem
-                            active={pathMatches(currentPath, subItem.href)}
-                            href={subItem.href}
-                            key={subItem.title}
-                            title={subItem.title}
-                          >
-                            {subItem.description}
-                          </ListItem>
-                        ))}
-                      </ul>
-                    </NavigationMenuContent>
-                  </NavigationMenuItem>
-                );
-              }
+                        {subItem.description}
+                      </ListItem>
+                    ))}
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            );
+          }
 
-              return (
-                <NavigationMenuItem key={item.title}>
-                  <NavigationMenuLink active={isItemActive} asChild>
-                    <Link
-                      aria-current={isItemActive ? 'page' : undefined}
-                      className={cn(
-                        'transition-colors',
-                        isItemActive && 'text-primary'
-                      )}
-                      href={item.href}
-                    >
-                      <Typography
-                        className={cn(
-                          'transition-colors',
-                          isItemActive && 'text-primary font-semibold'
-                        )}
-                        variant="sm"
-                      >
-                        {item.title}
-                      </Typography>
-                    </Link>
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-              );
-            })}
-            <NavigationMenuIndicator />
-          </NavigationMenuList>
-        </NavigationMenu>
-      </div>
-    </nav>
+          return (
+            <NavigationMenuItem key={item.title}>
+              <NavigationMenuLink active={isItemActive} asChild>
+                <Link
+                  aria-current={isItemActive ? 'page' : undefined}
+                  className={cn(
+                    'transition-colors',
+                    isItemActive && 'text-primary'
+                  )}
+                  href={item.href}
+                >
+                  <Typography
+                    className={cn(
+                      'transition-colors',
+                      isItemActive && 'text-primary font-semibold'
+                    )}
+                    variant="sm"
+                  >
+                    {item.title}
+                  </Typography>
+                </Link>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+          );
+        })}
+        <NavigationMenuIndicator />
+      </NavigationMenuList>
+    </NavigationMenu>
   );
 };
 
@@ -109,7 +116,7 @@ type ListItemProps = {
   href: string;
   title: string;
   active?: boolean;
-} & Omit<ComponentPropsWithoutRef<'li'>, 'children'>;
+} & Omit<ComponentPropsWithoutRef<'li'>, 'children' | 'popover'>;
 
 const ListItem: RCC<ListItemProps> = ({
   title,
@@ -125,7 +132,7 @@ const ListItem: RCC<ListItemProps> = ({
         <Link
           aria-current={active ? 'page' : undefined}
           className={cn(
-            'flex h-auto w-full flex-col items-start rounded-md p-3 transition-colors hover:bg-accent hover:text-accent-foreground',
+            'hover:bg-primary/10 flex h-auto w-full flex-col items-start rounded-md p-3 transition-colors',
             active && 'text-primary'
           )}
           href={href}

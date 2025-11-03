@@ -1,11 +1,8 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
-
 import LogoSvg from '@/assets/logo/icon_logo.svg';
 
 import { DesktopMenu } from '../menu/desktop';
-import { MobileMenu } from '../menu/mobile';
 import { DesktopNavigation } from '../navigations/desktop';
 import { MobileNavigation } from '../navigations/mobile';
 import { SearchInput } from './search-input';
@@ -80,20 +77,13 @@ const navigationItems = [
 ];
 
 export const Header: RC = () => {
-  const pathname = usePathname();
-  const currentPath = normalizePath(pathname);
-
   return (
     <div className="bg-background fixed top-0 right-0 left-0 z-50">
       {/* Top Header */}
       <header className="flex h-16 items-center justify-between gap-4 border-b px-6">
-        {/* Mobile Navigation Trigger */}
-        <div className="md:hidden">
-          <MobileNavigation
-            currentPath={currentPath}
-            items={navigationItems}
-            pathMatches={pathMatches}
-          />
+        {/* Mobile Navigation Trigger (now always visible) */}
+        <div className="lg:hidden">
+          <MobileNavigation items={navigationItems} />
         </div>
 
         {/* Logo */}
@@ -109,54 +99,18 @@ export const Header: RC = () => {
           </div>
 
           {/* Desktop Menu - hidden on mobile */}
-          <div className="hidden items-center gap-2 md:flex">
+          <div className="hidden items-center gap-2 lg:flex">
             <DesktopMenu />
-          </div>
-
-          {/* Mobile Menu Icon - hidden on desktop */}
-          <div className="md:hidden">
-            <MobileMenu />
           </div>
         </div>
       </header>
 
-      {/* Desktop Navigation Menu - hidden on mobile */}
-      <DesktopNavigation
-        currentPath={currentPath}
-        items={navigationItems}
-        pathMatches={pathMatches}
-      />
+      {/* Desktop Navigation hidden at lg */}
+      <nav className="relative hidden border-b py-2 lg:block">
+        <div className="container flex h-12 items-center px-6">
+          <DesktopNavigation items={navigationItems} />
+        </div>
+      </nav>
     </div>
   );
 };
-
-function normalizePath(path: string | null | undefined): string {
-  if (!path) {
-    return '/';
-  }
-
-  let normalized = path.startsWith('/') ? path : `/${path}`;
-
-  if (normalized.length > 1 && normalized.endsWith('/')) {
-    normalized = normalized.replace(/\/+$/, '');
-  }
-
-  return normalized.length === 0 ? '/' : normalized;
-}
-
-function pathMatches(currentPath: string, target?: string): boolean {
-  if (!target) {
-    return false;
-  }
-
-  const normalizedTarget = normalizePath(target);
-  if (normalizedTarget === '/') {
-    return currentPath === '/';
-  }
-
-  if (currentPath === normalizedTarget) {
-    return true;
-  }
-
-  return currentPath.startsWith(`${normalizedTarget}/`);
-}

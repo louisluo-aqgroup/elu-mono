@@ -1,9 +1,5 @@
 import { cn } from '@eluelu/elu-ui/lib/classes';
-import {
-  fontSizes,
-  heights,
-  spacing,
-} from '@eluelu/elu-ui/lib/sizing';
+import { fontSizes, heights, spacing } from '@eluelu/elu-ui/lib/sizing';
 import { type VariantProps, cva } from 'class-variance-authority';
 import type { ComponentPropsWithoutRef } from 'react';
 
