@@ -6,16 +6,13 @@
 
 ## 🔷 Next.js Component 規範
 
-### ⚠️ 重要：一律使用 Function Component
+### ⚠️ 重要：一律使用 RC / RCC 搭配箭頭函式
 
-所有 Next.js 元件（包括 Page、Layout、Client Component）都必須使用 **Function Component** 形式撰寫，並將 `export default` 寫在檔案最下方。
+所有 Next.js 元件（包含 Page、Layout、Client Component）都必須採用 **常數 + 箭頭函式** 的寫法，並使用全域提供的 `RC` / `RCC` 型別。`export default` 依然寫在檔案最下方。
 
 ```typescript
-// ✅ function component + export 分離
-function HomePage() {
-  return <div>Home Page</div>;
-}
-
+// ✅ Server Component（預設）：RC + 箭頭函式
+const HomePage: RC = () => <div>Home Page</div>;
 export default HomePage;
 
 // ✅ Client Component
@@ -23,21 +20,21 @@ export default HomePage;
 
 import { useState } from 'react';
 
-function InteractiveButton() {
+const InteractiveButton: RC = () => {
   const [count, setCount] = useState(0);
   return <button onClick={() => setCount(count + 1)}>{count}</button>;
-}
+};
 
 export default InteractiveButton;
 
 // ✅ Layout（RCC 已在 global d.ts 中定義，無需 import）
-function RootLayout({ children }: { children: React.ReactNode }) {
+const RootLayout: RCC = ({ children }) => {
   return (
     <html>
       <body>{children}</body>
     </html>
   );
-}
+};
 
 export default RootLayout;
 ```
@@ -46,17 +43,25 @@ export default RootLayout;
 
 ```typescript
 // ✅ Server Component (預設)
-function ProductPage({ params }: { params: { id: string } }) {
-  return <div>Product {params.id}</div>;
-}
+type ProductPageProps = {
+  params: { id: string };
+};
+
+const ProductPage: RC<ProductPageProps> = ({ params }) => (
+  <div>Product {params.id}</div>
+);
 
 export default ProductPage;
 
 // ✅ Async Server Component
-async function PostPage({ params }: { params: { slug: string } }) {
+type PostPageProps = {
+  params: { slug: string };
+};
+
+const PostPage: RC<PostPageProps> = async ({ params }) => {
   const post = await fetchPost(params.slug);
   return <article>{post.content}</article>;
-}
+};
 
 export default PostPage;
 
@@ -67,16 +72,14 @@ export const metadata: Metadata = {
   title: 'My Page',
 };
 
-function MyPage() {
-  return <div>Content</div>;
-}
+const MyPage: RC = () => <div>Content</div>;
 
 export default MyPage;
 ```
 
 ### 原因說明
 
-1. **與 Next.js 官方文件一致** - Next.js 文件範例全部使用 function component
-2. **支援 async/await** - Server Component 需要 async function 支援
-3. **更好的除錯體驗** - Function 宣告會顯示函數名稱在 stack trace 中
+1. **統一型別來源** - `RC` / `RCC` 由 `@eluelu/types` 全域提供，避免重複 import
+2. **保留 async 支援** - 箭頭函式同樣可以標記 `async`，符合 Server Component 需求
+3. **更好的除錯** - 常數命名仍會顯示在 stack trace 中
 4. **export 分離** - 將 export 寫在下方，程式碼結構更清晰

@@ -6,6 +6,7 @@ import { Typography } from '@eluelu/elu-ui/components/typography';
 import { cn } from '@eluelu/elu-ui/lib/utils';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import type { ReactNode } from 'react';
 
 const components = [
   {
@@ -23,11 +24,11 @@ const components = [
   // 未來可以在這裡添加更多元件
 ];
 
-export default function ComponentsLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+type ComponentsLayoutProps = {
+  children: ReactNode;
+};
+
+const ComponentsLayout: RCC<ComponentsLayoutProps> = ({ children }) => {
   const pathname = usePathname();
 
   return (
@@ -72,4 +73,6 @@ export default function ComponentsLayout({
       <main className="flex-1 p-8">{children}</main>
     </div>
   );
-}
+};
+
+export default ComponentsLayout;

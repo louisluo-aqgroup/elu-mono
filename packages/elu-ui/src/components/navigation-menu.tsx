@@ -2,42 +2,55 @@ import { cn } from '@eluelu/elu-ui/lib/utils';
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
 import { cva } from 'class-variance-authority';
 import { ChevronDown } from 'lucide-react';
+import type {
+  ComponentPropsWithoutRef,
+  ElementRef,
+  ForwardRefExoticComponent,
+  PropsWithChildren,
+  PropsWithoutRef,
+  RefAttributes,
+} from 'react';
 import * as React from 'react';
 
-const NavigationMenu = React.forwardRef<
-  React.ElementRef<typeof NavigationMenuPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Root>
->(({ className, children, ...props }, ref) => (
-  <NavigationMenuPrimitive.Root
-    ref={ref}
-    className={cn(
-      'relative z-10 flex max-w-max flex-1 items-center justify-center',
-      className
-    )}
-    {...props}
-  >
-    {children}
-    <NavigationMenuViewport />
-  </NavigationMenuPrimitive.Root>
-));
-NavigationMenu.displayName = NavigationMenuPrimitive.Root.displayName;
+type ForwardableComponent<P, R> = RCC<P> &
+  ForwardRefExoticComponent<
+    PropsWithoutRef<PropsWithChildren<P>> & RefAttributes<R>
+  >;
 
-const NavigationMenuList = React.forwardRef<
-  React.ElementRef<typeof NavigationMenuPrimitive.List>,
-  React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.List>
->(({ className, ...props }, ref) => (
-  <NavigationMenuPrimitive.List
-    ref={ref}
-    className={cn(
-      'group flex flex-1 list-none items-center justify-center space-x-1',
-      className
-    )}
-    {...props}
-  />
-));
-NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName;
+type ForwardableRC<P, R> = RC<P> &
+  ForwardRefExoticComponent<PropsWithoutRef<P> & RefAttributes<R>>;
 
-const NavigationMenuItem = NavigationMenuPrimitive.Item;
+type NavigationMenuProps = ComponentPropsWithoutRef<
+  typeof NavigationMenuPrimitive.Root
+>;
+
+type NavigationMenuListProps = ComponentPropsWithoutRef<
+  typeof NavigationMenuPrimitive.List
+>;
+
+type NavigationMenuContentProps = ComponentPropsWithoutRef<
+  typeof NavigationMenuPrimitive.Content
+>;
+
+type NavigationMenuViewportProps = ComponentPropsWithoutRef<
+  typeof NavigationMenuPrimitive.Viewport
+>;
+
+type NavigationMenuIndicatorProps = ComponentPropsWithoutRef<
+  typeof NavigationMenuPrimitive.Indicator
+>;
+
+type NavigationMenuTriggerProps = {
+  underline?: boolean;
+  underlineVariant?: NavigationMenuUnderlineVariant;
+  active?: boolean;
+} & ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Trigger>;
+
+type NavigationMenuLinkProps = {
+  underline?: boolean;
+  underlineVariant?: NavigationMenuUnderlineVariant;
+  active?: boolean;
+} & ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Link>;
 
 const navigationMenuTriggerStyle = cva(
   'group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50'
@@ -58,54 +71,70 @@ const getNavigationMenuUnderline = (
   variant: NavigationMenuUnderlineVariant = 'default'
 ) => cn(navigationMenuUnderlineBase, navigationMenuUnderlineVariants[variant]);
 
-interface NavigationMenuTriggerProps
-  extends React.ComponentPropsWithoutRef<
-    typeof NavigationMenuPrimitive.Trigger
-  > {
-  underline?: boolean;
-  underlineVariant?: NavigationMenuUnderlineVariant;
-  active?: boolean;
-}
-
-const NavigationMenuTrigger = React.forwardRef<
-  React.ElementRef<typeof NavigationMenuPrimitive.Trigger>,
-  NavigationMenuTriggerProps
->(
-  (
-    {
-      className,
-      children,
-      underline = true,
-      underlineVariant = 'default',
-      active = false,
-      ...props
-    },
-    ref
-  ) => (
-    <NavigationMenuPrimitive.Trigger
-      ref={ref}
-      data-active={active ? 'true' : undefined}
-      className={cn(
-        'group inline-flex items-center justify-center',
-        underline && getNavigationMenuUnderline(underlineVariant),
-        className
-      )}
-      {...props}
-    >
-      {children}{' '}
-      <ChevronDown
-        className="relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180"
-        aria-hidden="true"
-      />
-    </NavigationMenuPrimitive.Trigger>
-  )
+const NavigationMenuBase = (
+  { className, children, ...props }: PropsWithChildren<NavigationMenuProps>,
+  ref: React.ForwardedRef<ElementRef<typeof NavigationMenuPrimitive.Root>>
+) => (
+  <NavigationMenuPrimitive.Root
+    ref={ref}
+    className={cn(
+      'relative z-10 flex max-w-max flex-1 items-center justify-center',
+      className
+    )}
+    {...props}
+  >
+    {children}
+    <NavigationMenuViewport />
+  </NavigationMenuPrimitive.Root>
 );
-NavigationMenuTrigger.displayName = NavigationMenuPrimitive.Trigger.displayName;
 
-const NavigationMenuContent = React.forwardRef<
-  React.ElementRef<typeof NavigationMenuPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Content>
->(({ className, ...props }, ref) => (
+const NavigationMenuListBase = (
+  { className, ...props }: PropsWithChildren<NavigationMenuListProps>,
+  ref: React.ForwardedRef<ElementRef<typeof NavigationMenuPrimitive.List>>
+) => (
+  <NavigationMenuPrimitive.List
+    ref={ref}
+    className={cn(
+      'group flex flex-1 list-none items-center justify-center space-x-1',
+      className
+    )}
+    {...props}
+  />
+);
+
+const NavigationMenuTriggerBase = (
+  {
+    className,
+    underline = true,
+    underlineVariant = 'default',
+    active = false,
+    children,
+    ...props
+  }: PropsWithChildren<NavigationMenuTriggerProps>,
+  ref: React.ForwardedRef<ElementRef<typeof NavigationMenuPrimitive.Trigger>>
+) => (
+  <NavigationMenuPrimitive.Trigger
+    ref={ref}
+    data-active={active ? 'true' : undefined}
+    className={cn(
+      'group inline-flex items-center justify-center',
+      underline && getNavigationMenuUnderline(underlineVariant),
+      className
+    )}
+    {...props}
+  >
+    {children}{' '}
+    <ChevronDown
+      className="relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180"
+      aria-hidden="true"
+    />
+  </NavigationMenuPrimitive.Trigger>
+);
+
+const NavigationMenuContentBase = (
+  { className, ...props }: PropsWithChildren<NavigationMenuContentProps>,
+  ref: React.ForwardedRef<ElementRef<typeof NavigationMenuPrimitive.Content>>
+) => (
   <NavigationMenuPrimitive.Content
     ref={ref}
     className={cn(
@@ -114,47 +143,33 @@ const NavigationMenuContent = React.forwardRef<
     )}
     {...props}
   />
-));
-NavigationMenuContent.displayName = NavigationMenuPrimitive.Content.displayName;
-
-interface NavigationMenuLinkProps
-  extends React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Link> {
-  underline?: boolean;
-  underlineVariant?: NavigationMenuUnderlineVariant;
-  active?: boolean;
-}
-
-const NavigationMenuLink = React.forwardRef<
-  React.ElementRef<typeof NavigationMenuPrimitive.Link>,
-  NavigationMenuLinkProps
->(
-  (
-    {
-      className,
-      underline = true,
-      underlineVariant = 'default',
-      active = false,
-      ...props
-    },
-    ref
-  ) => (
-    <NavigationMenuPrimitive.Link
-      ref={ref}
-      data-active={active ? 'true' : undefined}
-      className={cn(
-        underline && getNavigationMenuUnderline(underlineVariant),
-        className
-      )}
-      {...props}
-    />
-  )
 );
-NavigationMenuLink.displayName = NavigationMenuPrimitive.Link.displayName;
 
-const NavigationMenuViewport = React.forwardRef<
-  React.ElementRef<typeof NavigationMenuPrimitive.Viewport>,
-  React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Viewport>
->(({ className, ...props }, ref) => (
+const NavigationMenuLinkBase = (
+  {
+    className,
+    underline = true,
+    underlineVariant = 'default',
+    active = false,
+    ...props
+  }: PropsWithChildren<NavigationMenuLinkProps>,
+  ref: React.ForwardedRef<ElementRef<typeof NavigationMenuPrimitive.Link>>
+) => (
+  <NavigationMenuPrimitive.Link
+    ref={ref}
+    data-active={active ? 'true' : undefined}
+    className={cn(
+      underline && getNavigationMenuUnderline(underlineVariant),
+      className
+    )}
+    {...props}
+  />
+);
+
+const NavigationMenuViewportBase = (
+  { className, ...props }: PropsWithChildren<NavigationMenuViewportProps>,
+  ref: React.ForwardedRef<ElementRef<typeof NavigationMenuPrimitive.Viewport>>
+) => (
   <div className={cn('absolute top-full left-0 flex justify-center')}>
     <NavigationMenuPrimitive.Viewport
       className={cn(
@@ -165,14 +180,12 @@ const NavigationMenuViewport = React.forwardRef<
       {...props}
     />
   </div>
-));
-NavigationMenuViewport.displayName =
-  NavigationMenuPrimitive.Viewport.displayName;
+);
 
-const NavigationMenuIndicator = React.forwardRef<
-  React.ElementRef<typeof NavigationMenuPrimitive.Indicator>,
-  React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Indicator>
->(({ className, ...props }, ref) => (
+const NavigationMenuIndicatorBase = (
+  { className, ...props }: NavigationMenuIndicatorProps,
+  ref: React.ForwardedRef<ElementRef<typeof NavigationMenuPrimitive.Indicator>>
+) => (
   <NavigationMenuPrimitive.Indicator
     ref={ref}
     className={cn('hidden', className)}
@@ -180,9 +193,67 @@ const NavigationMenuIndicator = React.forwardRef<
   >
     <div />
   </NavigationMenuPrimitive.Indicator>
-));
+);
+
+const NavigationMenu = React.forwardRef(
+  NavigationMenuBase
+) as ForwardableComponent<
+  NavigationMenuProps,
+  ElementRef<typeof NavigationMenuPrimitive.Root>
+>;
+NavigationMenu.displayName = NavigationMenuPrimitive.Root.displayName;
+
+const NavigationMenuList = React.forwardRef(
+  NavigationMenuListBase
+) as ForwardableComponent<
+  NavigationMenuListProps,
+  ElementRef<typeof NavigationMenuPrimitive.List>
+>;
+NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName;
+
+const NavigationMenuTrigger = React.forwardRef(
+  NavigationMenuTriggerBase
+) as ForwardableComponent<
+  NavigationMenuTriggerProps,
+  ElementRef<typeof NavigationMenuPrimitive.Trigger>
+>;
+NavigationMenuTrigger.displayName = NavigationMenuPrimitive.Trigger.displayName;
+
+const NavigationMenuContent = React.forwardRef(
+  NavigationMenuContentBase
+) as ForwardableComponent<
+  NavigationMenuContentProps,
+  ElementRef<typeof NavigationMenuPrimitive.Content>
+>;
+NavigationMenuContent.displayName = NavigationMenuPrimitive.Content.displayName;
+
+const NavigationMenuLink = React.forwardRef(
+  NavigationMenuLinkBase
+) as ForwardableComponent<
+  NavigationMenuLinkProps,
+  ElementRef<typeof NavigationMenuPrimitive.Link>
+>;
+NavigationMenuLink.displayName = NavigationMenuPrimitive.Link.displayName;
+
+const NavigationMenuViewport = React.forwardRef(
+  NavigationMenuViewportBase
+) as ForwardableComponent<
+  NavigationMenuViewportProps,
+  ElementRef<typeof NavigationMenuPrimitive.Viewport>
+>;
+NavigationMenuViewport.displayName =
+  NavigationMenuPrimitive.Viewport.displayName;
+
+const NavigationMenuIndicator = React.forwardRef(
+  NavigationMenuIndicatorBase
+) as ForwardableRC<
+  NavigationMenuIndicatorProps,
+  ElementRef<typeof NavigationMenuPrimitive.Indicator>
+>;
 NavigationMenuIndicator.displayName =
   NavigationMenuPrimitive.Indicator.displayName;
+
+const NavigationMenuItem = NavigationMenuPrimitive.Item;
 
 export {
   navigationMenuTriggerStyle,

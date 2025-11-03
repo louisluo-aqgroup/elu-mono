@@ -28,7 +28,7 @@ const components = [
   // 未來可以在這裡添加更多元件
 ];
 
-export function LayoutSidebar() {
+export const LayoutSidebar: RC = () => {
   const pathname = usePathname();
 
   return (
@@ -68,4 +68,4 @@ export function LayoutSidebar() {
       </SidebarContent>
     </Sidebar>
   );
-}
+};

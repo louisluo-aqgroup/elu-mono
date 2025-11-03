@@ -1,2 +1,2 @@
 // Re-export types from @eluelu/types
-import  '@eluelu/types/react';
+import '@eluelu/types/react';

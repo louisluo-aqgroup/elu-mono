@@ -1,7 +1,7 @@
 import { cn } from '@eluelu/elu-ui/lib/utils';
 import { Slot } from '@radix-ui/react-slot';
 import { type VariantProps, cva } from 'class-variance-authority';
-import { JSX } from 'react';
+import type { HTMLAttributes, JSX } from 'react';
 
 const typographyVariants = cva('', {
   variants: {
@@ -62,15 +62,14 @@ const defaultElements: Record<
   xs: 'span',
 };
 
-interface TypographyProps
-  extends Omit<React.HTMLAttributes<HTMLElement>, 'color'>,
-    VariantProps<typeof typographyVariants> {
+type TypographyProps = {
   asChild?: boolean;
   as?: keyof JSX.IntrinsicElements;
   foreground?: boolean;
-}
+} & Omit<HTMLAttributes<HTMLElement>, 'children' | 'color'> &
+  VariantProps<typeof typographyVariants>;
 
-function Typography({
+const Typography: RCC<TypographyProps> = ({
   className,
   variant,
   color,
@@ -78,7 +77,7 @@ function Typography({
   as,
   foreground = false,
   ...props
-}: TypographyProps) {
+}) => {
   const Comp = asChild
     ? Slot
     : (as ?? (variant ? defaultElements[variant] : 'div'));
@@ -115,6 +114,6 @@ function Typography({
       {...props}
     />
   );
-}
+};
 
 export { Typography, typographyVariants };

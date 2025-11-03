@@ -9,6 +9,7 @@
 ### ⚠️ 重要：優先使用 RC / RCC 類型
 
 所有 React 元件都必須使用 `@eluelu/types` 提供的 `RC` 和 `RCC` 類型。
+預設 `@eluelu/types` 引用至 `src/types/globals/react.d.ts` 無需個別引入
 
 ```typescript
 // ✅ 一般元件使用 RC

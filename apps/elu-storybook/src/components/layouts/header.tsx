@@ -16,6 +16,7 @@ import { cn } from '@eluelu/elu-ui/lib/utils';
 import { Bell, Grid3x3, Search, User } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import type { ComponentPropsWithoutRef } from 'react';
 
 import LogoSvg from '@/assets/logo/icon_logo.svg';
 
@@ -88,7 +89,7 @@ const navigationItems = [
   },
 ];
 
-export function Header() {
+export const Header: RC = () => {
   const pathname = usePathname();
   const currentPath = normalizePath(pathname);
 
@@ -212,23 +213,22 @@ export function Header() {
       </nav>
     </div>
   );
-}
+};
 
-interface ListItemProps extends React.ComponentPropsWithoutRef<'li'> {
+type ListItemProps = {
   href: string;
   title: string;
-  children?: React.ReactNode;
   active?: boolean;
-}
+} & Omit<ComponentPropsWithoutRef<'li'>, 'children'>;
 
-function ListItem({
+const ListItem: RCC<ListItemProps> = ({
   title,
   children,
   href,
   className,
   active = false,
   ...props
-}: ListItemProps) {
+}) => {
   return (
     <li className={className} {...props}>
       <NavigationMenuLink active={active} asChild underlineVariant="muted">
@@ -267,7 +267,7 @@ function ListItem({
       </NavigationMenuLink>
     </li>
   );
-}
+};
 
 function normalizePath(path: string | null | undefined): string {
   if (!path) {

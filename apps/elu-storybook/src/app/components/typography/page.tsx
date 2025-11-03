@@ -1,6 +1,6 @@
 import { Typography } from '@eluelu/elu-ui/components/typography';
 
-export default function TypographyDemo() {
+const TypographyDemo: RC = () => {
   return (
     <div className="mx-auto max-w-5xl space-y-12">
       {/* Header */}
@@ -799,4 +799,6 @@ export default function TypographyDemo() {
       </div>
     </div>
   );
-}
+};
+
+export default TypographyDemo;

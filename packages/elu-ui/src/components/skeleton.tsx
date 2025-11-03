@@ -1,13 +1,14 @@
 import { cn } from '@eluelu/elu-ui/lib/utils';
+import type { ComponentPropsWithoutRef } from 'react';
 
-function Skeleton({ className, ...props }: React.ComponentProps<'div'>) {
-  return (
-    <div
-      data-slot="skeleton"
-      className={cn('bg-accent animate-pulse rounded-md', className)}
-      {...props}
-    />
-  );
-}
+type SkeletonProps = Omit<ComponentPropsWithoutRef<'div'>, 'children'>;
+
+const Skeleton: RC<SkeletonProps> = ({ className, ...props }) => (
+  <div
+    data-slot="skeleton"
+    className={cn('bg-accent animate-pulse rounded-md', className)}
+    {...props}
+  />
+);
 
 export { Skeleton };

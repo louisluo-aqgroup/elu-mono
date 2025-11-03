@@ -1,9 +1,8 @@
 'use client';
 
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
-import * as React from 'react';
 
-export function Providers({ children }: { children: React.ReactNode }) {
+export const ThemeProvider: RCC = ({ children }) => {
   return (
     <NextThemesProvider
       attribute="class"
@@ -15,4 +14,4 @@ export function Providers({ children }: { children: React.ReactNode }) {
       {children}
     </NextThemesProvider>
   );
-}
+};

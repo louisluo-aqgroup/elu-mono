@@ -1,11 +1,35 @@
 import { cn } from '@eluelu/elu-ui/lib/utils';
 import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
+import type {
+  ComponentPropsWithoutRef,
+  ElementRef,
+  ForwardRefExoticComponent,
+  PropsWithChildren,
+  PropsWithoutRef,
+  RefAttributes,
+} from 'react';
 import * as React from 'react';
 
-const ScrollArea = React.forwardRef<
-  React.ElementRef<typeof ScrollAreaPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Root>
->(({ className, children, ...props }, ref) => (
+type ScrollAreaProps = ComponentPropsWithoutRef<
+  typeof ScrollAreaPrimitive.Root
+>;
+
+type ScrollBarProps = ComponentPropsWithoutRef<
+  typeof ScrollAreaPrimitive.ScrollAreaScrollbar
+>;
+
+type ForwardableComponent<P, R> = RCC<P> &
+  ForwardRefExoticComponent<
+    PropsWithoutRef<PropsWithChildren<P>> & RefAttributes<R>
+  >;
+
+type ForwardableRC<P, R> = RC<P> &
+  ForwardRefExoticComponent<PropsWithoutRef<P> & RefAttributes<R>>;
+
+const ScrollAreaBase = (
+  { className, children, ...props }: PropsWithChildren<ScrollAreaProps>,
+  ref: React.ForwardedRef<ElementRef<typeof ScrollAreaPrimitive.Root>>
+) => (
   <ScrollAreaPrimitive.Root
     ref={ref}
     className={cn('relative overflow-hidden', className)}
@@ -17,13 +41,14 @@ const ScrollArea = React.forwardRef<
     <ScrollBar />
     <ScrollAreaPrimitive.Corner />
   </ScrollAreaPrimitive.Root>
-));
-ScrollArea.displayName = ScrollAreaPrimitive.Root.displayName;
+);
 
-const ScrollBar = React.forwardRef<
-  React.ElementRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>,
-  React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>
->(({ className, orientation = 'vertical', ...props }, ref) => (
+const ScrollBarBase = (
+  { className, orientation = 'vertical', ...props }: ScrollBarProps,
+  ref: React.ForwardedRef<
+    ElementRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>
+  >
+) => (
   <ScrollAreaPrimitive.ScrollAreaScrollbar
     ref={ref}
     orientation={orientation}
@@ -39,7 +64,18 @@ const ScrollBar = React.forwardRef<
   >
     <ScrollAreaPrimitive.ScrollAreaThumb className="bg-accent hover:bg-accent/80 relative flex-1 rounded-full transition-colors" />
   </ScrollAreaPrimitive.ScrollAreaScrollbar>
-));
+);
+
+const ScrollArea = React.forwardRef(ScrollAreaBase) as ForwardableComponent<
+  ScrollAreaProps,
+  ElementRef<typeof ScrollAreaPrimitive.Root>
+>;
+ScrollArea.displayName = ScrollAreaPrimitive.Root.displayName;
+
+const ScrollBar = React.forwardRef(ScrollBarBase) as ForwardableRC<
+  ScrollBarProps,
+  ElementRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>
+>;
 ScrollBar.displayName = ScrollAreaPrimitive.ScrollAreaScrollbar.displayName;
 
 export { ScrollArea, ScrollBar };
