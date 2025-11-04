@@ -79,14 +79,14 @@ export const MobileNavigation: RCC<MobileNavigationProps> = ({ items }) => {
                   >
                     <AccordionTrigger
                       className={cn(
-                        'px-3 py-2.5 hover:no-underline rounded-md hover:bg-accent',
-                        isItemActive && 'text-primary font-medium'
+                        'px-3 py-2.5 hover:no-underline rounded-md hover:bg-primary/10',
+                        isItemActive && 'text-primary font-semibold'
                       )}
                     >
                       <Typography
                         className={cn(
-                          'transition-colors font-medium',
-                          isItemActive && 'text-primary'
+                          'transition-colors',
+                          isItemActive && 'text-primary font-semibold'
                         )}
                         variant="sm"
                       >
@@ -104,17 +104,17 @@ export const MobileNavigation: RCC<MobileNavigationProps> = ({ items }) => {
                             <li key={subItem.title}>
                               <Link
                                 className={cn(
-                                  'hover:bg-accent block rounded-md px-3 py-2 transition-colors',
-                                  isSubItemActive && 'bg-accent'
+                                  'hover:bg-primary/10 block rounded-md px-3 py-2 transition-colors',
+                                  isSubItemActive && 'text-primary'
                                 )}
                                 href={subItem.href}
                                 onClick={() => setOpen(false)}
                               >
                                 <Typography
                                   className={cn(
-                                    'transition-colors',
+                                    'leading-none font-medium transition-colors',
                                     isSubItemActive &&
-                                      'text-primary font-medium'
+                                      'text-primary font-semibold'
                                   )}
                                   variant="sm"
                                 >
@@ -122,7 +122,7 @@ export const MobileNavigation: RCC<MobileNavigationProps> = ({ items }) => {
                                 </Typography>
                                 {subItem.description && (
                                   <Typography
-                                    className="mt-0.5"
+                                    className="mt-0.5 leading-snug"
                                     color="muted"
                                     variant="xs"
                                   >
@@ -144,16 +144,16 @@ export const MobileNavigation: RCC<MobileNavigationProps> = ({ items }) => {
                 <div key={item.title}>
                   <Link
                     className={cn(
-                      'hover:bg-accent block px-3 py-2.5 rounded-md transition-colors',
-                      isItemActive && 'text-primary font-medium'
+                      'hover:bg-primary/10 block px-3 py-2.5 rounded-md transition-colors',
+                      isItemActive && 'text-primary'
                     )}
                     href={item.href}
                     onClick={() => setOpen(false)}
                   >
                     <Typography
                       className={cn(
-                        'transition-colors font-medium',
-                        isItemActive && 'text-primary'
+                        'transition-colors',
+                        isItemActive && 'text-primary font-semibold'
                       )}
                       variant="sm"
                     >
