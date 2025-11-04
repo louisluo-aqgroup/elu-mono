@@ -4,14 +4,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@eluelu/elu-ui/*": ["../../packages/elu-ui/src/*"],
-      // 🧩 統一 components 路徑
-      // 若該資料夾下有 main/index.tsx，則直接指向該檔案
-      "@/components/*": [
-        "src/components/*/main/index.tsx",
-        "src/components/*/index.ts",
-        "src/components/*"
-      ]
+      "@eluelu/elu-ui/*": ["../../packages/elu-ui/src/*"]
     },
     "plugins": [
       {

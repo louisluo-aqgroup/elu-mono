@@ -2,7 +2,7 @@ import '@eluelu/elu-ui/globals.css';
 import type { ReactNode } from 'react';
 
 import { Footer } from '@/components/layouts/footer';
-import { Header } from '@/components/layouts/header';
+import { Header } from '@/components/layouts/header/main';
 import { ThemeProvider } from '@/components/themes/provider';
 import { websiteFontClasses } from '@/styles/font';
 
@@ -11,7 +11,7 @@ type RootLayoutProps = Readonly<{
 }>;
 
 const RootLayout: RCC<RootLayoutProps> = ({ children }) => (
-  <html lang="en" suppressHydrationWarning>
+  <html lang="zh-TW" suppressHydrationWarning>
     <body className={websiteFontClasses}>
       <ThemeProvider>
         <Header />
