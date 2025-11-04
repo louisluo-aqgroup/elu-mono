@@ -55,12 +55,12 @@ export const MobileNavigation: RCC<MobileNavigationProps> = ({ items }) => {
           <span className="sr-only">開啟選單</span>
         </Button>
       </SheetTrigger>
-      <SheetContent className="w-[300px] sm:w-[400px]" side="left">
-        <SheetHeader>
-          <SheetTitle>選單</SheetTitle>
+      <SheetContent className="w-80 p-0" side="left">
+        <SheetHeader className="border-b px-4 py-4">
+          <SheetTitle className="text-base font-semibold">選單</SheetTitle>
         </SheetHeader>
-        <nav className="mt-6">
-          <Accordion collapsible type="single">
+        <nav className="px-3 py-4">
+          <Accordion className="space-y-1" collapsible type="single">
             {items.map((item, index) => {
               const subItems = item.items ?? [];
               const isItemActive =
@@ -72,25 +72,29 @@ export const MobileNavigation: RCC<MobileNavigationProps> = ({ items }) => {
               // If item has subitems, render as accordion
               if (subItems.length > 0) {
                 return (
-                  <AccordionItem key={item.title} value={`item-${index}`}>
+                  <AccordionItem
+                    className="border-0"
+                    key={item.title}
+                    value={`item-${index}`}
+                  >
                     <AccordionTrigger
                       className={cn(
-                        'py-3 hover:no-underline',
-                        isItemActive && 'text-primary font-semibold'
+                        'px-3 py-2.5 hover:no-underline rounded-md hover:bg-accent',
+                        isItemActive && 'text-primary font-medium'
                       )}
                     >
                       <Typography
                         className={cn(
-                          'transition-colors',
-                          isItemActive && 'text-primary font-semibold'
+                          'transition-colors font-medium',
+                          isItemActive && 'text-primary'
                         )}
                         variant="sm"
                       >
                         {item.title}
                       </Typography>
                     </AccordionTrigger>
-                    <AccordionContent>
-                      <ul className="space-y-2 pl-4">
+                    <AccordionContent className="pb-1 pt-1">
+                      <ul className="space-y-1 pl-3">
                         {subItems.map((subItem) => {
                           const isSubItemActive = checkPathMatch(
                             pathname,
@@ -110,7 +114,7 @@ export const MobileNavigation: RCC<MobileNavigationProps> = ({ items }) => {
                                   className={cn(
                                     'transition-colors',
                                     isSubItemActive &&
-                                      'text-primary font-semibold'
+                                      'text-primary font-medium'
                                   )}
                                   variant="sm"
                                 >
@@ -118,7 +122,7 @@ export const MobileNavigation: RCC<MobileNavigationProps> = ({ items }) => {
                                 </Typography>
                                 {subItem.description && (
                                   <Typography
-                                    className="mt-1"
+                                    className="mt-0.5"
                                     color="muted"
                                     variant="xs"
                                   >
@@ -137,19 +141,19 @@ export const MobileNavigation: RCC<MobileNavigationProps> = ({ items }) => {
 
               // Single item without subitems
               return (
-                <div className="border-b" key={item.title}>
+                <div key={item.title}>
                   <Link
                     className={cn(
-                      'hover:text-primary block py-3 transition-colors',
-                      isItemActive && 'text-primary font-semibold'
+                      'hover:bg-accent block px-3 py-2.5 rounded-md transition-colors',
+                      isItemActive && 'text-primary font-medium'
                     )}
                     href={item.href}
                     onClick={() => setOpen(false)}
                   >
                     <Typography
                       className={cn(
-                        'transition-colors',
-                        isItemActive && 'text-primary font-semibold'
+                        'transition-colors font-medium',
+                        isItemActive && 'text-primary'
                       )}
                       variant="sm"
                     >
