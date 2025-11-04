@@ -1,7 +1,4 @@
 {
   "tailwindCSS.experimental.configFile": "packages/ui/src/styles/globals.css",
-  "eslint.workingDirectories": [
-    { "pattern": "apps/*" },
-    { "pattern": "packages/*" }
-  ]
+  "eslint.format.enable": true,
 }
