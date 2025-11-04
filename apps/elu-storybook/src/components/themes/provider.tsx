@@ -6,7 +6,7 @@ export const ThemeProvider: RCC = ({ children }) => {
   return (
     <NextThemesProvider
       attribute="class"
-      defaultTheme="system"
+      defaultTheme="light"
       disableTransitionOnChange
       enableColorScheme
       enableSystem
