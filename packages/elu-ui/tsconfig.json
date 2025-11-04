@@ -2,8 +2,6 @@
   "extends": "@eluelu/typescript-config/react-library.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "module": "ESNext",
-    "moduleResolution": "bundler",
     "paths": {
       "@eluelu/elu-ui/*": ["./src/*"]
     }
