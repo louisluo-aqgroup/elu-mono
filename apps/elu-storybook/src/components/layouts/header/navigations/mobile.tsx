@@ -1,22 +1,29 @@
 'use client';
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@eluelu/elu-ui/components/accordion';
 import { Button } from '@eluelu/elu-ui/components/button';
 import {
   Sheet,
   SheetContent,
+  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from '@eluelu/elu-ui/components/sheet';
+import {
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
+  SidebarProvider,
+} from '@eluelu/elu-ui/components/sidebar';
 import { Typography } from '@eluelu/elu-ui/components/typography';
 import { cn } from '@eluelu/elu-ui/lib/classes';
-import { Menu } from 'lucide-react';
+import { ChevronRight, Menu } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { match } from 'path-to-regexp';
@@ -45,7 +52,20 @@ const checkPathMatch = (pathname: string, target?: string): boolean => {
 
 export const MobileNavigation: RCC<MobileNavigationProps> = ({ items }) => {
   const [open, setOpen] = useState(false);
+  const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
   const pathname = usePathname();
+
+  const toggleItem = (title: string) => {
+    setExpandedItems((prev) => {
+      const next = new Set(prev);
+      if (next.has(title)) {
+        next.delete(title);
+      } else {
+        next.add(title);
+      }
+      return next;
+    });
+  };
 
   return (
     <Sheet onOpenChange={setOpen} open={open}>
@@ -56,115 +76,110 @@ export const MobileNavigation: RCC<MobileNavigationProps> = ({ items }) => {
         </Button>
       </SheetTrigger>
       <SheetContent className="w-80 p-0" side="left">
-        <SheetHeader className="border-b px-4 py-4">
-          <SheetTitle className="text-base font-semibold">選單</SheetTitle>
+        <SheetHeader className="border-b px-4 py-6">
+          <SheetTitle className="sr-only">導覽選單</SheetTitle>
+          <SheetDescription className="sr-only h-8">
+            網站主要導覽選單
+          </SheetDescription>
         </SheetHeader>
-        <nav className="px-3 py-4">
-          <Accordion className="space-y-1" collapsible type="single">
-            {items.map((item, index) => {
-              const subItems = item.items ?? [];
-              const isItemActive =
-                checkPathMatch(pathname, item.href) ||
-                subItems.some((subItem) =>
-                  checkPathMatch(pathname, subItem.href)
-                );
+        <SidebarProvider>
+          <SidebarContent className="p-2">
+            <SidebarGroup>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  {items.map((item) => {
+                    const subItems = item.items ?? [];
+                    const isItemActive =
+                      checkPathMatch(pathname, item.href) ||
+                      subItems.some((subItem) =>
+                        checkPathMatch(pathname, subItem.href)
+                      );
+                    const isExpanded = expandedItems.has(item.title);
 
-              // If item has subitems, render as accordion
-              if (subItems.length > 0) {
-                return (
-                  <AccordionItem
-                    className="border-0"
-                    key={item.title}
-                    value={`item-${index}`}
-                  >
-                    <AccordionTrigger
-                      className={cn(
-                        'hover:bg-primary/10 rounded-md px-3 py-2.5 hover:no-underline',
-                        isItemActive && 'text-primary font-semibold'
-                      )}
-                    >
-                      <Typography
-                        className={cn(
-                          'transition-colors',
-                          isItemActive && 'text-primary font-semibold'
-                        )}
-                        variant="sm"
-                      >
-                        {item.title}
-                      </Typography>
-                    </AccordionTrigger>
-                    <AccordionContent className="pt-1 pb-1">
-                      <ul className="space-y-1 pl-3">
-                        {subItems.map((subItem) => {
-                          const isSubItemActive = checkPathMatch(
-                            pathname,
-                            subItem.href
-                          );
-                          return (
-                            <li key={subItem.title}>
-                              <Link
+                    return (
+                      <SidebarMenuItem key={item.title}>
+                        {subItems.length > 0 ? (
+                          <>
+                            <SidebarMenuButton
+                              className={cn(
+                                'text-primary hover:bg-primary/10 hover:text-primary',
+                                isItemActive &&
+                                  'bg-primary/10 text-primary font-semibold'
+                              )}
+                              isActive={isItemActive}
+                              onClick={() => toggleItem(item.title)}
+                            >
+                              <Typography variant="sm">
+                                {item.title}
+                              </Typography>
+                              <ChevronRight
                                 className={cn(
-                                  'hover:bg-primary/10 block rounded-md px-3 py-2 transition-colors',
-                                  isSubItemActive && 'text-primary'
+                                  'ml-auto size-4 transition-transform',
+                                  isExpanded && 'rotate-90'
                                 )}
-                                href={subItem.href}
-                                onClick={() => setOpen(false)}
-                              >
-                                <Typography
-                                  className={cn(
-                                    'leading-none font-medium transition-colors',
-                                    isSubItemActive &&
-                                      'text-primary font-semibold'
-                                  )}
-                                  variant="sm"
-                                >
-                                  {subItem.title}
-                                </Typography>
-                                {subItem.description && (
-                                  <Typography
-                                    className="mt-0.5 leading-snug"
-                                    color="muted"
-                                    variant="xs"
-                                  >
-                                    {subItem.description}
-                                  </Typography>
-                                )}
-                              </Link>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    </AccordionContent>
-                  </AccordionItem>
-                );
-              }
-
-              // Single item without subitems
-              return (
-                <div key={item.title}>
-                  <Link
-                    className={cn(
-                      'hover:bg-primary/10 block rounded-md px-3 py-2.5 transition-colors',
-                      isItemActive && 'text-primary'
-                    )}
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                  >
-                    <Typography
-                      className={cn(
-                        'transition-colors',
-                        isItemActive && 'text-primary font-semibold'
-                      )}
-                      variant="sm"
-                    >
-                      {item.title}
-                    </Typography>
-                  </Link>
-                </div>
-              );
-            })}
-          </Accordion>
-        </nav>
+                              />
+                            </SidebarMenuButton>
+                            {isExpanded && (
+                              <SidebarMenuSub>
+                                {subItems.map((subItem) => {
+                                  const isSubItemActive = checkPathMatch(
+                                    pathname,
+                                    subItem.href
+                                  );
+                                  return (
+                                    <SidebarMenuSubItem key={subItem.title}>
+                                      <SidebarMenuSubButton
+                                        asChild
+                                        className={cn(
+                                          'text-primary hover:bg-primary/10 hover:text-primary',
+                                          isSubItemActive &&
+                                            'bg-primary/10 text-primary font-semibold'
+                                        )}
+                                        isActive={isSubItemActive}
+                                      >
+                                        <Link
+                                          href={subItem.href}
+                                          onClick={() => setOpen(false)}
+                                        >
+                                          <Typography variant="sm">
+                                            {subItem.title}
+                                          </Typography>
+                                        </Link>
+                                      </SidebarMenuSubButton>
+                                    </SidebarMenuSubItem>
+                                  );
+                                })}
+                              </SidebarMenuSub>
+                            )}
+                          </>
+                        ) : (
+                          <SidebarMenuButton
+                            asChild
+                            className={cn(
+                              'text-primary hover:bg-primary/10 hover:text-primary',
+                              isItemActive &&
+                                'bg-primary/10 text-primary font-semibold'
+                            )}
+                            isActive={isItemActive}
+                          >
+                            <Link
+                              href={item.href}
+                              onClick={() => setOpen(false)}
+                            >
+                              <Typography variant="sm">
+                                {item.title}
+                              </Typography>
+                            </Link>
+                          </SidebarMenuButton>
+                        )}
+                      </SidebarMenuItem>
+                    );
+                  })}
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </SidebarGroup>
+          </SidebarContent>
+        </SidebarProvider>
       </SheetContent>
     </Sheet>
   );
