@@ -79,7 +79,7 @@ export const MobileNavigation: RCC<MobileNavigationProps> = ({ items }) => {
                   >
                     <AccordionTrigger
                       className={cn(
-                        'px-3 py-2.5 hover:no-underline rounded-md hover:bg-primary/10',
+                        'hover:bg-primary/10 rounded-md px-3 py-2.5 hover:no-underline',
                         isItemActive && 'text-primary font-semibold'
                       )}
                     >
@@ -93,7 +93,7 @@ export const MobileNavigation: RCC<MobileNavigationProps> = ({ items }) => {
                         {item.title}
                       </Typography>
                     </AccordionTrigger>
-                    <AccordionContent className="pb-1 pt-1">
+                    <AccordionContent className="pt-1 pb-1">
                       <ul className="space-y-1 pl-3">
                         {subItems.map((subItem) => {
                           const isSubItemActive = checkPathMatch(
@@ -144,7 +144,7 @@ export const MobileNavigation: RCC<MobileNavigationProps> = ({ items }) => {
                 <div key={item.title}>
                   <Link
                     className={cn(
-                      'hover:bg-primary/10 block px-3 py-2.5 rounded-md transition-colors',
+                      'hover:bg-primary/10 block rounded-md px-3 py-2.5 transition-colors',
                       isItemActive && 'text-primary'
                     )}
                     href={item.href}
