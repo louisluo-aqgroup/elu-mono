@@ -109,9 +109,7 @@ export const MobileNavigation: RCC<MobileNavigationProps> = ({ items }) => {
                               isActive={isItemActive}
                               onClick={() => toggleItem(item.title)}
                             >
-                              <Typography variant="sm">
-                                {item.title}
-                              </Typography>
+                              <Typography variant="sm">{item.title}</Typography>
                               <ChevronRight
                                 className={cn(
                                   'ml-auto size-4 transition-transform',
@@ -166,9 +164,7 @@ export const MobileNavigation: RCC<MobileNavigationProps> = ({ items }) => {
                               href={item.href}
                               onClick={() => setOpen(false)}
                             >
-                              <Typography variant="sm">
-                                {item.title}
-                              </Typography>
+                              <Typography variant="sm">{item.title}</Typography>
                             </Link>
                           </SidebarMenuButton>
                         )}

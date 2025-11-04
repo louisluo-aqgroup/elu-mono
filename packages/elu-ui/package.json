@@ -11,7 +11,7 @@
     "./hooks/*": "./src/hooks/*.ts"
   },
   "scripts": {
-    "format": "prettier --write ./src && eslint --fix ./src",
+    "format": "eslint --fix ./src",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint --fix ./src"
   },

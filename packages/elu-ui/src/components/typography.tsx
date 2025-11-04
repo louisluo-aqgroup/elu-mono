@@ -1,7 +1,7 @@
 import { cn } from '@eluelu/elu-ui/lib/classes';
 import { fontSizes } from '@eluelu/elu-ui/lib/sizing';
 import { Slot } from '@radix-ui/react-slot';
-import { type VariantProps, cva } from 'class-variance-authority';
+import { cva, type VariantProps } from 'class-variance-authority';
 import type { HTMLAttributes, JSX } from 'react';
 
 const typographyVariants = cva('', {

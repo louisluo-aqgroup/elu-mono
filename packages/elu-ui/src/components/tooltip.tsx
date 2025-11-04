@@ -68,4 +68,4 @@ const TooltipContent: RCC<TooltipContentProps> = ({
   </TooltipPrimitive.Portal>
 );
 
-export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider };
+export { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger };

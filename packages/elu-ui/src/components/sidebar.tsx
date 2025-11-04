@@ -20,9 +20,9 @@ import {
 import { useIsMobile } from '@eluelu/elu-ui/hooks/use-mobile';
 import { cn } from '@eluelu/elu-ui/lib/classes';
 import { Slot } from '@radix-ui/react-slot';
-import { type VariantProps, cva } from 'class-variance-authority';
+import { cva, type VariantProps } from 'class-variance-authority';
 import { PanelLeftIcon } from 'lucide-react';
-import type { CSSProperties, ComponentPropsWithoutRef } from 'react';
+import type { ComponentPropsWithoutRef, CSSProperties } from 'react';
 import * as React from 'react';
 
 const SIDEBAR_COOKIE_NAME = 'sidebar_state';

@@ -7,7 +7,7 @@ import {
   widths,
 } from '@eluelu/elu-ui/lib/sizing';
 import { Slot } from '@radix-ui/react-slot';
-import { type VariantProps, cva } from 'class-variance-authority';
+import { cva, type VariantProps } from 'class-variance-authority';
 import type { ComponentPropsWithoutRef } from 'react';
 
 const buttonVariants = cva(
