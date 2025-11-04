@@ -114,7 +114,8 @@ const faqItems: DemoItem[] = [
     trigger: '忘記密碼怎麼辦？',
     content: (
       <p className="leading-relaxed">
-        在登入頁面點擊「忘記密碼」連結，輸入您的註冊信箱，系統會發送重設密碼的連結到您的信箱。請在 24 小時內點擊連結並設定新密碼。
+        在登入頁面點擊「忘記密碼」連結，輸入您的註冊信箱，系統會發送重設密碼的連結到您的信箱。請在
+        24 小時內點擊連結並設定新密碼。
       </p>
     ),
   },
@@ -137,7 +138,9 @@ const faqItems: DemoItem[] = [
     trigger: '支援哪些付款方式？',
     content: (
       <p className="leading-relaxed">
-        我們支援以下付款方式：信用卡（Visa、Mastercard、JCB）、ATM 轉帳、超商代碼繳費、電子支付（LINE Pay、Apple Pay、Google Pay）。所有交易都採用 SSL 加密，確保您的付款安全。
+        我們支援以下付款方式：信用卡（Visa、Mastercard、JCB）、ATM
+        轉帳、超商代碼繳費、電子支付（LINE Pay、Apple Pay、Google
+        Pay）。所有交易都採用 SSL 加密，確保您的付款安全。
       </p>
     ),
   },
@@ -151,8 +154,9 @@ const settingsItems: DemoItem[] = [
     content: (
       <div className="space-y-3 text-sm leading-relaxed">
         <p>
-          預設樣式基於 Tailwind CSS，可透過 `className` 或 `data-slot` 自訂細節。配合
-          `border`、`rounded` 和 `bg-muted` 類別即可快速建立不同層級感。
+          預設樣式基於 Tailwind CSS，可透過 `className` 或 `data-slot`
+          自訂細節。配合 `border`、`rounded` 和 `bg-muted`
+          類別即可快速建立不同層級感。
         </p>
         <ul className="list-disc space-y-1 pl-4">
           <li>調整 `AccordionItem` 的 `className` 以控制邊框和背景</li>
@@ -169,8 +173,9 @@ const settingsItems: DemoItem[] = [
     content: (
       <div className="space-y-3 text-sm leading-relaxed">
         <p>
-          Accordion 內容區塊支援任何 React 節點，可放入表單控制項、提示訊息或次要排版。搭配
-          flex/grid 可以打造設定面板的體驗。
+          Accordion 內容區塊支援任何 React
+          節點，可放入表單控制項、提示訊息或次要排版。搭配 flex/grid
+          可以打造設定面板的體驗。
         </p>
         <div className="rounded-md border border-dashed p-3">
           <p className="font-medium">常見組合</p>
@@ -190,13 +195,10 @@ const settingsItems: DemoItem[] = [
     content: (
       <div className="space-y-3 text-sm leading-relaxed">
         <p>
-          透過 `defaultValue`（single 模式）或 `defaultValue`
-          陣列（multiple 模式）設定預設展開的項目，適合將常用或需要提醒使用者的資訊放在最上方。
+          透過 `defaultValue`（single 模式）或 `defaultValue` 陣列（multiple
+          模式）設定預設展開的項目，適合將常用或需要提醒使用者的資訊放在最上方。
         </p>
-        <p>
-          也可以搭配 `collapsible`
-          讓使用者自由收合所有內容，增加互動彈性。
-        </p>
+        <p>也可以搭配 `collapsible` 讓使用者自由收合所有內容，增加互動彈性。</p>
       </div>
     ),
   },
@@ -214,7 +216,7 @@ const AccordionPage: RC = () => (
     </div>
 
     <section
-      className="bg-muted/30 space-y-4 rounded-lg border p-6 scroll-m-24"
+      className="bg-muted/30 scroll-m-24 space-y-4 rounded-lg border p-6"
       id="props"
     >
       <Typography variant="h3">Props</Typography>
@@ -277,7 +279,7 @@ const AccordionPage: RC = () => (
     </section>
 
     <section
-      className="bg-muted/30 mt-12 space-y-4 rounded-lg border p-6 scroll-m-24"
+      className="bg-muted/30 mt-12 scroll-m-24 space-y-4 rounded-lg border p-6"
       id="usage"
     >
       <Typography variant="h3">使用範例</Typography>
@@ -384,7 +386,7 @@ const AccordionPage: RC = () => (
           <Accordion defaultValue="appearance" type="single">
             {settingsItems.map((item) => (
               <AccordionItem
-                className="mb-3 last:mb-0 border-b-0 rounded-lg border border-border/60 bg-background/90 px-4 shadow-sm"
+                className="border-border/60 bg-background/90 mb-3 rounded-lg border border-b-0 px-4 shadow-sm last:mb-0"
                 key={item.value}
                 value={item.value}
               >

@@ -40,8 +40,6 @@ const Page: RC = () => (
         </p>
       </div>
 
- 
-
       <section className="space-y-6" id="components">
         <div>
           <h2 className="mb-2 text-2xl font-semibold">元件範例</h2>
@@ -67,7 +65,10 @@ const Page: RC = () => (
         </div>
       </section>
 
-      <section className="bg-muted/30 mt-12 rounded-lg border p-6" id="quickstart">
+      <section
+        className="bg-muted/30 mt-12 rounded-lg border p-6"
+        id="quickstart"
+      >
         <h2 className="mb-2 text-lg font-semibold">快速開始</h2>
         <p className="text-muted-foreground mb-4 text-sm">
           點擊上方的元件卡片即可查看該元件的各種用法和展示範例

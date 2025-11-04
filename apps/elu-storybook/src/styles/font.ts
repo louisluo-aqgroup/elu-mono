@@ -1,7 +1,6 @@
 import '@eluelu/elu-ui/globals.css';
 import { Geist, Geist_Mono } from 'next/font/google';
 
-
 const fontSans = Geist({
   subsets: ['latin'],
   variable: '--font-sans',
