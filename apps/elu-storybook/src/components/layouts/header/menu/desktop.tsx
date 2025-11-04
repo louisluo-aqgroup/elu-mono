@@ -1,7 +1,9 @@
 'use client';
 
 import { Button } from '@eluelu/elu-ui/components/button';
-import { Bell, Grid3x3, User } from 'lucide-react';
+import { Bell, Grid3x3 } from 'lucide-react';
+
+import { UserMenu } from './user-menu';
 
 export const DesktopMenu: RC = () => {
   return (
@@ -17,10 +19,8 @@ export const DesktopMenu: RC = () => {
         <Grid3x3 className="size-5" />
       </Button>
 
-      {/* User Profile */}
-      <Button size="icon" variant="ghost">
-        <User className="size-5" />
-      </Button>
+      {/* User Profile Dropdown */}
+      <UserMenu />
     </>
   );
 };
