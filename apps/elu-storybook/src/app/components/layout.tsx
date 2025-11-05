@@ -30,6 +30,10 @@ const components = [
     href: '/components/scroll-area',
   },
   {
+    name: 'Select',
+    href: '/components/select',
+  },
+  {
     name: 'Typography',
     href: '/components/typography',
   },

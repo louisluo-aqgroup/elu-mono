@@ -62,7 +62,7 @@ const ScrollBarBase = (
     )}
     {...props}
   >
-    <ScrollAreaPrimitive.ScrollAreaThumb className="bg-accent hover:bg-accent/80 relative flex-1 rounded-full transition-colors" />
+    <ScrollAreaPrimitive.ScrollAreaThumb className="bg-primary/20 hover:bg-primary/30 relative flex-1 rounded-full transition-colors" />
   </ScrollAreaPrimitive.ScrollAreaScrollbar>
 );
 
