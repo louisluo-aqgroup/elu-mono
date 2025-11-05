@@ -3,7 +3,6 @@
 import { cn } from '@eluelu/elu-ui/lib/classes';
 import { heights } from '@eluelu/elu-ui/lib/sizing';
 import {
-  AsYouType,
   type CountryCode,
   getCountries,
   getCountryCallingCode,
@@ -87,8 +86,9 @@ const PhoneInput: RC<PhoneInputProps> = ({
 
   const handlePhoneChange = React.useCallback(
     (inputValue: string) => {
-      if (!countryCode) {
-        setDisplayValue(inputValue);
+      setDisplayValue(inputValue);
+
+      if (!countryCode && !inputValue.startsWith('+')) {
         if (onChange) {
           onChange(inputValue, undefined);
         }
@@ -96,23 +96,21 @@ const PhoneInput: RC<PhoneInputProps> = ({
       }
 
       try {
-        const formatter = new AsYouType(countryCode);
-        const formatted = formatter.input(inputValue);
-        const phoneNumber = formatter.getNumber();
-
         let e164: string | undefined;
         let valid = false;
 
-        if (phoneNumber) {
-          e164 = phoneNumber.format('E.164');
-          valid = phoneNumber.isValid();
-        } else if (inputValue) {
+        if (inputValue) {
           try {
             if (inputValue.startsWith('+')) {
               const parsed = parsePhoneNumberWithError(inputValue);
               e164 = parsed.format('E.164');
               valid = parsed.isValid();
-            } else {
+
+              // Auto-update country code based on parsed number
+              if (parsed.country && parsed.country !== countryCode) {
+                setCountryCode(parsed.country);
+              }
+            } else if (countryCode) {
               const parsed = parsePhoneNumberWithError(inputValue, countryCode);
               e164 = parsed.format('E.164');
               valid = parsed.isValid();
@@ -123,13 +121,11 @@ const PhoneInput: RC<PhoneInputProps> = ({
         }
 
         setIsValid(inputValue ? valid : undefined);
-        setDisplayValue(formatted);
 
         if (onChange) {
-          onChange(formatted, e164);
+          onChange(e164 || inputValue, e164);
         }
       } catch {
-        setDisplayValue(inputValue);
         setIsValid(false);
 
         if (onChange) {
@@ -146,19 +142,25 @@ const PhoneInput: RC<PhoneInputProps> = ({
 
       if (displayValue) {
         try {
-          const formatter = new AsYouType(newCountry);
-          const formatted = formatter.input(displayValue);
-          const phoneNumber = formatter.getNumber();
-
           let e164: string | undefined;
-          if (phoneNumber) {
-            e164 = phoneNumber.format('E.164');
+
+          try {
+            if (displayValue.startsWith('+')) {
+              const parsed = parsePhoneNumberWithError(displayValue);
+              e164 = parsed.format('E.164');
+            } else {
+              const parsed = parsePhoneNumberWithError(
+                displayValue,
+                newCountry
+              );
+              e164 = parsed.format('E.164');
+            }
+          } catch {
+            // Ignore parse errors
           }
 
-          setDisplayValue(formatted);
-
           if (onChange) {
-            onChange(formatted, e164);
+            onChange(e164 || displayValue, e164);
           }
         } catch {
           // Keep original value
