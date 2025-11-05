@@ -10,13 +10,12 @@ import { Button } from '@eluelu/elu-ui/components/button';
 import { Input } from '@eluelu/elu-ui/components/input';
 import { Typography } from '@eluelu/elu-ui/components/typography';
 import { PhoneInput } from '@eluelu/elu-ui/components/phone-input';
+import { useLoginMutation } from '@/apis/auth';
 
-const DevT = dynamic(async () => {
-  const module = await import('@hookform/devtools');
-  return module.DevTool;
-}, {
-  ssr: false,
-});
+const DevT: React.ElementType = dynamic(
+  () => import('@hookform/devtools').then((module) => module.DevTool),
+  { ssr: false }
+);
 
 const phoneNumberSchema = z
   .string()
@@ -50,8 +49,8 @@ export const LoginForm: RCC<LoginFormProps> = ({
   onForgotPassword,
   onRegister,
 }) => {
-  const isDev = process.env.NODE_ENV !== 'production';
   const [generalError, setGeneralError] = useState('');
+  const loginMutation = useLoginMutation();
 
   const {
     control,
@@ -59,16 +58,19 @@ export const LoginForm: RCC<LoginFormProps> = ({
     formState: { isSubmitting },
   } = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
-    defaultValues: {
-      phoneNumber: '',
-      password: '',
-    },
   });
+
+  const isLoading = isSubmitting || loginMutation.isPending;
 
   const onSubmit = handleSubmit(async (formValues) => {
     setGeneralError('');
+    loginMutation.reset();
     try {
       const parsedData = loginSchema.parse(formValues);
+      await loginMutation.mutateAsync({
+        phone: parsedData.phoneNumber,
+        password: parsedData.password,
+      });
       await onSuccess?.(parsedData);
     } catch (error) {
       const err = error instanceof Error ? error : new Error('登入失敗');
@@ -91,32 +93,28 @@ export const LoginForm: RCC<LoginFormProps> = ({
               render={({
                 field: { value, onChange },
                 fieldState: { error },
-              }) => {
-                console.log(error)
-                return (
-                  <>
-                    <PhoneInput
-                      disabled={isSubmitting}
-                      error={!!error}
-                      id="phone"
-                      onChange={(value, e164) => {
-                        console.log(value, e164);
-                        onChange(value);
-                      }}
-                      value={value}
-                    />
-                    {error && (
-                      <Typography
-                        className="mt-1 font-normal"
-                        color="error"
-                        variant="xs"
-                      >
-                        {error.message}
-                      </Typography>
-                    )}
-                  </>
-                );
-              }}
+              }) => (
+                <>
+                  <PhoneInput
+                    disabled={isLoading}
+                    error={!!error}
+                    id="phone"
+                    onChange={(value) => {
+                      onChange(value);
+                    }}
+                    value={value}
+                  />
+                  {error && (
+                    <Typography
+                      className="mt-1 font-normal"
+                      color="error"
+                      variant="xs"
+                    >
+                      {error.message}
+                    </Typography>
+                  )}
+                </>
+              )}
             />
           </div>
 
@@ -132,7 +130,7 @@ export const LoginForm: RCC<LoginFormProps> = ({
                   <Input
                     aria-invalid={!!fieldState.error}
                     autoComplete="current-password"
-                    disabled={isSubmitting}
+                    disabled={isLoading}
                     id="password"
                     placeholder="請輸入密碼"
                     type="password"
@@ -165,21 +163,19 @@ export const LoginForm: RCC<LoginFormProps> = ({
           </div>
         )}
 
-        {generalError && (
+        {(generalError || loginMutation.error) && (
           <div className="rounded-md bg-destructive/10 p-3">
             <Typography color="error" variant="small">
-              {generalError}
+              {generalError ||
+                (loginMutation.error instanceof Error
+                  ? loginMutation.error.message
+                  : '登入失敗')}
             </Typography>
           </div>
         )}
 
-        <Button
-          className="w-full"
-          disabled={isSubmitting}
-          size="lg"
-          type="submit"
-        >
-          {isSubmitting ? '登入中...' : '登入'}
+        <Button className="w-full" disabled={isLoading} size="lg" type="submit">
+          {isLoading ? '登入中...' : '登入'}
         </Button>
 
         {onRegister && (
@@ -197,7 +193,7 @@ export const LoginForm: RCC<LoginFormProps> = ({
           </div>
         )}
       </form>
-      {isDev && <DevT control={control} />}
+      <DevT control={control} />
     </>
   );
 };

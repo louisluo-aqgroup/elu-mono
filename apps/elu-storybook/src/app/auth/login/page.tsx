@@ -1,14 +1,25 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Typography } from '@eluelu/elu-ui/components/typography';
 import { LoginForm, type LoginFormData } from '@/components/auth/login/form';
 import { pagePath } from '@/constants/page-path';
+import { useAuth } from '@/hooks/auth';
 
 const LoginPage: RC = () => {
   const router = useRouter();
+  const { user, loading } = useAuth();
 
-  const handleLoginSuccess = async (_data: LoginFormData) => {};
+  useEffect(() => {
+    if (!loading && user) {
+      router.replace(pagePath.home);
+    }
+  }, [loading, user, router]);
+
+  const handleLoginSuccess = async (_data: LoginFormData) => {
+    router.push(pagePath.home);
+  };
 
   const handleLoginError = (error: Error) => {
     console.error('Login failed:', error);

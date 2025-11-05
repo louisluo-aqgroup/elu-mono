@@ -5,6 +5,8 @@ import { Footer } from '@/components/layouts/footer';
 import { Header } from '@/components/layouts/header/main';
 import { ThemeProvider } from '@/components/themes/provider';
 import { websiteFontClasses } from '@/styles/font';
+import { AuthProvider } from '@/hooks/auth';
+import { ReactQueryProvider } from '@/components/providers/react-query';
 
 type RootLayoutProps = Readonly<{
   children: ReactNode;
@@ -13,13 +15,17 @@ type RootLayoutProps = Readonly<{
 const RootLayout: RCC<RootLayoutProps> = ({ children }) => (
   <html lang="zh-TW" suppressHydrationWarning>
     <body className={websiteFontClasses}>
-      <ThemeProvider>
-        <Header />
-        <main className="flex min-h-screen flex-col pt-16 md:pt-[128px]">
-          {children}
-        </main>
-        <Footer />
-      </ThemeProvider>
+      <AuthProvider>
+        <ReactQueryProvider>
+          <ThemeProvider>
+            <Header />
+            <main className="flex min-h-screen flex-col pt-16 md:pt-[128px]">
+              {children}
+            </main>
+            <Footer />
+          </ThemeProvider>
+        </ReactQueryProvider>
+      </AuthProvider>
     </body>
   </html>
 );
