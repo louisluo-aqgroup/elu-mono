@@ -6,6 +6,8 @@ import { Header } from '@/components/layouts/header/main';
 import { ThemeProvider } from '@/components/themes/provider';
 import { websiteFontClasses } from '@/styles/font';
 import { ReactQueryProvider } from '@/components/providers/react-query';
+import { ModalProvider } from '@eluelu/elu-ui/components/modal-provider';
+import { ModalContainer } from '@eluelu/elu-ui/components/modal-renderer';
 
 type RootLayoutProps = Readonly<{
   children: ReactNode;
@@ -16,11 +18,14 @@ const RootLayout: RCC<RootLayoutProps> = ({ children }) => (
     <body className={websiteFontClasses}>
       <ReactQueryProvider>
         <ThemeProvider>
-          <Header />
-          <main className="flex min-h-screen flex-col pt-16 lg:pt-32">
-            {children}
-          </main>
-          <Footer />
+          <ModalProvider>
+            <Header />
+            <main className="flex min-h-screen flex-col pt-16 lg:pt-32">
+              {children}
+            </main>
+            <Footer />
+            <ModalContainer />
+          </ModalProvider>
         </ThemeProvider>
       </ReactQueryProvider>
     </body>
