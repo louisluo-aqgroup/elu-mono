@@ -1,6 +1,9 @@
 'use client';
 
+import Link from 'next/link';
+
 import LogoSvg from '@/assets/logo/icon_logo.svg';
+import { pagePath } from '@/constants/page-path';
 
 import { DesktopMenu } from '../menu/desktop';
 import { DesktopNavigation } from '../navigations/desktop';
@@ -87,9 +90,9 @@ export const Header: RC = () => {
         </div>
 
         {/* Logo */}
-        <div className="flex items-center">
+        <Link className="flex items-center" href={pagePath.home}>
           <LogoSvg className="fill-primary h-6 w-auto" />
-        </div>
+        </Link>
 
         {/* Right Side Container */}
         <div className="flex flex-1 items-center justify-end gap-2">

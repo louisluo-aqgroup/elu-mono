@@ -14,18 +14,23 @@
   },
   "dependencies": {
     "@eluelu/elu-ui": "workspace:*",
+    "@hookform/resolvers": "^5.2.2",
+    "libphonenumber-js": "^1.12.25",
     "lucide-react": "^0.552.0",
     "next": "^16.0.1",
     "next-themes": "^0.4.6",
     "path-to-regexp": "^8.3.0",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "react-hook-form": "^7.66.0",
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "@eluelu/eslint-config": "workspace:^",
     "@eluelu/prettier-config": "workspace:*",
     "@eluelu/types": "workspace:*",
     "@eluelu/typescript-config": "workspace:*",
+    "@hookform/devtools": "^4.4.0",
     "@svgr/webpack": "^8.1.0",
     "@types/node": "^24.10.0",
     "@types/react": "^19.2.2",

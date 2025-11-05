@@ -48,7 +48,7 @@ const typographyVariants = cva('', {
       accent: 'text-accent',
       muted: 'text-muted-foreground',
       success: 'text-green-600 dark:text-green-500',
-      error: 'text-destructive',
+      error: 'text-destructive/80',
       warning: 'text-amber-600 dark:text-amber-500',
     },
   },

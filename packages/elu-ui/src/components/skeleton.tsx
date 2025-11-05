@@ -6,7 +6,7 @@ type SkeletonProps = Omit<ComponentPropsWithoutRef<'div'>, 'children'>;
 const Skeleton: RC<SkeletonProps> = ({ className, ...props }) => (
   <div
     data-slot="skeleton"
-    className={cn('bg-accent animate-pulse rounded-md', className)}
+    className={cn('bg-muted animate-pulse rounded-md', className)}
     {...props}
   />
 );
