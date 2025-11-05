@@ -22,6 +22,10 @@ const components = [
     href: '/components/input',
   },
   {
+    name: 'Phone Input',
+    href: '/components/phone-input',
+  },
+  {
     name: 'Scroll Area',
     href: '/components/scroll-area',
   },

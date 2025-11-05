@@ -6,26 +6,17 @@ import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { parsePhoneNumberWithError } from 'libphonenumber-js';
-import { DevTool } from '@hookform/devtools';
 import { Button } from '@eluelu/elu-ui/components/button';
 import { Input } from '@eluelu/elu-ui/components/input';
 import { Typography } from '@eluelu/elu-ui/components/typography';
+import { PhoneInput } from '@eluelu/elu-ui/components/phone-input';
 
-const PhoneInput = dynamic(
-  () =>
-    import('@eluelu/elu-ui/components/phone-input').then(
-      (mod) => mod.PhoneInput
-    ),
-  {
-    ssr: false,
-    loading: () => {
-      const {
-        PhoneInputSkeleton,
-      } = require('@eluelu/elu-ui/components/phone-input');
-      return <PhoneInputSkeleton />;
-    },
-  }
-);
+const DevT = dynamic(async () => {
+  const module = await import('@hookform/devtools');
+  return module.DevTool;
+}, {
+  ssr: false,
+});
 
 const phoneNumberSchema = z
   .string()
@@ -59,6 +50,7 @@ export const LoginForm: RCC<LoginFormProps> = ({
   onForgotPassword,
   onRegister,
 }) => {
+  const isDev = process.env.NODE_ENV !== 'production';
   const [generalError, setGeneralError] = useState('');
 
   const {
@@ -205,7 +197,7 @@ export const LoginForm: RCC<LoginFormProps> = ({
           </div>
         )}
       </form>
-      <DevTool control={control} />
+      {isDev && <DevT control={control} />}
     </>
   );
 };

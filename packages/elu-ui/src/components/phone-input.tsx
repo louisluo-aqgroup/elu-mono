@@ -22,6 +22,10 @@ import { Input } from './input';
 import { Skeleton } from './skeleton';
 
 const getSystemCountryCode = (): CountryCode | null => {
+  if (typeof window === 'undefined' || typeof navigator === 'undefined') {
+    return null;
+  }
+
   try {
     const userLanguage = (navigator as { userLanguage?: string }).userLanguage;
     const locale = navigator.language || userLanguage;
@@ -74,7 +78,7 @@ const PhoneInput: RC<PhoneInputProps> = ({
 }) => {
   const [countryCode, setCountryCode] = React.useState<CountryCode | null>(
     () => {
-      return defaultCountry || getSystemCountryCode();
+      return defaultCountry ?? null;
     }
   );
   const [displayValue, setDisplayValue] = React.useState(value);
@@ -83,6 +87,20 @@ const PhoneInput: RC<PhoneInputProps> = ({
   React.useEffect(() => {
     setDisplayValue(value);
   }, [value]);
+
+  React.useEffect(() => {
+    if (defaultCountry) {
+      if (defaultCountry !== countryCode) {
+        setCountryCode(defaultCountry);
+      }
+      return;
+    }
+
+    const detectedCountry = getSystemCountryCode();
+    if (detectedCountry && detectedCountry !== countryCode) {
+      setCountryCode(detectedCountry);
+    }
+  }, [countryCode, defaultCountry]);
 
   const handlePhoneChange = React.useCallback(
     (inputValue: string) => {
