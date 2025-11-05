@@ -1,115 +1,80 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+import { useMutation } from '@tanstack/react-query';
 import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-  type ReactNode,
-} from 'react';
-import {
-  onAuthStateChanged,
   signInWithEmailAndPassword,
-  signOut,
+  signOut as firebaseSignOut,
+  onAuthStateChanged,
   type User,
-  type UserCredential,
 } from 'firebase/auth';
 
+import { loginApi } from '@/apis/auth';
 import { auth } from '@/lib/firebase';
+import type { LoginRequest } from '@/types/apis/auth';
 
-type AuthContextValue = {
-  user: User | null;
-  loading: boolean;
-  signIn: (identifier: string, password: string) => Promise<UserCredential>;
-  signOut: () => Promise<void>;
+// 登入
+export const useSignIn = () => {
+  return useMutation({
+    mutationFn: async ({ phone, password }: LoginRequest) => {
+      // 1. 先呼叫你的 API 取得 email
+      const apiResponse = await loginApi({ phone, password });
+
+      if (apiResponse.success !== true) {
+        throw new Error(
+          apiResponse.message || '登入失敗,請檢查您的手機號碼和密碼'
+        );
+      }
+
+      const email = apiResponse.data?.email;
+
+      if (!email) {
+        throw new Error('查無此帳號或密碼不正確');
+      }
+
+      // 2. 用取得的 email 登入 Firebase
+      const credential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      return credential;
+    },
+  });
 };
 
-const AuthContext = createContext<AuthContextValue | null>(null);
-
-type AuthProviderProps = {
-  children: ReactNode;
+// 登出
+export const useSignOut = () => {
+  return useMutation({
+    mutationFn: async () => {
+      await firebaseSignOut(auth);
+    },
+  });
 };
 
-const phoneToAuthEmail = (phoneNumber: string): string => {
-  const sanitized = phoneNumber.replace(/[^\d+]/g, '');
-  if (!sanitized) {
-    throw new Error('無效的電話號碼');
-  }
-
-  const normalized = sanitized.startsWith('+') ? sanitized.slice(1) : sanitized;
-
-  return `${normalized}@phone-login.elu`;
-};
-
-const resolveIdentifier = (identifier: string): string => {
-  if (identifier.includes('@')) {
-    return identifier;
-  }
-  return phoneToAuthEmail(identifier);
-};
-
-export const AuthProvider: RCC<AuthProviderProps> = ({ children }) => {
+// Auth hook - 提供當前使用者狀態
+export const useAuth = () => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const signOutMutation = useSignOut();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
       setLoading(false);
     });
 
-    return unsubscribe;
+    return () => unsubscribe();
   }, []);
 
-  const signIn = useCallback(
-    async (identifier: string, password: string) => {
-      setLoading(true);
-      try {
-        const credential = await signInWithEmailAndPassword(
-          auth,
-          resolveIdentifier(identifier),
-          password
-        );
-        setUser(credential.user);
-        return credential;
-      } catch (error) {
-        throw error;
-      } finally {
-        setLoading(false);
-      }
-    },
-    []
-  );
+  const signOut = async () => {
+    await signOutMutation.mutateAsync();
+  };
 
-  const handleSignOut = useCallback(async () => {
-    setLoading(true);
-    try {
-      await signOut(auth);
-    } finally {
-      setLoading(false);
-      setUser(null);
-    }
-  }, []);
-
-  const value = useMemo(
-    () => ({
-      user,
-      loading,
-      signIn,
-      signOut: handleSignOut,
-    }),
-    [user, loading, signIn, handleSignOut]
-  );
-
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-};
-
-export const useAuth = (): AuthContextValue => {
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error('useAuth 需在 AuthProvider 中使用');
-  }
-  return context;
+  return {
+    user,
+    loading,
+    signOut,
+  };
 };

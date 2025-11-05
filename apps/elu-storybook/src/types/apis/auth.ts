@@ -4,9 +4,9 @@ export interface LoginRequest {
 }
 
 export interface LoginResponse {
-  data?: {
-    email?: string;
-  } | null;
+  data: {
+    email: string;
+  };
   message?: string;
   success?: boolean;
 }

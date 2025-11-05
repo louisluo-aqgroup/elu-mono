@@ -10,9 +10,9 @@ import { Button } from '@eluelu/elu-ui/components/button';
 import { Input } from '@eluelu/elu-ui/components/input';
 import { Typography } from '@eluelu/elu-ui/components/typography';
 import { PhoneInput } from '@eluelu/elu-ui/components/phone-input';
-import { useLoginMutation } from '@/apis/auth';
+import { useSignIn } from '@/hooks/auth';
 
-const DevT: React.ElementType = dynamic(
+const DevTool: React.ElementType = dynamic(
   () => import('@hookform/devtools').then((module) => module.DevTool),
   { ssr: false }
 );
@@ -50,7 +50,7 @@ export const LoginForm: RCC<LoginFormProps> = ({
   onRegister,
 }) => {
   const [generalError, setGeneralError] = useState('');
-  const loginMutation = useLoginMutation();
+  const signInMutation = useSignIn();
 
   const {
     control,
@@ -58,16 +58,20 @@ export const LoginForm: RCC<LoginFormProps> = ({
     formState: { isSubmitting },
   } = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
+    defaultValues: {
+      phoneNumber: '',
+      password: '',
+    },
   });
 
-  const isLoading = isSubmitting || loginMutation.isPending;
+  const isLoading = isSubmitting || signInMutation.isPending;
 
   const onSubmit = handleSubmit(async (formValues) => {
     setGeneralError('');
-    loginMutation.reset();
+    signInMutation.reset();
     try {
       const parsedData = loginSchema.parse(formValues);
-      await loginMutation.mutateAsync({
+      await signInMutation.mutateAsync({
         phone: parsedData.phoneNumber,
         password: parsedData.password,
       });
@@ -163,12 +167,12 @@ export const LoginForm: RCC<LoginFormProps> = ({
           </div>
         )}
 
-        {(generalError || loginMutation.error) && (
+        {(generalError || signInMutation.error) && (
           <div className="rounded-md bg-destructive/10 p-3">
             <Typography color="error" variant="small">
               {generalError ||
-                (loginMutation.error instanceof Error
-                  ? loginMutation.error.message
+                (signInMutation.error instanceof Error
+                  ? signInMutation.error.message
                   : '登入失敗')}
             </Typography>
           </div>
@@ -193,7 +197,7 @@ export const LoginForm: RCC<LoginFormProps> = ({
           </div>
         )}
       </form>
-      <DevT control={control} />
+      <DevTool control={control} />
     </>
   );
 };
