@@ -18,6 +18,11 @@ const components = [
     description: '輸入框元件，支援多種圓角樣式和輸入類型',
   },
   {
+    name: 'Modal',
+    href: '/components/modal',
+    description: '彈出式對話框元件，使用 secondary 背景和 primary 邊框樣式',
+  },
+  {
     name: 'Scroll Area',
     href: '/components/scroll-area',
     description: '可滾動區域元件，提供自訂樣式的滾動條',
