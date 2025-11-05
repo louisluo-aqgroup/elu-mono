@@ -44,9 +44,9 @@ const ComponentsLayout: RCC<ComponentsLayoutProps> = ({ children }) => {
   const pathname = usePathname();
 
   return (
-    <div className="flex min-h-[calc(100vh-7rem)]">
+    <div className="flex min-h-[calc(100vh-128px)]">
       {/* Left Navigation */}
-      <aside className="border-border sticky top-28 h-[calc(100vh-7rem)] w-64 shrink-0 border-r">
+      <aside className="border-border sticky top-16 lg:top-32 h-[calc(100vh-128px)] w-64 shrink-0 border-r">
         <div className="flex h-full flex-col">
           <div className="border-border flex h-12 items-center border-b px-6">
             <Typography className="font-semibold" variant="sm">

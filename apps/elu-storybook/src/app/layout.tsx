@@ -17,7 +17,7 @@ const RootLayout: RCC<RootLayoutProps> = ({ children }) => (
       <ReactQueryProvider>
         <ThemeProvider>
           <Header />
-          <main className="flex min-h-screen flex-col pt-16 md:pt-[128px]">
+          <main className="flex min-h-screen flex-col pt-16 lg:pt-32">
             {children}
           </main>
           <Footer />
