@@ -1,0 +1,3 @@
+[submodule "apps/web-hubble"]
+	path = apps/web-hubble
+	url = https://github.com/HubbleDevTeam/web-hubble.git
